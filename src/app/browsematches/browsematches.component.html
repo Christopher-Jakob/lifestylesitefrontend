@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let user of usermodel" class="col-3">
+      <ngb-carousel [interval]="null">
+        <ng-template *ngFor="let i of user.images" ngbSlide>
+          <img [src]="i">
+        </ng-template>
+      </ngb-carousel>
+      <div class="row">
+        <div class="col-6">
+          <div class="text-left">
+            {{user.username}}
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="text-right">
+            <span *ngIf="user.coupletype === 'cmw'">Couple - Man Woman</span>
+            <span *ngIf="user.coupletype === 'sw'">Single - Woman</span>
+            <span *ngIf="user.coupletype === 'sm'">Single - Man</span>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="text-left">
+            {{user.city}}
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="text-right">
+            Swing Match: {{user.swingmatch}}%
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="text-left">
+            <ngb-rating [rate]="user.rating" [max]="5" [readonly]="true">
+
+            </ngb-rating>
+          </div>
+        </div>
+        <div class="col-8">
+          <div *ngIf="user.laststddate != null" class="text-right">
+            Last STD Check: {{user.laststddate}}
+          </div>
+          <div *ngIf="user.laststddate == null" class="text-right">
+            Last STD Check: Not Reported
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
