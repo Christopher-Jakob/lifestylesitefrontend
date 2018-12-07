@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { BrowsematchesComponent } from './browsematches/browsematches.component';
 import { SwingersignupComponent } from './main/swingersignup/swingersignup.component';
 import {FormsModule} from '@angular/forms';
+import { PreferencesandsettingsComponent } from './swinger/preferencesandsettings/preferencesandsettings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BrowsematchesComponent,
-    SwingersignupComponent
+    SwingersignupComponent,
+    PreferencesandsettingsComponent
   ],
   imports: [
     BrowserModule,

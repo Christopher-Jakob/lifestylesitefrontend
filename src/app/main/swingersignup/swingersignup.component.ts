@@ -66,7 +66,7 @@ export class SwingersignupComponent implements OnInit {
       value: 'sm'
     },
     {
-      name: 'single Woman',
+      name: 'Single Woman',
       value: 'sf'
     },
     {

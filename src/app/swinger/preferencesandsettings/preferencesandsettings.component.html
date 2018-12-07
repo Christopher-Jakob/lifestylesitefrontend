@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-5 mb-5">
+      <h3>Preferences</h3>
+      <hr>
+    </div>
+    <div class="col-12 mb-5">
+      <h5>Preferred Swing Types</h5>
+    </div>
+    <div *ngFor="let pref of swingoptions" class="col-3 mb-3">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">{{pref.name}}</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 [id]="pref.value"
+                 [name]="pref.value"
+                 ngModel
+                 class="form-check">
+
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="col-12 mb-5">
+      <h5>Preferred Ethnicities</h5>
+    </div>
+    <div *ngFor="let e of ethnicgroups" class="col-3 mb-3">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">{{e.label}}</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 [id]="e.value"
+                 [name]="e.value"
+                 ngModel
+                 class="form-check">
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="col-12 mb-5">
+      <h5>Preferred Ages</h5>
+    </div>
+    <div class="col-2 mb-5">
+      <label class="form-check-label">Lowest Age (min 18)</label>
+      <input type="text"
+             id="lowerage"
+             name="lowerage"
+             ngModel
+             class="form-control">
+    </div>
+    <div class="col-2 mb-5">
+      <label class="form-check-label">Highest Age</label>
+      <input type="text"
+             id="highrange"
+             name="highrange"
+             ngModel
+             class="form-control">
+    </div>
+    <div class="col-12 mb-5">
+      <h5>Distance</h5>
+    </div>
+    <div class="col-3 mb-5">
+      <label class="form-check-label">Max Distance</label>
+      <input type="text"
+             id="distance"
+             name="distance"
+             ngModel
+             class="form-control">
+
+    </div>
+    <div class="col-12 mb-5">
+      <h5>Preferred Body Types</h5>
+    </div>
+    <div class="col-12 mb-3">
+      Body Type filtering is a optional filter that requires additional verification.
+      In order to filter by body types, your body type(s) must be verified. Verification is required once
+      every three months to keep this optional filter. In order to be verified you must take a picture with
+      your body clearly showing. You do not have to be nude, but swimware is preferred.
+      In the same matter as your initial verification photo, this photo is deleted upon review.
+      You have the option to allow or not allow members who have not verified their body types to see you
+      on the site.
+    </div>
+    <div class="col-12 mb-3">
+      <strong>Body Type Categories</strong>
+    </div>
+    <div *ngFor="let type of bodytypes" class="col-2 mb-5">
+      <div class="text-center">
+        {{type.name}}
+      </div>
+    </div>
+    <div class="col-12 mb-5">
+      <div class="text-center">
+        <button class="btn btn-outline-primary">Opt In To Body Type Filtering</button>
+      </div>
+    </div>
+
+    <div class="col-12 mb-5">
+      <div class="row">
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
