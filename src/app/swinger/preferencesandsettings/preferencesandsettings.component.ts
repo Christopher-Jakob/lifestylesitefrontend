@@ -8,6 +8,22 @@ import { Component, OnInit } from '@angular/core';
 export class PreferencesandsettingsComponent implements OnInit {
 
   constructor() { }
+  // boolean to see if this is a couple or not
+  couplesignup = false;
+  // boolean if a user opts into body types
+  bodytypeoptin = false;
+  // boolean to allow the settings of body type prefs after verification photo sent
+  verificationphotosent = false;
+  // boolean to say wether the user has been verified or not
+  verified = false;
+
+  bodytypeoptintoggle(){
+    this.bodytypeoptin = !this.bodytypeoptin;
+  }
+
+  verificationphotosenttoggle(){
+    this.verificationphotosent = !this.verificationphotosent;
+  }
 
   swingoptions = [
     {

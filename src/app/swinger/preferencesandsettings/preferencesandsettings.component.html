@@ -75,7 +75,7 @@
     <div class="col-12 mb-5">
       <h5>Preferred Body Types</h5>
     </div>
-    <div class="col-12 mb-3">
+    <div *ngIf="!bodytypeoptin" class="col-12 mb-3">
       Body Type filtering is a optional filter that requires additional verification.
       In order to filter by body types, your body type(s) must be verified. Verification is required once
       every three months to keep this optional filter. In order to be verified you must take a picture with
@@ -84,26 +84,89 @@
       You have the option to allow or not allow members who have not verified their body types to see you
       on the site.
     </div>
-    <div class="col-12 mb-3">
+    <div *ngIf="!bodytypeoptin" class="col-12 mb-3">
       <strong>Body Type Categories</strong>
     </div>
     <div *ngFor="let type of bodytypes" class="col-2 mb-5">
-      <div class="text-center">
+      <div *ngIf="!bodytypeoptin" class="text-center">
         {{type.name}}
       </div>
     </div>
-    <div class="col-12 mb-5">
+    <div *ngIf="!bodytypeoptin" class="col-12 mb-5">
       <div class="text-center">
-        <button class="btn btn-outline-primary">Opt In To Body Type Filtering</button>
+        <button (click)="bodytypeoptintoggle()" class="btn btn-outline-primary">Opt In To Body Type Filtering</button>
       </div>
     </div>
 
-    <div class="col-12 mb-5">
+    <div *ngIf="bodytypeoptin" class="col-12 mb-5">
       <div class="row">
-
+        <div *ngIf="!verificationphotosent" class="col-12 mb-4">
+          Please upload a photo of <span *ngIf="!couplesignup">you</span> <span *ngIf="couplesignup">both of you</span>
+          showing as much skin as you are comfortable with. You do not have to be nude. In this picture please include
+          a sign with the verification code clearly visible below. This verification code is unique to this body type verification
+          attempt. Your body type will be set by our verification team after review. You may re verify at any time.
+        </div>
+        <div *ngIf="!verificationphotosent" class="col-12 mb-3">
+          <div class="text-center">
+            <h4>Verification Code</h4>
+          </div>
+        </div>
+        <div *ngIf="!verificationphotosent" class="col-12 mb-3">
+          <div class="text-center">
+            <h5>654321</h5>
+          </div>
+        </div>
+        <div *ngIf="!verificationphotosent" class="col-4 mb-5">
+          <input type="file"
+                 id="bodytypeverification"
+                 name="bodytypeverification"
+                 ngModel
+                 class="form-control">
+        </div>
+        <div *ngIf="verificationphotosent || !verified" class="col-12 mb-5">
+          While waiting for your verification decision, please choose your preferred body types.
+        </div>
+        <div *ngIf="verified" class="col-12 mb-5">
+          <h5>user body type shows</h5>
+        </div>
+        <div *ngFor="let type of bodytypes" class="col-2 mb-4">
+          <div *ngIf="verificationphotosent" class="row">
+            <div class="col-auto">
+              <label class="form-check-label">{{type.name}}</label>
+            </div>
+            <div class="col-auto">
+              <input type="checkbox"
+                     [id]="type.value"
+                     [name]="type.value"
+                     ngModel
+                     class="form-check">
+            </div>
+            <hr>
+          </div>
+        </div>
+        <div *ngIf="verificationphotosent" class="col-12">
+          <div class="row">
+            <div class="col-auto">
+              <label class="form-check-label"> Allow users who have not opted in to body type filtering to see your account</label>
+            </div>
+            <div class="col-auto">
+              <input type="checkbox"
+                     id="allownonbodytype"
+                     name="allownonbodytype"
+                     ngModel
+                     class="form-check">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 
-
+  <div class="row">
+    <hr>
+    <div class="col-12 mt-5 mb-5">
+      <h3>Settings</h3>
+      <hr>
+    </div>
   </div>
 </div>
