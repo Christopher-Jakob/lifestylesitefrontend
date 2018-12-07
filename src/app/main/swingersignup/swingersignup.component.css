@@ -1,0 +1,12 @@
+.exampleimage{
+  background-image: url('~src/assets/exampleverification.jpg');
+  background-size: cover;
+  height: 400px;
+  margin-bottom: 25px;
+}
+
+.locationlink{
+  color: cornflowerblue;
+  text-decoration: underline;
+  cursor: pointer;
+}

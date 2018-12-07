@@ -1,0 +1,306 @@
+<div class="container">
+  <form (ngSubmit)="signup()" #signupform="ngForm">
+  <div class="row">
+    <div class="col-7">
+      <div class="row">
+        <div class="col-12 mb-3 mt-3">
+          <h3>User Info</h3>
+        </div>
+
+        <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+          <input type="text"
+                 id="username"
+                 name="username"
+                 ngModel
+                 placeholder="user name"
+                 required
+                 class="form-control">
+        </div>
+        <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+          <input type="email"
+                 id="email"
+                 name="email"
+                 ngModel
+                 placeholder="Email"
+                 required
+                 class="form-control">
+        </div>
+        <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+          <input type="email"
+                 id="emailconfrim"
+                 name="emailconfrim"
+                 ngModel
+                 placeholder="Confrim Email"
+                 required
+                 class="form-control">
+        </div>
+        <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+          <input type="password"
+                 id="password1"
+                 name="password1"
+                 ngModel
+                 placeholder="password"
+                 required
+                 class="form-control">
+
+        </div>
+        <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+          <input type="password"
+                 ngModel
+                 placeholder="confrim password"
+                 id="password2"
+                 name="password2"
+                 required
+                 class="form-control">
+        </div>
+        <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+          <select id="swingtype"
+                  name="swingtype"
+                  ngModel
+                  class="form-control"
+                  (ngModelChange)="coupleselected()"
+                  required>
+            <option value="">Select Your Swing Type</option>
+            <option *ngFor="let type of swingoptions" [value]="type.value">{{type.name}}</option>
+          </select>
+        </div>
+
+        <div *ngIf="!locationexpandshow" class="col-12 mt-4 mb-1">
+          <hr>
+          <div class="text-center mt-2 mb-2">
+            <h5>Where are you located?</h5>
+          </div>
+        </div>
+        <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+          <select id="country"
+                  name="country"
+                  ngModel
+                  required
+                  class="form-control">
+            <option value="">Select Your Country</option>
+            <option *ngFor="let c of countries" [value]="c.value">{{c.name}}</option>
+          </select>
+        </div>
+        <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+          <select id="state"
+                  name="state"
+                  ngModel
+                  required
+                  class="form-control">
+            <option value="">Select State</option>
+            <option *ngFor="let s of states" [value]="s.value">{{s.name}}</option>
+          </select>
+        </div>
+        <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+          <select id="city"
+                  name="city"
+                  ngModel
+                  required
+                  class="form-control">
+            <option value="">Select Your City</option>
+            <option *ngFor="let c of city" [value]="c.value">{{c.name}}</option>
+          </select>
+        </div>
+        <div *ngIf="!locationexpandshow" class="col-12">
+          <div class="text-center">
+            <a (click)="togglelocationexpandshow()" class="locationlink">I don't see my location</a>
+          </div>
+        </div>
+        <div *ngIf="locationexpandshow" class="col-12 mt-5">
+          <div class="mb-3">In order to bring the most value to our members we are only allowing sign ups within certain areas.
+          As those areas gain significant membership, we will open membership to more areas.</div>
+          <div class="mt-3">
+            <div class="text-center">
+              Enter your location and email and we will notify you when we have opened up membership to your area.
+              The more people request your area to be opened up, the sooner we will open it.
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-12 mb-2">
+              <input type="email"
+                     id="expandtoareaemail"
+                     name="expandtoareaemail"
+                     class="form-control"
+                     ngModel
+                     placeholder="Email">
+            </div>
+            <div class="col-12 mb-2">
+              <select id="expandtoareacountry"
+                      name="expandtoareacountry"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your Country</option>
+              </select>
+            </div>
+            <div class="col-12 mb-2">
+              <select id="expandtoareastate"
+                      name="expandtoareastate"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your State</option>
+              </select>
+
+            </div>
+            <div class="col-12 mb-2">
+              <select id="expandtoareacity"
+                      name="expandtoareacity"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your City</option>
+              </select>
+
+            </div>
+            <div class="col-6 mt-2">
+              <div class="text-center">
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+              </div>
+            </div>
+            <div class="col-6 mt-2">
+              <div class="text-center">
+                <button (click)="togglelocationexpandshow()" class="btn btn-outline-secondary">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 mb-1 mt-4">
+          <hr>
+          <div *ngIf="!couplesignup" class="text-center mt-2">
+            <h5>When is your birthday?</h5>
+          </div>
+          <div *ngIf="couplesignup" class="text-center">
+            <h5>What is the first persons birthday?</h5>
+          </div>
+          <input type="date"
+                 id="birthdayone"
+                 name="birthdayone"
+                 class="form-control"
+                 ngModel
+                 required>
+
+        </div>
+        <div *ngIf="couplesignup" class="col-12 mt-3 mb-1">
+          <hr>
+          <div class="text-center mt-2">
+            <h5>What Is The Second Persons Birthday?</h5>
+          </div>
+          <input type="date"
+                 id="birthdaytwo"
+                 name="birthdaytwo"
+                 class="form-control"
+                 ngModel>
+        </div>
+
+        <div class="col-12 mt-3">
+          <hr>
+          <div *ngIf="!couplesignup" class="text-center mt-2">
+            <h5>Select Your Ethnicity</h5>
+          </div>
+          <div *ngIf="couplesignup" class="text-center">
+            <h5>Select The First Persons Ethnicity</h5>
+          </div>
+        </div>
+        <div *ngFor="let e of ethnicgroups" class="col-4 mb-1">
+          <label class="form-check-label">{{e.label}}</label> &nbsp;
+          <input type="radio"
+                 [id]="e.label + '1'"
+                 name="ethnicity1"
+                 [value]="e.value"
+                 ngModel>
+
+        </div>
+        <div *ngIf="couplesignup" class="col-12 mt-3 mb-1">
+          <hr>
+          <div class="text-center mt-2">
+            <h5>What Is The Second Persons Ethnicity?</h5>
+          </div>
+        </div>
+          <div *ngFor="let e of ethnicgroups" class="col-4 mb-1">
+            <label *ngIf="couplesignup" class="form-check-label">{{e.label}}</label> &nbsp;
+            <input *ngIf="couplesignup" type="radio"
+                   [id]="e.label + '2'"
+                   name="ethnicity2"
+                   [value]="e.value"
+                   ngModel>
+          </div>
+
+        </div>
+        <hr>
+        <div class="col-12 mb-4">
+          <h3>Verification</h3>
+        </div>
+        <div *ngIf="!verificationuploadshow" class="col-12 mb-5">
+          <p>Please upload a untouched picture that we can clearly see <span *ngIf="!couplesignup">your</span> <span *ngIf="couplesignup">both of yours</span> face.
+          You must be holding a sign that has the verification code below. This code is unique to this sign up attempt.
+            This process allows us to verify everyone who signs up for our community is who they say they are.
+            After we have verified that your photo matches what you are signing up as, we will approve your profile!
+            The uploaded image is automatically deleted after our verification team views it.
+            Having a safe and secure community is very important to us at Lifestyle Tribe.
+         </p>
+          <div class="text-center mt-1">
+            <p>Below is an example of an acceptable image.</p>
+          </div>
+        </div>
+        <div *ngIf="!verificationuploadshow"  class="col-12 mb-3">
+          <div class="text-center exampleimage">
+
+          </div>
+        </div>
+        <div *ngIf="!verificationuploadshow" class="col-12 mb-5">
+          <div class="text-center">
+            <button (click)="toggleverificationshow()" class="btn btn-outline-dark">Ok Lets Upload An Image</button>
+          </div>
+        </div>
+
+        <div *ngIf="verificationuploadshow" class="col-12 mb-4">
+          <div class="text-center">
+            <input type="file"
+                   id="verificationupload"
+                   name="verificationupload"
+                   ngModel
+                   class="form-control-file">
+
+          </div>
+        </div>
+        <div *ngIf="verificationuploadshow" class="col-12 mb-5">
+          <div class="text-center">
+            <h5>Verification Code</h5>
+          </div>
+          <div class="text-center">
+            <h5>645321</h5>
+          </div>
+        </div>
+        <div class="col-12 mt-5 mb-5">
+          <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary">Sign Up For Lifestyle Tribe</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-5">
+        <div class="text-center">
+          The selling points of the site will go here
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-12 mt-5">
+      <div class="text-center mt-5 mb-5">
+        <h3>Success!</h3>
+      </div>
+      <div class="text-center">
+        <h5>Your sign up request has been sent to us. We will verify your information with
+        your verification photo and send you an email with our decision!</h5>
+      </div>
+      <div class="text-center mt-5 mb-5">
+        <h5>Thank you for signing up for Lifestyle Tribe!</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+
