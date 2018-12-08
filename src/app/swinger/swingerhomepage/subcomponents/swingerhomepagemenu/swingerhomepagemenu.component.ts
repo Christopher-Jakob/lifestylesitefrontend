@@ -33,6 +33,30 @@ export class SwingerhomepagemenuComponent implements OnInit {
 
   ];
 
+  eventhosts = [
+    {
+      name: 'Young Couples Party',
+    },
+    {
+      name: 'Invite Only'
+    },
+    {
+      name: 'Cool Ass Party Place'
+    }
+  ];
+
+  usergroups = [
+    {
+      name: 'Orgies On Tuesday'
+    },
+    {
+      name: 'Something Every Friday'
+    },
+    {
+      name: 'We like cars'
+    }
+  ];
+
   ngOnInit() {
   }
 

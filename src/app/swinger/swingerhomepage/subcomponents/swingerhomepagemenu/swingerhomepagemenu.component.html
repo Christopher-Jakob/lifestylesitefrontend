@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-12 mt-4 mb-2">
       <h5>User Name User Name</h5>
     </div>
@@ -21,24 +21,37 @@
     <div class="col-12 mb-1">
       Preferrences & Settings
     </div>
-  </div>
-  <div class="col-8 mb-1">
-    <hr>
-  </div>
-  <div class="col-12 mt-4 mb-2">
-    <strong>Upcoming Events</strong>
-  </div>
-  <div *ngFor="let event of upcomingevents" class="row">
-    <div class="col-12">
-      {{event.eventname}}
+    <div class="col-12 mt-4 mb-2">
+      <strong>Events</strong>
     </div>
-    <div  class="col-12 mb-1">
-      <div class="text-left">
-        {{event.date}} | {{event.time}}
+    <div *ngFor="let event of upcomingevents" class="row">
+      <div class="col-12">
+        {{event.eventname}}
+      </div>
+      <div  class="col-12 mb-1">
+        <div class="text-left">
+          {{event.date}} | {{event.time}}
+        </div>
+        <div class="col-8">
+          <hr>
+        </div>
       </div>
     </div>
-
-
+    <div class="col-12 mt-4 mb-2">
+      <strong>Hosts</strong>
+    </div>
+    <div *ngFor="let host of eventhosts" class="col-12 mb-2">
+      {{host.name}}
+    </div>
+    <div class="col-8">
+      <hr>
+    </div>
+    <div class="col-12 mt0b mb-2">
+      <strong>Groups</strong>
+    </div>
+    <div *ngFor="let group of usergroups" class="col-12 mb-2">
+      {{group.name}}
+    </div>
   </div>
-
 </div>
+
