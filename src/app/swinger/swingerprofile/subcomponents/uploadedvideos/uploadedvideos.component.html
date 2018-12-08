@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 mt-3">
+      <div class="text-left">
+        Videos
+      </div>
+    </div>
+    <div class="col-6 mt-3">
+      <div class="text-right">
+        Add Video
+      </div>
+    </div>
+    <div *ngFor="let video of uploadedvideos" class="col-4 pl-0 mb-1 uploadedvideodiv">
+      <img [src]="video.image" class="uploadedvideo">
+    </div>
+  </div>
+</div>

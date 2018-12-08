@@ -13,6 +13,9 @@ import { ProfileandcoverphotoComponent } from './swinger/swingerprofile/subcompo
 import { HeadlineandinfoComponent } from './swinger/swingerprofile/subcomponents/headlineandinfo/headlineandinfo.component';
 import { PostcreateComponent } from './swinger/swingerprofile/subcomponents/postcreate/postcreate.component';
 import { NewsfeeditemComponent } from './swinger/swingerprofile/subcomponents/newsfeeditem/newsfeeditem.component';
+import { UploadedpicturesComponent } from './swinger/swingerprofile/subcomponents/uploadedpictures/uploadedpictures.component';
+import { UploadedvideosComponent } from './swinger/swingerprofile/subcomponents/uploadedvideos/uploadedvideos.component';
+import { MatchedswingattributesComponent } from './swinger/swingerprofile/subcomponents/matchedswingattributes/matchedswingattributes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { NewsfeeditemComponent } from './swinger/swingerprofile/subcomponents/ne
     ProfileandcoverphotoComponent,
     HeadlineandinfoComponent,
     PostcreateComponent,
-    NewsfeeditemComponent
+    NewsfeeditemComponent,
+    UploadedpicturesComponent,
+    UploadedvideosComponent,
+    MatchedswingattributesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 mb-2 mt-4">
+      <div class="text-left">
+        Photos
+      </div>
+    </div>
+    <div class="col-6 mb-2 mt-4">
+      <div class="text-right">
+        <a>Add Photo</a>
+      </div>
+    </div>
+    <div *ngFor="let image of uploadedphotos"class="col-4 pl-0 mb-1 uploadedimagediv">
+      <img [src]="image.image" class="uploadedimage">
+    </div>
+  </div>
+</div>
