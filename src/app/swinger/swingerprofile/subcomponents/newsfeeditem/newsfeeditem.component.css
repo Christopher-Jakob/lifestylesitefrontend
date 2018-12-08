@@ -1,0 +1,18 @@
+.userimagephotodiv{
+  height: 75px;
+  border: solid 1px lightgray;
+}
+
+.postcontentdiv{
+  min-height: 100px;
+  border: solid 1px lightgray;
+}
+
+.userimagephoto{
+  height: 100%;
+  width: 100%;
+}
+
+.fullwidth{
+  width: 100%;
+}

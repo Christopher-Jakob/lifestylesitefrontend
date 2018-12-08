@@ -1,0 +1,34 @@
+.posttypebuttondiv{
+  border-right: solid 1px lightgray;
+  border-bottom: solid 1px lightgray;
+}
+
+.userphotodiv, .createpost{
+  height: 100px;
+
+}
+.userphotodiv{
+   border-bottom: solid 1px lightgray;
+   border-left: solid 1px lightgray;
+}
+.createpost{
+  border-style: none;
+  border-color: Transparent;
+  overflow: auto;
+}
+
+.createpostdiv{
+  border-bottom: solid 1px lightgray;
+  border-right: solid 1px lightgray;
+}
+.userphoto{
+  height: 100%;
+  width: 100%;
+}
+
+.postbutton{
+  width: 100%
+}
+
+
+
