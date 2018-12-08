@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mt-3 mb-3">
+      <h5>Upcoming Events</h5>
+    </div>
+  </div>
+  <div *ngFor="let event of upcomingevents" class="row eventitem">
+    <div class="col-12 mt-1 mb-1">
+      <div class="text-left">
+        <p>{{event.eventcompany}}</p>
+        <hr>
+      </div>
+    </div>
+    <div class="col-6 mt-1 mb-1">
+      <div class="col-12 mb-1">
+        {{event.companytype}}
+      </div>
+      <div class="col-12 mb-1">
+        {{event.eventname}}
+      </div>
+      <div class="col-12 mb-1">
+        {{event.date}}
+      </div>
+      <div class="col-12 mb-1">
+        {{event.location}}
+      </div>
+      <div class="col-12 mb-1">
+        {{event.minallowedage}} - {{event.maxallowedage}}
+      </div>
+      <div class="col-12 mb-2">
+        <div *ngFor="let type of event.swingtypes" class="row">
+          <div class="col-12">
+            {{type.type}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 mt-1 mb-1 eventimagediv">
+      <img [src]="event.image" class="eventimage">
+    </div>
+  </div>
+</div>

@@ -16,6 +16,7 @@ import { NewsfeeditemComponent } from './swinger/swingerprofile/subcomponents/ne
 import { UploadedpicturesComponent } from './swinger/swingerprofile/subcomponents/uploadedpictures/uploadedpictures.component';
 import { UploadedvideosComponent } from './swinger/swingerprofile/subcomponents/uploadedvideos/uploadedvideos.component';
 import { MatchedswingattributesComponent } from './swinger/swingerprofile/subcomponents/matchedswingattributes/matchedswingattributes.component';
+import { UpcomingeventsComponent } from './swinger/swingerprofile/subcomponents/upcomingevents/upcomingevents.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatchedswingattributesComponent } from './swinger/swingerprofile/subcom
     NewsfeeditemComponent,
     UploadedpicturesComponent,
     UploadedvideosComponent,
-    MatchedswingattributesComponent
+    MatchedswingattributesComponent,
+    UpcomingeventsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+.eventimagediv{
+  height: 189px;
+
+}
+.eventimage{
+  height: 100%;
+  width: 100%
+}
+
+.eventitem{
+  border: solid 1px lightgray;
+}
