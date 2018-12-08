@@ -17,6 +17,8 @@ import { UploadedpicturesComponent } from './swinger/swingerprofile/subcomponent
 import { UploadedvideosComponent } from './swinger/swingerprofile/subcomponents/uploadedvideos/uploadedvideos.component';
 import { MatchedswingattributesComponent } from './swinger/swingerprofile/subcomponents/matchedswingattributes/matchedswingattributes.component';
 import { UpcomingeventsComponent } from './swinger/swingerprofile/subcomponents/upcomingevents/upcomingevents.component';
+import { SwingerhomepageComponent } from './swinger/swingerhomepage/swingerhomepage.component';
+import { SwingerhomepagemenuComponent } from './swinger/swingerhomepage/subcomponents/swingerhomepagemenu/swingerhomepagemenu.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { UpcomingeventsComponent } from './swinger/swingerprofile/subcomponents/
     UploadedpicturesComponent,
     UploadedvideosComponent,
     MatchedswingattributesComponent,
-    UpcomingeventsComponent
+    UpcomingeventsComponent,
+    SwingerhomepageComponent,
+    SwingerhomepagemenuComponent
   ],
   imports: [
     BrowserModule,
