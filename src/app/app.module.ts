@@ -22,6 +22,7 @@ import { SwingerhomepagemenuComponent } from './swinger/swingerhomepage/subcompo
 import { LandingpageComponent } from './main/landingpage/landingpage.component';
 import { SiteadminmainComponent } from './siteadmin/siteadminmain/siteadminmain.component';
 import { LocationsComponent } from './siteadmin/subcomponents/locations/locations.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { LocationsComponent } from './siteadmin/subcomponents/locations/location
     BrowserModule,
     NgbModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
