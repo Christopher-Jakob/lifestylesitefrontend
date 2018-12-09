@@ -131,8 +131,8 @@
               we will launch additional cities.</h5>
             </div>
             <div class="col-12 mt-4">
-              <h5>In the mean time choose your closest city, your swing preference, and email below. As more people request your closet city,  we will open up
-              your closest city, minor cities around it and notify you.</h5>
+              <h5>In the mean time choose your closest city, your swing preference, and enter your email below. As more people request your closet city,  we will open up
+              your closest city and minor cities around it. And notify you that your city is live.</h5>
             </div>
             <div class="col-4 mt-5">
               <select id="countryswingerrequest"
@@ -170,6 +170,170 @@
               <input type="email"
                      id="swingeremailrequest"
                      name="swingeremailrequest"
+                     ngModel
+                     required
+                     class="form-control"
+                     placeholder="Enter your Email">
+            </div>
+            <div class="col-6 mt-5">
+              <div class="text-left">
+                <button (click)="toggleswingercityrequest()" class="btn btn-outline-secondary">Back</button>
+              </div>
+            </div>
+            <div class="col-6 mt-5">
+              <div class="text-right">
+                <button class="btn btn-outline-secondary">Request My City</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!--this one-->
+
+    <!-- host section -->
+
+    <div class="col-12 swingersection">
+      <div class="col-6 mt-5">
+        <div class="text-left">
+          <h1>For Event Hosts</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-7 mt-5 rightborder">
+          <div class="row swingsellsection">
+            <div class="col-12 mb-2 swingersell">
+              100% Verified Users
+            </div>
+            <div class="col-12 mb-3 swingersell">
+              100% Free For Users To Interact With One Another
+            </div>
+            <div class="col-12 mb-3 swingersell">
+              Upcoming Events Banners And Sections Advertise Your Upcoming Events Through Out The Site To Members
+            </div>
+            <div class="col-12 mb-3 swingersell">
+              Choose The Attributes And Locations Of Members You Want Your Events Marketed To
+            </div>
+            <div class="col-12 mb-3 swingersell">
+              Dedicated Group And Newsfeed To Interact With Members That Subscribe <br> To Your Events And For Members To Learn More About You And Your Events
+            </div>
+            <div class="col-12 mb-3 swingersell">
+              Sell Tickets And Memberships Directly From The Site
+            </div>
+            <div class="col-12 mb-3 swingersell">
+              No Monthly Or Annual Fee
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!swingercityrequestshow" class="col-5 swingersingup">
+          <div class="row">
+            <div class="col-12">
+              <div class="text-left mt-5">
+                <h1>Launching In 2019</h1>
+              </div>
+            </div>
+            <div class="col-12 mt-5">
+              <h5>Want to know when the site goes live? Enter your closest city, your host type, and email below and we'll keep you updated.</h5>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="countryhost"
+                      name="countryhost"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your Country</option>
+              </select>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="statehost"
+                      name="statehostr"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your State</option>
+              </select>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="cityhost"
+                      name="cityhost"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your City</option>
+              </select>
+            </div>
+            <div class="col-6 mt-2">
+              <select id="hosttype"
+                      name="hosttype"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your Host Type</option>
+              </select>
+            </div>
+            <div class="col-6 mt-2">
+              <input type="email"
+                     id="hostemail"
+                     name="hostemail"
+                     ngModel
+                     required
+                     class="form-control"
+                     placeholder="Enter your Email">
+            </div>
+            <div class="col-12 mt-2">
+              <div class="text-center">
+                <button (click)="toggleswingercityrequest()" class="btn btn-link">Wheres My Location?</button>
+              </div>
+            </div>
+            <div class="col-12 mt-3">
+              <div class="text-center">
+                <button class="btn btn-outline-secondary">Keep Me In Touch</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="swingercityrequestshow" class="col-5 mt-5 swingersingup">
+          <div class="row">
+            <div class="col-12 mt-5 mb-4">
+              <h5>To bring the most value we are only launching in a few cities. As The memberships in those cities build,
+                we will launch additional cities.</h5>
+            </div>
+            <div class="col-12 mt-4">
+              <h5>In the mean time choose your closest city, your host type, and enter your email below. As more people request your closet city,  we will open up
+                your closest city and minor cities around it. And notify you that your city is live.</h5>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="countryhostrequest"
+                      name="countryhostrequest"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your Country</option>
+              </select>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="stateshostrequest"
+                      name="statehostrequest"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your State</option>
+              </select>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="cityhostrequest"
+                      name="cityhostrequest"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your City</option>
+              </select>
+            </div>
+            <div class="col-6 mt-2">
+              <select id="hosttyperequest"
+                      name="hosttyperequest"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your Host Type</option>
+              </select>
+            </div>
+            <div class="col-6 mt-2">
+              <input type="email"
+                     id="hostemailrequest"
+                     name="hostemailrequest"
                      ngModel
                      required
                      class="form-control"
