@@ -13,7 +13,17 @@ export class LandingpageComponent implements OnInit {
     this.swingercityrequestshow = !this.swingercityrequestshow;
   }
 
+
   constructor() { }
+
+  // for scrolling to swinger and host sell sections
+
+  scrolltosection(id){
+    const el = document.getElementById(id);
+    el.scrollIntoView({behavior: "smooth"});
+
+  }
+
 
   ngOnInit() {
   }

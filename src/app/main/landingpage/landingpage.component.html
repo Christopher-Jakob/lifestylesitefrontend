@@ -16,16 +16,16 @@
         <div class="col-6">
           <div class="row">
             <div class="col-4 swingerbuttondiv">
-              <button class="btn btn-outline-light swingbutton">For Swingers</button>
+              <button (click)="scrolltosection(swinger)" class="btn btn-outline-light swingbutton">For Swingers</button>
             </div>
             <div class="col-4 hostbuttondiv">
-              <button class="btn btn-outline-light swingbutton">For Event Hosts </button>
+              <button (click)="scrolltosection(eventhost)" class="btn btn-outline-light swingbutton">For Event Hosts </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-12 swingersection">
+    <div #swinger class="col-12 swingersection">
       <div class="col-6 mt-5">
         <div class="text-left">
           <h1>For Swingers</h1>
@@ -192,7 +192,7 @@
 
     <!-- host section -->
 
-    <div class="col-12 swingersection">
+    <div #eventhost class="col-12 swingersection">
       <div class="col-6 mt-5">
         <div class="text-left">
           <h1>For Event Hosts</h1>
