@@ -1,0 +1,68 @@
+/* where the background image is hosted to by
+https://elements.envato.com/young-couple-at-the-bar-PHV84U9 */
+
+.splashbackground{
+  height: 100vh;
+  background-size: cover;
+  background-image: linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.7)), url("https://envato-shoebox-0.imgix.net/43c0/bdb6-de43-4938-9089-47e5dcebde48/BB-studio+sesion+zambete+stock-11525-Edit.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=1600&s=2695b4ca9eeb80ff67a6759abb8dce09");
+
+}
+
+.sitename{
+  font-size: 70px;
+  padding-top: 20vh;
+  padding-left: 8vw;
+  color: white;
+}
+
+.sitesell1{
+  font-size: 50px;
+  padding-top: 25vh;
+  color: white;
+  padding-left: 10vw;
+}
+
+.sitesell2{
+  font-size: 50px;
+  padding-top: 2vh;
+  color: white;
+  padding-left: 10vw;
+}
+
+.swingerbuttondiv{
+  margin-top: 70vh;
+  margin-left: 100px;
+}
+
+.hostbuttondiv{
+  margin-top: 70vh;
+  margin-left: 100px;
+}
+
+.swingbutton{
+  font-size: 25px;
+}
+
+.swingersection{
+  height: 100vh;
+}
+
+.rightborder{
+  border-right: solid 1px lightgray;
+}
+
+.swingsellsection{
+  margin-top: 10vh;
+}
+
+.swingersell{
+  font-size: 3.3vh;
+  margin-left: 1vw;
+}
+
+.swingersingup{
+  position: relative;
+  top: -12vh;
+  height: 100vh;
+}
+

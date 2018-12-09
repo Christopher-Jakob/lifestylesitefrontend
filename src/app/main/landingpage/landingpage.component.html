@@ -1,0 +1,194 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 splashbackground">
+      <div class="row">
+        <div class="col-6">
+          <div class="text-left sitename">
+            Libidinous Lounge
+          </div>
+          <div class="text-left sitesell1">
+            100% Verified Users
+          </div>
+          <div class="text-left sitesell2">
+            100% Free To Connect
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-4 swingerbuttondiv">
+              <button class="btn btn-outline-light swingbutton">For Swingers</button>
+            </div>
+            <div class="col-4 hostbuttondiv">
+              <button class="btn btn-outline-light swingbutton">For Event Hosts </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 swingersection">
+      <div class="col-6 mt-5">
+        <div class="text-left">
+          <h1>For Swingers</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-7 mt-5 rightborder">
+          <div class="row swingsellsection">
+            <div class="col-12 mb-2 swingersell">
+              100% Verified Users
+            </div>
+            <div class="col-12 mb-2 swingersell">
+              100% Free To Interact With Members
+            </div>
+            <div class="col-12 mb-2 swingersell">
+              For Couples And Singles Of All Types
+            </div>
+            <div class="col-12 mb-2 swingersell">
+              Only Members That Meet Your Preferences Can See Or Interact With You
+            </div>
+            <div class="col-12 mb-2 swingersell">
+              Filter By Singles, Couples, Age, Play Preferences, And More
+            </div>
+            <div class="col-12 mb-2 swingersell">
+              Optionally Filter By Verified Body Types
+            </div>
+            <div class="col-12 mb-2 swingersell">
+              Host And Attend Parties, Buy Tickets To Lifestyle Clubs
+            </div>
+            <div class="col-12 mb-2 swingersell">
+              Join And Create Interest Groups
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!swingercityrequestshow" class="col-5 swingersingup">
+          <div class="row">
+            <div class="col-12">
+              <div class="text-left mt-5">
+                <h1>Launching In 2019</h1>
+              </div>
+            </div>
+            <div class="col-12 mt-5">
+              <h5>Want to know when the site goes live? Enter your closest city, swing preference, and email below and we'll keep you updated.</h5>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="countryswinger"
+                      name="countryswinger"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your Country</option>
+              </select>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="stateswinger"
+                      name="stateswinger"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your State</option>
+              </select>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="cityswinger"
+                      name="cityswinger"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your City</option>
+              </select>
+            </div>
+            <div class="col-6 mt-2">
+              <select id="swingerpreference"
+                      name="swingerpreference"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your Swing Preference</option>
+              </select>
+            </div>
+            <div class="col-6 mt-2">
+              <input type="email"
+                     id="swingeremail"
+                     name="swingeremail"
+                     ngModel
+                     required
+                     class="form-control"
+                     placeholder="Enter your Email">
+            </div>
+            <div class="col-12 mt-2">
+              <div class="text-center">
+                <button (click)="toggleswingercityrequest()" class="btn btn-link">Wheres My Location?</button>
+              </div>
+            </div>
+            <div class="col-12 mt-3">
+              <div class="text-center">
+                <button class="btn btn-outline-secondary">Keep Me In Touch</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="swingercityrequestshow" class="col-5 mt-5 swingersingup">
+          <div class="row">
+            <div class="col-12 mt-5 mb-4">
+              <h5>To bring the most value we are only launching in a few cities. As The memberships in those cities build,
+              we will launch additional cities.</h5>
+            </div>
+            <div class="col-12 mt-4">
+              <h5>In the mean time choose your closest city, your swing preference, and email below. As more people request your closet city,  we will open up
+              your closest city, minor cities around it and notify you.</h5>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="countryswingerrequest"
+                      name="countryswingerrequest"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your Country</option>
+              </select>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="stateswingerrequest"
+                      name="stateswingerrequest"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your State</option>
+              </select>
+            </div>
+            <div class="col-4 mt-5">
+              <select id="cityswingerrequest"
+                      name="cityswingerrequest"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your City</option>
+              </select>
+            </div>
+            <div class="col-6 mt-2">
+              <select id="swingerpreferencerequest"
+                      name="swingerpreferencerequest"
+                      ngModel
+                      class="form-control">
+                <option value="">Select Your Swing Preference</option>
+              </select>
+            </div>
+            <div class="col-6 mt-2">
+              <input type="email"
+                     id="swingeremailrequest"
+                     name="swingeremailrequest"
+                     ngModel
+                     required
+                     class="form-control"
+                     placeholder="Enter your Email">
+            </div>
+            <div class="col-6 mt-5">
+              <div class="text-left">
+                <button (click)="toggleswingercityrequest()" class="btn btn-outline-secondary">Back</button>
+              </div>
+            </div>
+            <div class="col-6 mt-5">
+              <div class="text-right">
+                <button class="btn btn-outline-secondary">Request My City</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
