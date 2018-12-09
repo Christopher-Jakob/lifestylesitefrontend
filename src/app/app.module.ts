@@ -20,6 +20,8 @@ import { UpcomingeventsComponent } from './swinger/swingerprofile/subcomponents/
 import { SwingerhomepageComponent } from './swinger/swingerhomepage/swingerhomepage.component';
 import { SwingerhomepagemenuComponent } from './swinger/swingerhomepage/subcomponents/swingerhomepagemenu/swingerhomepagemenu.component';
 import { LandingpageComponent } from './main/landingpage/landingpage.component';
+import { SiteadminmainComponent } from './siteadmin/siteadminmain/siteadminmain.component';
+import { LocationsComponent } from './siteadmin/subcomponents/locations/locations.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { LandingpageComponent } from './main/landingpage/landingpage.component';
     UpcomingeventsComponent,
     SwingerhomepageComponent,
     SwingerhomepagemenuComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    SiteadminmainComponent,
+    LocationsComponent
   ],
   imports: [
     BrowserModule,
