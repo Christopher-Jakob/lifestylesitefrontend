@@ -19,6 +19,6 @@ export class Httpservice{
   }
 
   post(url, payload){
-    return this.http.put(url, payload);
+    return this.http.post(url, payload);
   }
 }

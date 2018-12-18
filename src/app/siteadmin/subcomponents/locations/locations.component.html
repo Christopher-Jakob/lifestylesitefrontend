@@ -6,7 +6,7 @@
           <h4>Countries</h4>
         </div>
         <form (ngSubmit)="addcountry()" #addcountryform="ngForm">
-          <div class="col-8">
+          <div class="col-10">
             <input type="text"
                    id="countryadd"
                    name="countryadd"
@@ -23,15 +23,44 @@
                     class="btn btn-outline-secondary">Submit</button>
           </div>
         </form>
-        <div class="row">
-          <div class="col-8 mt-1">
-            <span class="badge badge-pill badge-secondary">United States</span>
+        <div *ngFor="let c of countries; let i = index" class="row">
+          <form (ngSubmit)="editname('country', i, editcountryform)" #editcountryform="ngForm">
+            <div *ngIf="editcountryshow" class="col-12 mt-2">
+              <input type="text"
+                     id="editcountry"
+                     name="editcountry"
+                     [ngModel]="countries[i].name"
+                     class="form-control">
+            </div>
+            <div *ngIf="editcountryshow" class="col-4 mt-2">
+              <button (click)="toggleeditcountry()" class="btn btn-outline-dark">Cancel</button>
+            </div>
+            <div *ngIf="editcountryform" class="col-4 mt-2">
+              <button class="btn btn-outline-dark">Edit</button>
+            </div>
+          </form>
+          <div *ngIf="!editcountryshow" class="col-6 mt-1">
+            <button (click)="getstatesbycountry(i)" class="badge badge-pill badge-secondary">{{c.name}}</button>
           </div>
-          <div class="col-2 mt-1">
-            <button class="badge badge-pill badge-warning">Edit</button>
+          <div *ngIf="c.active && !editcountryshow"  class="col-2 mt-1">
+            <div class="text-left">
+              <button (click)="changeactivestatus('country', i)" class="badge badge-pill badge-success">Active</button>
+            </div>
           </div>
-          <div class="col-2 mt-1">
-            <button class="badge badge-pill badge-danger">Delete</button>
+          <div *ngIf="!c.active && !editcountryshow"  class="col-2 mt-1">
+            <div class="text-left">
+              <button (click)="changeactivestatus('country', i)" class="badge badge-pill badge-secondary">Inactive</button>
+            </div>
+          </div>
+          <div *ngIf="!editcountryshow" class="col-2 mt-1">
+            <div class="text-left">
+              <button (click)="toggleeditcountry()" class="badge badge-pill badge-warning">Edit</button>
+            </div>
+          </div>
+          <div *ngIf="!editcountryshow" class="col-2 mt-1">
+            <div class="text-left">
+              <button class="badge badge-pill badge-danger">Delete</button>
+            </div>
           </div>
         </div>
 
@@ -40,10 +69,10 @@
     <div class="col-4 mt-3">
       <div class="row">
         <div class="col-12">
-          <h4>States</h4>
+          <h4> {{activecountryobject.name}} States</h4>
         </div>
         <form (ngSubmit)="addstate()" #addstateform="ngForm">
-          <div class="col-8">
+          <div class="col-10">
             <input type="text"
                    id="stateadd"
                    name="stateadd"
@@ -59,25 +88,45 @@
                     class="btn btn-outline-secondary">Submit</button>
           </div>
         </form>
-        <div class="row">
-          <div class="col-8 mt-1">
-            <span class="badge badge-pill badge-secondary">Illinois</span>
+        <div *ngFor="let s of states; let i =index" class="row">
+          <form (ngSubmit)="editname('state', i , editstateform)" #editstateform="ngForm">
+            <div *ngIf="editstateshow" class="col-12 mt-2">
+
+              <input type="text"
+                     id="editstate"
+                     name="editstate"
+                     [ngModel]="states[i].name"
+                     class="form-control">
+            </div>
+            <div *ngIf="editstateshow" class="col-4">
+              <button (click)="toggleeditstate()" class="btn btn-outline-dark">Cancel</button>
+            </div>
+            <div *ngIf="editstateshow" class="col-4">
+              <button class="btn btn-outline-dark">Edit</button>
+            </div>
+          </form>
+          <div *ngIf="!editstateshow" class="col-6 mt-1">
+            <button (click)="getcitybystate(i)" class="badge badge-pill badge-secondary">{{s.name}}</button>
           </div>
-          <div class="col-2 mt-1 mr-1">
+          <div *ngIf="s.active && !editstateshow"  class="col-2 mt-1">
             <div class="text-left">
-              <button class="badge badge-pill badge-secondary">Inactive</button>
+              <button (click)="changeactivestatus('state', i)" class="badge badge-pill badge-success">Active</button>
             </div>
           </div>
-          <div class="col-2 mt-1">
-            <div class="text-right">
-              <button class="badge badge-pill badge-warning">Edit</button>
+          <div *ngIf="!s.active && !editstateshow"  class="col-2 mt-1">
+            <div class="text-left">
+              <button (click)="changeactivestatus('state', i)" class="badge badge-pill badge-secondary">Inactive</button>
             </div>
           </div>
-          <div class="col-2 mt-1">
-            <button class="badge badge-pill badge-warning">Edit</button>
+          <div *ngIf="editstateshow" class="col-2 mt-1">
+            <div class="text-left">
+              <button (click)="toggleeditstate()" class="badge badge-pill badge-warning">Edit</button>
+            </div>
           </div>
-          <div class="col-2 mt-1">
-            <button class="badge badge-pill badge-danger">Delete</button>
+          <div *ngIf="editstateshow" class="col-2 mt-1">
+            <div class="text-left">
+              <button class="badge badge-pill badge-danger">Delete</button>
+            </div>
           </div>
         </div>
 
@@ -86,10 +135,10 @@
     <div class="col-4 mt-3">
       <div class="row">
         <div class="col-12">
-          <h4>Cities</h4>
+          <h4>{{activestateobject.name}} Cities</h4>
         </div>
         <form (ngSubmit)="addcity()" #addcityform="ngForm">
-          <div class="col-8">
+          <div class="col-10">
             <input type="text"
                    id="cityadd"
                    name="cityadd"
@@ -105,23 +154,42 @@
                     class="btn btn-outline-secondary">Submit</button>
           </div>
         </form>
-        <div class="row">
-          <div class="col-5 mt-1">
-            <span class="badge badge-pill badge-secondary">Chicago</span>
+        <div *ngFor="let c of cities; let i = index" class="row">
+          <div *ngIf="editcityshow" class="col-12 mt-2">
+            <input type="text"
+                   id="editcity"
+                   name="editcity"
+                   [ngModel]="cities[i].name"
+                   class="form-control">
           </div>
-
-          <div class="col-2 mt-1 mr-1">
+          <div *ngIf="editcityshow" class="col-4">
+            <button (click)="toggleeditcity()" class="btn btn-outline-dark">Cancel</button>
+          </div>
+          <div *ngIf="editcityshow" class="col-4">
+            <button class="btn btn-outline-dark">Edit</button>
+          </div>
+          <div *ngIf="!editcityshow" class="col-6 mt-1">
+            <button class="badge badge-pill badge-secondary">{{c.name}}</button>
+          </div>
+          <div *ngIf="c.active && !editcityshow" class="col-2 mt-1">
             <div class="text-left">
-              <button class="badge badge-pill badge-secondary">Inactive</button>
+              <button  (click)="changeactivestatus('city', i)"class="badge badge-pill badge-success">Active</button>
             </div>
           </div>
-          <div class="col-2 mt-1">
-            <div clas="text-right">
-              <button class="badge badge-pill badge-warning">Edit</button>
+          <div *ngIf="!c.active && !editcityshow"  class="col-2 mt-1">
+            <div class="text-left">
+              <button (click)="changeactivestatus('city', i)" class="badge badge-pill badge-secondary">Inactive</button>
             </div>
           </div>
-          <div class="col-2 mt-1">
-            <button class="badge badge-pill badge-danger">Delete</button>
+          <div *ngIf="!editcityshow" class="col-2 mt-1">
+            <div class="text-left">
+              <button (click)="toggleeditcity()" class="badge badge-pill badge-warning">Edit</button>
+            </div>
+          </div>
+          <div *ngIf="!editcityshow" class="col-2 mt-1">
+            <div class="text-left">
+              <button class="badge badge-pill badge-danger">Delete</button>
+            </div>
           </div>
         </div>
 
