@@ -23,6 +23,7 @@ import { LandingpageComponent } from './main/landingpage/landingpage.component';
 import { SiteadminmainComponent } from './siteadmin/siteadminmain/siteadminmain.component';
 import { LocationsComponent } from './siteadmin/subcomponents/locations/locations.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { SwingerandhosttypesComponent } from './siteadmin/subcomponents/swingerandhosttypes/swingerandhosttypes.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     SwingerhomepagemenuComponent,
     LandingpageComponent,
     SiteadminmainComponent,
-    LocationsComponent
+    LocationsComponent,
+    SwingerandhosttypesComponent
   ],
   imports: [
     BrowserModule,

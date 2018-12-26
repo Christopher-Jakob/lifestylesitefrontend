@@ -1,0 +1,124 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mt-5">
+      <h4>Swinger and Host Types</h4>
+    </div>
+    <div class="col-6 mt-4">
+      <div class="row">
+        <div class="col-12 mt-2">
+          <h5>Swinger Types</h5>
+        </div>
+        <div class="col-12 mt-2">
+          <form (ngSubmit)="addswingtype()" #addswingtypeform="ngForm">
+            <div class="row">
+              <div class="col-10 mt-2">
+                <input type="text"
+                       id="addswingtype"
+                       name="addswing"
+                       ngModel
+                       placeholder="Enter A Swing Type"
+                       class="form-control">
+
+              </div>
+              <div class="col-2 mt-2">
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 mt-2">
+          <div  class="row" *ngFor="let type of swingtypes; let i =index">
+            <div *ngIf="!swingtypeedit && activeswingeditindex != i" class="col-6">
+              <span class="badge badge-pill badge-secondary">{{type.name}}</span>
+            </div>
+            <div *ngIf="!swingtypeedit && activeswingeditindex != i" class="col-3">
+              <button (click)="typeedittoggle('swing', i)" class="badge badge-pill badge-warning">Edit</button>
+            </div>
+            <div *ngIf="!swingtypeedit && activeswingeditindex != i" class="col-3">
+              <button (click)="action('delete','swingtype',i, null)" class="badge badge-pill badge-danger">Delete</button>
+            </div>
+            <div *ngIf="swingtypeedit && activeswingeditindex == i" class="col-12 mt-2">
+              <form (ngSubmit)="action('put', 'swingtype', i, editswingtypeform)" #editswingtypeform="ngForm">
+                <div class="row">
+                  <div class="col-6">
+                    <input type="text"
+                           id="editswingtype"
+                           name="editswingtype"
+                           [ngModel]="swingtypes[i].name"
+                           class="form-control">
+
+                  </div>
+                  <div class="col-3">
+                    <button (click)="typeedittoggle('swing', i)" class="btn btn-outline-dark">Cancel</button>
+                  </div>
+                  <div class="col-3">
+                    <button type="submit" class="btn btn-outline-dark">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-6 mt-4">
+      <div class="row">
+        <div class="col-12 mt-2">
+          <h5>Host Types</h5>
+        </div>
+        <div class="col-12 mt-2">
+          <form (ngSubmit)="action('post', 'hosttype', null, addhosttypeform)" #addhosttypeform="ngForm">
+            <div class="row">
+              <div class="col-10 mt-2">
+                <input type="text"
+                       id="addhosttype"
+                       name="addhosttype"
+                       ngModel
+                       placeholder="Add Host Type"
+                       class="form-control">
+              </div>
+              <div class="col-2 mt-2">
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 mt-2">
+          <div class="row" *ngFor="let type of hosttypes; let i =index">
+            <div *ngIf="!hosttypeedit" class="col-6">
+              <span class="badge badge-pill badge-secondary">{{type.name}}</span>
+            </div>
+            <div *ngIf="!hosttypeedit" class="col-3">
+              <button (click)="typeedittoggle('host', i)" class="badge badge-pill badge-warning">Edit</button>
+            </div>
+            <div *ngIf="!hosttypeedit" class="col-3">
+              <button (click)="action('delete','hosttype', i, null)" class="badge badge-pill badge-danger">Delete</button>
+            </div>
+            <!--edit code-->
+            <div *ngIf="hosttypeedit" class="col-12 mt-2">
+              <form (ngSubmit)="action('put', 'hosttype', i, edithosttypeform)" #edithosttypeform="ngForm">
+                <div class="row">
+                  <div class="col-6">
+                    <input type="text"
+                           id="edithosttype"
+                           name="edithosttype"
+                           [ngModel]="hosttypes[i].name"
+                           class="form-control">
+
+                  </div>
+                  <div class="col-3">
+                    <button (click)="typeedittoggle('host', i)" class="btn btn-outline-dark">Cancel</button>
+                  </div>
+                  <div class="col-3">
+                    <button type="submit" class="btn btn-outline-dark">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

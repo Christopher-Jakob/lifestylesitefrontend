@@ -61,6 +61,7 @@
           </div>
         </div>
         <div *ngIf="!swingercityrequestshow" class="col-5 swingersingup">
+          <form (ngSubmit)="activeswingersignup(swingersignupform)" #swingersignupform="ngForm">
           <div class="row">
             <div class="col-12">
               <div class="text-left mt-5">
@@ -70,46 +71,56 @@
             <div class="col-12 mt-5">
               <h5>Want to know when the site goes live? Enter your closest city, swing preference, and email below and we'll keep you updated.</h5>
             </div>
-            <div class="col-4 mt-5">
-              <select id="countryswinger"
-                      name="countryswinger"
-                      ngModel
-                      class="form-control">
-                <option value="">Select Your Country</option>
-              </select>
-            </div>
-            <div class="col-4 mt-5">
-              <select id="stateswinger"
-                      name="stateswinger"
-                      ngModel
-                      class="form-control">
-                <option value="">Select Your State</option>
-              </select>
-            </div>
-            <div class="col-4 mt-5">
-              <select id="cityswinger"
-                      name="cityswinger"
-                      ngModel
-                      class="form-control">
-                <option value="">Select Your City</option>
-              </select>
-            </div>
-            <div class="col-6 mt-2">
-              <select id="swingerpreference"
-                      name="swingerpreference"
-                      ngModel
-                      class="form-control">
-                <option value="">Select Your Swing Preference</option>
-              </select>
-            </div>
-            <div class="col-6 mt-2">
-              <input type="email"
-                     id="swingeremail"
-                     name="swingeremail"
-                     ngModel
-                     required
-                     class="form-control"
-                     placeholder="Enter your Email">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-4 mt-5">
+                  <select id="countryswinger"
+                          name="countryswinger"
+                          ngModel
+                          (ngModelChange)="getactivestatesbycountry(swingersignupform)"
+                          class="form-control">
+                    <option value="">Select Your Country</option>
+                    <option *ngFor="let c of activecountries" [value]="c.id">{{c.name}}</option>
+                  </select>
+                </div>
+                <div class="col-4 mt-5">
+                  <select id="stateswinger"
+                          name="stateswinger"
+                          ngModel
+                          (ngModelChange)="getactivecitiesbystate(swingersignupform)"
+                          class="form-control">
+                    <option value="">Select Your State</option>
+                    <option *ngFor="let s of activestates" [value]="s.id">{{s.name}}</option>
+                  </select>
+                </div>
+                <div class="col-4 mt-5">
+                  <select id="cityswinger"
+                          name="cityswinger"
+                          ngModel
+                          class="form-control">
+                    <option value="">Select Your City</option>
+                    <option *ngFor="let c of activecities" [value]="c.id">{{c.name}}</option>
+                  </select>
+                </div>
+                <div class="col-6 mt-2">
+                  <select id="swingerpreference"
+                          name="swingerpreference"
+                          ngModel
+                          class="form-control">
+                    <option value="">Select Your Swing Preference</option>
+                    <option *ngFor="let t of swingertypes" [value]="t.id">{{t.name}}</option>
+                  </select>
+                </div>
+                <div class="col-6 mt-2">
+                  <input type="email"
+                         id="swingeremail"
+                         name="swingeremail"
+                         ngModel
+                         required
+                         class="form-control"
+                         placeholder="Enter your Email">
+                </div>
+              </div>
             </div>
             <div class="col-12 mt-2">
               <div class="text-center">
@@ -122,6 +133,7 @@
               </div>
             </div>
           </div>
+          </form>
         </div>
 
         <div *ngIf="swingercityrequestshow" class="col-5 mt-5 swingersingup">
@@ -134,56 +146,68 @@
               <h5>In the mean time choose your closest city, your swing preference, and enter your email below. As more people request your closet city,  we will open up
               your closest city and minor cities around it. And notify you that your city is live.</h5>
             </div>
-            <div class="col-4 mt-5">
-              <select id="countryswingerrequest"
-                      name="countryswingerrequest"
-                      ngModel
-                      class="form-control">
-                <option value="">Select Your Country</option>
-              </select>
-            </div>
-            <div class="col-4 mt-5">
-              <select id="stateswingerrequest"
-                      name="stateswingerrequest"
-                      ngModel
-                      class="form-control">
-                <option value="">Select Your State</option>
-              </select>
-            </div>
-            <div class="col-4 mt-5">
-              <select id="cityswingerrequest"
-                      name="cityswingerrequest"
-                      ngModel
-                      class="form-control">
-                <option value="">Select Your City</option>
-              </select>
-            </div>
-            <div class="col-6 mt-2">
-              <select id="swingerpreferencerequest"
-                      name="swingerpreferencerequest"
-                      ngModel
-                      class="form-control">
-                <option value="">Select Your Swing Preference</option>
-              </select>
-            </div>
-            <div class="col-6 mt-2">
-              <input type="email"
-                     id="swingeremailrequest"
-                     name="swingeremailrequest"
-                     ngModel
-                     required
-                     class="form-control"
-                     placeholder="Enter your Email">
-            </div>
-            <div class="col-6 mt-5">
-              <div class="text-left">
-                <button (click)="toggleswingercityrequest()" class="btn btn-outline-secondary">Back</button>
+            <div class="col-12">
+              <form (ngSubmit)="swingerrequest()" #swingerrequestform="ngForm">
+              <div class="row">
+                  <div class="col-4 mt-5">
+                    <select id="countryswingerrequest"
+                            name="countryswingerrequest"
+                            ngModel
+                            (ngModelChange)="getallstatesbycountry(swingerrequestform)"
+                            class="form-control">
+                      <option value="">Select Your Country</option>
+                      <option *ngFor="let ac of allcountries" [value]="ac.id">{{ac.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-4 mt-5">
+                    <select id="stateswingerrequest"
+                            name="stateswingerrequest"
+                            ngModel
+                            (ngModelChange)="getallcitiesbystate(swingerrequestform)"
+                            class="form-control">
+                      <option value="">Select Your State</option>
+                      <option *ngFor="let sa of allstates" [value]="sa.id">{{sa.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-4 mt-5">
+                    <select id="cityswingerrequest"
+                            name="cityswingerrequest"
+                            ngModel
+                            class="form-control">
+                      <option value="">Select Your City</option>
+                      <option *ngFor="let ca of allcities" [value]="ca.id">{{ca.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-6 mt-2">
+                    <select id="swingerpreferencerequest"
+                            name="swingerpreferencerequest"
+                            ngModel
+                            class="form-control">
+                      <option value="">Select Your Swing Preference</option>
+                      <option *ngFor="let st of swingertypes" [value]="st.id">{{st.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-6 mt-2">
+                    <input type="email"
+                           id="swingeremailrequest"
+                           name="swingeremailrequest"
+                           ngModel
+                           required
+                           class="form-control"
+                           placeholder="Enter your Email">
+                  </div>
+                  <div class="col-6 mt-5">
+                    <div class="text-left">
+                      <button (click)="toggleswingercityrequest()" class="btn btn-outline-secondary">Back</button>
+                    </div>
+                  </div>
+                  <div class="col-6 mt-5">
+                    <div class="text-right">
+                      <button type="submit" class="btn btn-outline-secondary">Request My City</button>
+                    </div>
+                  </div>
               </div>
-            </div>
-            <div class="col-6 mt-5">
-              <div class="text-right">
-                <button class="btn btn-outline-secondary">Request My City</button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -225,6 +249,7 @@
           </div>
         </div>
         <div *ngIf="!swingercityrequestshow" class="col-5 swingersingup">
+          <form (ngSubmit)="hostsingup()" #hostsignupform="ngForm">
           <div class="row">
             <div class="col-12">
               <div class="text-left mt-5">
@@ -238,16 +263,20 @@
               <select id="countryhost"
                       name="countryhost"
                       ngModel
+                      (ngModelChange)="getactivestatesbycountry(hostsignupform)"
                       class="form-control">
                 <option value="">Select Your Country</option>
+                <option *ngFor="let hc of activecountries" [value]="hc.id">{{hc.name}}</option>
               </select>
             </div>
             <div class="col-4 mt-5">
               <select id="statehost"
-                      name="statehostr"
+                      name="statehost"
                       ngModel
+                      (ngModelChange)="getactivecitiesbystate(hostsignupform)"
                       class="form-control">
                 <option value="">Select Your State</option>
+                <option *ngFor="let sa of activestates" [value]="sa.id">{{sa.name}}</option>
               </select>
             </div>
             <div class="col-4 mt-5">
@@ -256,6 +285,7 @@
                       ngModel
                       class="form-control">
                 <option value="">Select Your City</option>
+                <option *ngFor="let ac of activecities" [value]="ac.id">{{ac.name}}</option>
               </select>
             </div>
             <div class="col-6 mt-2">
@@ -264,6 +294,7 @@
                       ngModel
                       class="form-control">
                 <option value="">Select Your Host Type</option>
+                <option *ngFor="let type of hosttypes" [value]="type.id">{{type.name}}</option>
               </select>
             </div>
             <div class="col-6 mt-2">
@@ -286,9 +317,11 @@
               </div>
             </div>
           </div>
+          </form>
         </div>
 
         <div *ngIf="swingercityrequestshow" class="col-5 mt-5 swingersingup">
+          <form (ngSubmit)="hostrequest()" #hostrequestform="ngForm">
           <div class="row">
             <div class="col-12 mt-5 mb-4">
               <h5>To bring the most value we are only launching in a few cities. As The memberships in those cities build,
@@ -302,16 +335,20 @@
               <select id="countryhostrequest"
                       name="countryhostrequest"
                       ngModel
+                      (ngModelChange)="getallstatesbycountry(hostrequestform)"
                       class="form-control">
                 <option value="">Select Your Country</option>
+                <option *ngFor="let ac of allcountries" [value]="ac.id">{{ac.name}}</option>
               </select>
             </div>
             <div class="col-4 mt-5">
               <select id="stateshostrequest"
                       name="statehostrequest"
                       ngModel
+                      (ngModelChange)="getallcitiesbystate(hostrequestform)"
                       class="form-control">
                 <option value="">Select Your State</option>
+                <option *ngFor="let sa of allstates" [value]="sa.id">{{sa.name}}</option>
               </select>
             </div>
             <div class="col-4 mt-5">
@@ -320,6 +357,7 @@
                       ngModel
                       class="form-control">
                 <option value="">Select Your City</option>
+                <option *ngFor="let ac of allcities" [value]="ac.id">{{ac.name}}</option>
               </select>
             </div>
             <div class="col-6 mt-2">
@@ -328,6 +366,7 @@
                       ngModel
                       class="form-control">
                 <option value="">Select Your Host Type</option>
+                <option *ngFor="let type of hosttypes" [value]="type.id">{{type.name}}</option>
               </select>
             </div>
             <div class="col-6 mt-2">
@@ -350,6 +389,7 @@
               </div>
             </div>
           </div>
+          </form>
         </div>
       </div>
     </div>

@@ -130,8 +130,52 @@ export class LocationsComponent implements OnInit {
         name: form.value.editcity
       };
     }
+    this.http.put(url, payload)
+      .subscribe(
+        (req: any)=>{
+          if(type === 'country'){
+            this.countries[index] = req;
+            this.editcountryshow = false;
+          }
+          if(type === 'state'){
+            this.states[index] = req;
+            this.editstateshow = false;
+          }
+          if(type === 'city'){
+            this.cities[index] = req;
+            this.editcityshow = false;
+          }
+        }
+      );
 
 
+  }
+
+  delete(type, index){
+    let url;
+    if(type === 'country'){
+      url = countrydetail + this.countries[index].id;
+    }
+    if(type === 'state'){
+      url = stateorcitydetail + 'state/' + this.states[index].id;
+    }
+    if(type === 'city'){
+      url = stateorcitydetail + 'city/' + this.cities[index].id;
+    }
+    this.http.delete(url)
+      .subscribe(
+        (req: any)=>{
+          if(type === 'country'){
+            this.countries.splice(+index, 1);
+          }
+          if(type === 'state'){
+            this.states.splice(+index, 1);
+          }
+          if(type === 'city'){
+            this.cities.splice(+index, 1);
+          }
+        }
+      );
   }
 
 
@@ -155,6 +199,7 @@ export class LocationsComponent implements OnInit {
 
   // add new country
   addcountry(){
+    console.log(this.addcountryform);
     const url = makecountry;
     const payload = {
       name: this.addcountryform.form.value.countryadd,
