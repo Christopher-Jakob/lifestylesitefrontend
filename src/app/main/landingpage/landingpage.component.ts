@@ -5,6 +5,7 @@ import {NgForm} from '@angular/forms';
 import {stateandcitybystatus} from '../../urls/siteadminurls/settingsurls/stateandcityurls/stateandcityurls';
 import {swingtypeallorcreate} from '../../urls/siteadminurls/settingsurls/swingtypeurls/swingtypeurls';
 import {hosttypeallorcreate} from '../../urls/siteadminurls/settingsurls/hosttypeurls/hosttypeurls';
+import {userurl} from '../../urls/rooturl/userurls/userurl/userurl';
 
 @Component({
   selector: 'app-landingpage',
@@ -14,9 +15,20 @@ import {hosttypeallorcreate} from '../../urls/siteadminurls/settingsurls/hosttyp
 })
 export class LandingpageComponent implements OnInit {
 
+
   constructor(private http: Httpservice) { }
   // swinger sign up show request city boolean
   swingercityrequestshow = false;
+
+  // failure text show
+  failuretext = null;
+  showfailtext = false;
+
+  //swinger sign up success
+  swingersignupsucess = false;
+
+  //host sign up success
+  hostsignupsucess = false;
 
   toggleswingercityrequest(){
     this.swingercityrequestshow = !this.swingercityrequestshow;
@@ -45,7 +57,7 @@ export class LandingpageComponent implements OnInit {
     this.http.get(url)
       .subscribe(
         (req: any)=>{
-          this.activestates = req;
+          this.activestates = req.body;
         }
       );
   }
@@ -63,7 +75,7 @@ export class LandingpageComponent implements OnInit {
     this.http.get(url)
       .subscribe(
         (req: any)=>{
-          this.allstates = req;
+          this.allstates = req.body;
         }
       );
   }
@@ -80,7 +92,7 @@ export class LandingpageComponent implements OnInit {
     this.http.get(url)
       .subscribe(
         (req: any)=>{
-          this.activecities = req;
+          this.activecities = req.body;
         }
       );
   }
@@ -97,24 +109,13 @@ export class LandingpageComponent implements OnInit {
     this.http.get(url)
       .subscribe(
         (req: any)=>{
-          this.allcities = req;
+          this.allcities = req.body;
         }
       );
   }
 
-  // signup swinger with active city
-  activecityswingersignup(form:NgForm){
-    const url = null;
-    const payload = {
-      country: form.value.countryswinger,
-      state: form.value.stateswinger,
-      city: form.value.cityswinger,
-      active: true,
-      swingtype: form.value.swingerpreference,
-      email: form.value.swingeremail
-    };
 
-  }
+
 
 
   // for scrolling to swinger and host sell sections
@@ -125,6 +126,64 @@ export class LandingpageComponent implements OnInit {
 
   }
 
+  swingersignup(form:NgForm){
+    const url = userurl;
+    const payload = {
+      country :form.value.countryswinger,
+      state :form.value.stateswinger,
+      city: form.value.cityswinger,
+      active: false,
+      hosttype: null,
+      hostsignup: false,
+      swingersignup: true,
+      swingerpreference: form.value.swingerpreference,
+      email: form.value.swingeremail
+    };
+    this.http.post(url, payload)
+      .subscribe(
+        (req:any)=>{
+          this.swingersignupsucess = true;
+
+        },
+        (err: any)=>{
+          this.showfailtext = true;
+          this.failuretext = err.error.failcontext;
+          setTimeout(() => {
+            this.showfailtext = false;
+          }, 3000);
+
+        }
+      );
+  }
+
+  hostsignup(form:NgForm){
+    const url = userurl;
+    const payload = {
+      country: form.value.countryhost,
+      state: form.value.statehost,
+      city: form.value.cityhost,
+      active: false,
+      hosttype: form.value.hosttype,
+      hostsignup: true,
+      swingersignup: false,
+      swingerpreference: null,
+      email: form.value.hostemail
+    };
+    this.http.post(url, payload)
+      .subscribe(
+        (req:any)=>{
+          this.hostsignupsucess = true;
+        },
+        (err: any)=>{
+          this.showfailtext = true;
+          this.failuretext = err.error.failuretext;
+          setTimeout(()=>{
+            this.showfailtext = false;
+          }, 3000);
+        }
+      );
+  }
+
 
 
   ngOnInit() {
@@ -133,14 +192,15 @@ export class LandingpageComponent implements OnInit {
     this.http.get(url)
       .subscribe(
         (req: any)=>{
-          this.activecountries = req;
+          console.log(req);
+          this.activecountries = req.body;
         });
     // get all swinger types
     const swingerurl = swingtypeallorcreate;
     this.http.get(swingerurl)
       .subscribe(
         (req: any)=>{
-          this.swingertypes = req;
+          this.swingertypes = req.body;
         });
 
     // get all countries;
@@ -148,7 +208,7 @@ export class LandingpageComponent implements OnInit {
     this.http.get(countryurl)
       .subscribe(
         (req:any)=>{
-          this.allcountries = req;
+          this.allcountries = req.body;
         });
 
     // get all host types
@@ -156,7 +216,7 @@ export class LandingpageComponent implements OnInit {
     this.http.get(hosturl)
       .subscribe(
         (req: any)=>{
-          this.hosttypes = req;
+          this.hosttypes = req.body;
         }
       );
   }

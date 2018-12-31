@@ -60,8 +60,8 @@
             </div>
           </div>
         </div>
-        <div *ngIf="!swingercityrequestshow" class="col-5 swingersingup">
-          <form (ngSubmit)="activeswingersignup(swingersignupform)" #swingersignupform="ngForm">
+        <div *ngIf="!swingercityrequestshow && !swingersignupsucess" class="col-5 swingersingup">
+          <form (ngSubmit)="swingersignup(swingersignupform)" #swingersignupform="ngForm">
           <div class="row">
             <div class="col-12">
               <div class="text-left mt-5">
@@ -134,6 +134,24 @@
             </div>
           </div>
           </form>
+          <div *ngIf="showfailtext" class="row mt-5">
+            <div class="col-12">
+              <div class="text-center">
+                <h4>{{failuretext}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="swingersignupsucess" class="col-5 mt-5 swingersingup">
+          <div class="row">
+            <div class="col-12">
+              <div class="text-center">
+                <h4>Your request to know when Libidinous Lounge launches has been received. You will receive an email
+                when we launch! </h4>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div *ngIf="swingercityrequestshow" class="col-5 mt-5 swingersingup">
@@ -248,8 +266,8 @@
             </div>
           </div>
         </div>
-        <div *ngIf="!swingercityrequestshow" class="col-5 swingersingup">
-          <form (ngSubmit)="hostsingup()" #hostsignupform="ngForm">
+        <div *ngIf="!swingercityrequestshow && !hostsignupsucess" class="col-5 swingersingup">
+          <form (ngSubmit)="hostsignup(hostsignupform)" #hostsignupform="ngForm">
           <div class="row">
             <div class="col-12">
               <div class="text-left mt-5">
@@ -318,6 +336,24 @@
             </div>
           </div>
           </form>
+          <div *ngIf="showfailtext" class="row mt-5">
+            <div class="col-12">
+              <div class="text-center">
+                <h4>{{failuretext}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="hostsignupsucess" class="col-5 mt-5 swingersingup">
+          <div class="row">
+            <div class="col-12">
+              <div class="text-center">
+                <h4>Your request to know when Libidinous Lounge launches has been received. You will receive an email
+                  when we launch! </h4>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div *ngIf="swingercityrequestshow" class="col-5 mt-5 swingersingup">
