@@ -47,12 +47,13 @@ export class SwingerandhosttypesComponent implements OnInit {
     console.log(this.addswingtypeform);
    const url = swingtypeallorcreate;
    const payload = {
-     name: this.addswingtypeform.form.value.addswing
+     name: this.addswingtypeform.form.value.addswing,
+     couple: this.addswingtypeform.form.value.couplecheckbox
    };
    this.http.post(url, payload)
      .subscribe(
        (req: any)=>{
-         this.swingtypes.push(req);
+         this.swingtypes.push(req.body);
          this.addswingtypeform.reset();
        }
      );
@@ -85,11 +86,11 @@ export class SwingerandhosttypesComponent implements OnInit {
         .subscribe(
           (req: any)=>{
             if(type === 'swingtype'){
-              this.swingtypes.push(req);
+              this.swingtypes.push(req.body);
               return;
             }
             if(type === 'hosttype'){
-              this.hosttypes.push(req);
+              this.hosttypes.push(req.body);
               form.reset();
               return;
             }
@@ -99,7 +100,8 @@ export class SwingerandhosttypesComponent implements OnInit {
       if(type === 'swingtype'){
         url = swingtypedetail + String(this.swingtypes[index].id);
         payload = {
-          name: form.value.editswingtype
+          name: form.value.editswingtype,
+          couple: form.value.editswingcouple
         };
       }
       if(type === 'hosttype'){
@@ -112,14 +114,14 @@ export class SwingerandhosttypesComponent implements OnInit {
         .subscribe(
           (req: any)=>{
             if(type === 'swingtype'){
-              this.swingtypes[index] = req;
+              this.swingtypes[index] = req.body;
               this.swingtypeedit = false;
               this.activeswingeditindex = null;
               form.reset();
               return;
             }
             if(type === 'hosttype'){
-              this.hosttypes[index] = req;
+              this.hosttypes[index] = req.body;
               this.hosttypeedit = false;
               this.activehosteditindex = null;
               return;
@@ -158,14 +160,14 @@ export class SwingerandhosttypesComponent implements OnInit {
     this.http.get(swingurl)
       .subscribe(
         (req: any)=>{
-          this.swingtypes = req;
+          this.swingtypes = req.body;
         }
       );
     const hosturl = hosttypeallorcreate;
     this.http.get(hosturl)
       .subscribe(
         (req: any)=>{
-          this.hosttypes = req;
+          this.hosttypes = req.body;
         }
       );
 

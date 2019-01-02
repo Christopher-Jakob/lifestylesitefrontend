@@ -5,7 +5,8 @@ import {NgForm} from '@angular/forms';
 import {stateandcitybystatus} from '../../urls/siteadminurls/settingsurls/stateandcityurls/stateandcityurls';
 import {swingtypeallorcreate} from '../../urls/siteadminurls/settingsurls/swingtypeurls/swingtypeurls';
 import {hosttypeallorcreate} from '../../urls/siteadminurls/settingsurls/hosttypeurls/hosttypeurls';
-import {userurl} from '../../urls/rooturl/userurls/userurl/userurl';
+import {userurl} from '../../urls/userurls/userurl/userurl';
+
 
 @Component({
   selector: 'app-landingpage',
@@ -19,6 +20,12 @@ export class LandingpageComponent implements OnInit {
   constructor(private http: Httpservice) { }
   // swinger sign up show request city boolean
   swingercityrequestshow = false;
+
+  // swinger city request sucesss show
+  swingercityrequestsucess = false;
+
+  // host city request sucess show
+  hostcityrequestsucess = false;
 
   // failure text show
   failuretext = null;
@@ -126,6 +133,8 @@ export class LandingpageComponent implements OnInit {
 
   }
 
+
+
   swingersignup(form:NgForm){
     const url = userurl;
     const payload = {
@@ -156,6 +165,34 @@ export class LandingpageComponent implements OnInit {
       );
   }
 
+  swingercityrequest(form:NgForm){
+    const url = userurl;
+    const payload = {
+      country: form.value.countryswingerrequest,
+      state: form.value.stateswingerrequest,
+      city: form.value.cityswingerrequest,
+      swingerpreference: form.value.swingerpreferencerequest,
+      email: form.value.swingeremailrequest,
+      active: false,
+      hosttype: null,
+      hostsignup: false,
+      swingersignup: true
+    };
+    this.http.post(url, payload)
+      .subscribe(
+        (req: any)=>{
+          this.swingercityrequestsucess = true;
+        },
+        (err: any)=>{
+          this.showfailtext = true;
+          this.failuretext = err.error.failuretext;
+          setTimeout(()=>{
+            this.showfailtext = false;
+          }, 3000);
+        }
+      );
+  }
+
   hostsignup(form:NgForm){
     const url = userurl;
     const payload = {
@@ -173,6 +210,34 @@ export class LandingpageComponent implements OnInit {
       .subscribe(
         (req:any)=>{
           this.hostsignupsucess = true;
+        },
+        (err: any)=>{
+          this.showfailtext = true;
+          this.failuretext = err.error.failuretext;
+          setTimeout(()=>{
+            this.showfailtext = false;
+          }, 3000);
+        }
+      );
+  }
+
+  hostcityrequest(form:NgForm){
+    const url = userurl;
+    const payload = {
+      country: form.value.countryhostrequest,
+      state: form.value.statehostrequest,
+      city: form.value.cityhostrequest,
+      swingerpreference: null,
+      email: form.value.hostemailrequest,
+      active: false,
+      hosttype: form.value.hosttyperequest,
+      hostsignup: true,
+      swingersignup: false
+    };
+    this.http.post(url, payload)
+      .subscribe(
+        (req: any)=>{
+          this.hostcityrequestsucess = true;
         },
         (err: any)=>{
           this.showfailtext = true;

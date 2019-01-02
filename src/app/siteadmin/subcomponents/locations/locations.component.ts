@@ -76,7 +76,7 @@ export class LocationsComponent implements OnInit {
       this.http.put(url, payload)
         .subscribe(
           (req: any)=>{
-            this.countries[index] = req;
+            this.countries[index] = req.body;
           }
         );
 
@@ -89,7 +89,7 @@ export class LocationsComponent implements OnInit {
       this.http.put(url, payload)
         .subscribe(
           (req: any)=>{
-            this.states[index] = req;
+            this.states[index] = req.body;
           }
         );
     }
@@ -101,7 +101,7 @@ export class LocationsComponent implements OnInit {
       this.http.put(url, payload)
         .subscribe(
           (req: any)=>{
-            this.cities[index] = req;
+            this.cities[index] = req.body;
           }
         );
     }
@@ -134,15 +134,15 @@ export class LocationsComponent implements OnInit {
       .subscribe(
         (req: any)=>{
           if(type === 'country'){
-            this.countries[index] = req;
+            this.countries[index] = req.body;
             this.editcountryshow = false;
           }
           if(type === 'state'){
-            this.states[index] = req;
+            this.states[index] = req.body;
             this.editstateshow = false;
           }
           if(type === 'city'){
-            this.cities[index] = req;
+            this.cities[index] = req.body;
             this.editcityshow = false;
           }
         }
@@ -193,7 +193,7 @@ export class LocationsComponent implements OnInit {
     const url = stateandcitybystatus + 'state/' + String(this.activecountryobject.id) + '/' + 'all';
     this.http.get(url)
       .subscribe((req:any) =>{
-        this.states = req;
+        this.states = req.body;
     });
   }
 
@@ -207,7 +207,7 @@ export class LocationsComponent implements OnInit {
     };
     this.http.post(url, payload)
       .subscribe((req: any)=>{
-        this.countries.push(req);
+        this.countries.push(req.body);
         this.addcountryform.reset();
         this.countrysubmitshow = false;
       });
@@ -231,7 +231,7 @@ export class LocationsComponent implements OnInit {
     this.http.get(url)
       .subscribe(
         (req:any)=>{
-          this.cities = req;
+          this.cities = req.body;
         }
       );
 
@@ -249,7 +249,7 @@ export class LocationsComponent implements OnInit {
     };
     this.http.post(url, payload)
       .subscribe((req:any) =>{
-        this.states.push(req);
+        this.states.push(req.body);
         this.statesubmitshow = false;
         this.addstateform.reset();
     });
@@ -275,7 +275,7 @@ export class LocationsComponent implements OnInit {
     this.http.post(url, payload)
       .subscribe(
         (req: any)=>{
-          this.cities.push(req);
+          this.cities.push(req.body);
           this.citysubmitshow = false;
           this.addcityform.reset();
         }
@@ -293,7 +293,7 @@ export class LocationsComponent implements OnInit {
     let url = countriesbystatus + 'all';
     this.http.get(url)
       .subscribe((req:any)=>{
-      this.countries = req;
+      this.countries = req.body;
     });
   }
 

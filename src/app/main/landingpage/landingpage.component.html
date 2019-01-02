@@ -13,13 +13,20 @@
             100% Free To Connect
           </div>
         </div>
+
+        <!--
+        <button class="btn btn-primary" [scrollTo]="'#place1'" [scrollDuration]="1000" [scrollOffset]="-100">Place 1</button>
+<button class="btn btn-primary" [scrollTo]="place2">Place 2</button>
+<div id="place1"></div>
+<div #place2></div>
+-->
         <div class="col-6">
           <div class="row">
             <div class="col-4 swingerbuttondiv">
-              <button (click)="scrolltosection(swinger)" class="btn btn-outline-light swingbutton">For Swingers</button>
+              <button [ngx-scroll-to]="swinger" class="btn btn-outline-light swingbutton">For Swingers</button>
             </div>
             <div class="col-4 hostbuttondiv">
-              <button (click)="scrolltosection(eventhost)" class="btn btn-outline-light swingbutton">For Event Hosts </button>
+              <button [ngx-scroll-to]="eventhost" class="btn btn-outline-light swingbutton">For Event Hosts </button>
             </div>
           </div>
         </div>
@@ -165,7 +172,7 @@
               your closest city and minor cities around it. And notify you that your city is live.</h5>
             </div>
             <div class="col-12">
-              <form (ngSubmit)="swingerrequest()" #swingerrequestform="ngForm">
+              <form (ngSubmit)="swingercityrequest(swingerrequestform)" #swingerrequestform="ngForm">
               <div class="row">
                   <div class="col-4 mt-5">
                     <select id="countryswingerrequest"
@@ -214,14 +221,28 @@
                            class="form-control"
                            placeholder="Enter your Email">
                   </div>
-                  <div class="col-6 mt-5">
+                  <div class="col-6 mt-5 mb-5">
                     <div class="text-left">
                       <button (click)="toggleswingercityrequest()" class="btn btn-outline-secondary">Back</button>
                     </div>
                   </div>
-                  <div class="col-6 mt-5">
+                  <div class="col-6 mt-5 mb-5">
                     <div class="text-right">
                       <button type="submit" class="btn btn-outline-secondary">Request My City</button>
+                    </div>
+                  </div>
+                  <div *ngIf="swingercityrequestsucess" class="col-12 mt-5 swingersingup">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="text-center">
+                          <h4>Your request to have your city added to the active list has been received. We'll let you know when it is active. </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="showfailtext" class="col-12">
+                    <div class="text-center">
+                      <h4>{{failuretext}}</h4>
                     </div>
                   </div>
               </div>
@@ -230,6 +251,7 @@
           </div>
         </div>
       </div>
+
     </div> <!--this one-->
 
     <!-- host section -->
@@ -357,7 +379,7 @@
         </div>
 
         <div *ngIf="swingercityrequestshow" class="col-5 mt-5 swingersingup">
-          <form (ngSubmit)="hostrequest()" #hostrequestform="ngForm">
+          <form (ngSubmit)="hostcityrequest(hostrequestform)" #hostrequestform="ngForm">
           <div class="row">
             <div class="col-12 mt-5 mb-4">
               <h5>To bring the most value we are only launching in a few cities. As The memberships in those cities build,
@@ -422,6 +444,16 @@
             <div class="col-6 mt-5">
               <div class="text-right">
                 <button class="btn btn-outline-secondary">Request My City</button>
+              </div>
+            </div>
+            <div *ngIf='showfailtext' class="col-12 mt-5">
+              <div class="text-center">
+                <h4>{{failuretext}}</h4>
+              </div>
+            </div>
+            <div *ngIf="hostcityrequestsucess" class="col-12 mt-5">
+              <div class="text-center">
+                <h4>Your request to have your city added to the active list has been received. We'll let you know when it is active. </h4>
               </div>
             </div>
           </div>

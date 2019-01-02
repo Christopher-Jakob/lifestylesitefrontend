@@ -39,66 +39,14 @@ export class SwingersignupComponent implements OnInit {
 
   @ViewChild('signupform') signupform: NgForm;
 
-  countries = [
-    {
-      name: 'United States Of America',
-      value :'usa'
-    }
-  ];
+  countries = [];
 
-  states = [
-    {
-      name: "Illinois",
-      value: 'il'
-    }
-  ];
+  states = [];
 
-  city = [
-    {
-      name: "Chicago",
-      value: 'chicago'
-    }
-  ];
+  city = [];
 
-  swingoptions = [
-    {
-      name: 'Single Male',
-      value: 'sm'
-    },
-    {
-      name: 'Single Woman',
-      value: 'sf'
-    },
-    {
-      name: 'Single TS',
-      value: 'st'
-    },
-    {
-      name: 'Couple Man & Woman',
-      value: 'cmw'
-    },
-    {
-      name: 'Couple Man & Man',
-      value: 'cmm'
-    },
-    {
-      name: 'Couple Man & TS',
-      value: 'cmt'
-    },
-    {
-      name: 'Couple Woman & Woman',
-      value: 'cww'
-    },
-    {
-      name: 'Couple Woman & TS',
-      value: 'cwt'
-    },
-    {
-      name: 'Couple TS & TS',
-      value: 'ctt'
-    }
-  ];
-  coupleoptions = ['cmw', 'cmm', 'cmt', 'cww', 'cwt', 'ctt'];
+  swingoptions = [];
+  coupleoptions = [];
 
   ethnicgroups = [
     {

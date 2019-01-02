@@ -3,7 +3,7 @@
     <div class="col-12 mt-5">
       <h4>Swinger and Host Types</h4>
     </div>
-    <div class="col-6 mt-4">
+    <div class="col-12 mt-4">
       <div class="row">
         <div class="col-12 mt-2">
           <h5>Swinger Types</h5>
@@ -11,7 +11,7 @@
         <div class="col-12 mt-2">
           <form (ngSubmit)="addswingtype()" #addswingtypeform="ngForm">
             <div class="row">
-              <div class="col-10 mt-2">
+              <div class="col-4 mt-2">
                 <input type="text"
                        id="addswingtype"
                        name="addswing"
@@ -19,6 +19,31 @@
                        placeholder="Enter A Swing Type"
                        class="form-control">
 
+
+              </div>
+              <div class="col-2 mt-2">
+                <label class="form-check-label">Couple</label>
+                <input type="checkbox"
+                       id="couplecheckbox"
+                       name="couplecheckbox"
+                       ngModel
+                       class="form-check">
+              </div>
+              <div class="col-2 mt-2">
+                <select id="sex1select"
+                        name="sex1select"
+                        ngModel
+                        class="form-control">
+                  <option value="">Select Sex</option>
+                </select>
+              </div>
+              <div class="col-2 mt-2">
+                <select id="sex2select"
+                        name="sex2select"
+                        ngModel
+                        class="form-control">
+                  <option value="">Select Sex</option>
+                </select>
               </div>
               <div class="col-2 mt-2">
                 <button type="submit" class="btn btn-outline-dark">Submit</button>
@@ -29,7 +54,7 @@
         <div class="col-12 mt-2">
           <div  class="row" *ngFor="let type of swingtypes; let i =index">
             <div *ngIf="!swingtypeedit && activeswingeditindex != i" class="col-6">
-              <span class="badge badge-pill badge-secondary">{{type.name}}</span>
+              <span class="badge badge-pill badge-secondary"><span *ngIf="type.couple">C |</span>{{type.name}}</span>
             </div>
             <div *ngIf="!swingtypeedit && activeswingeditindex != i" class="col-3">
               <button (click)="typeedittoggle('swing', i)" class="badge badge-pill badge-warning">Edit</button>
@@ -40,13 +65,21 @@
             <div *ngIf="swingtypeedit && activeswingeditindex == i" class="col-12 mt-2">
               <form (ngSubmit)="action('put', 'swingtype', i, editswingtypeform)" #editswingtypeform="ngForm">
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-4">
                     <input type="text"
                            id="editswingtype"
                            name="editswingtype"
                            [ngModel]="swingtypes[i].name"
                            class="form-control">
 
+                  </div>
+                  <div class="col-2">
+                    <label class="form-check-label">Couple</label>
+                    <input type="checkbox"
+                           id="editswingcouple"
+                           name="editswingcouple"
+                           [ngModel]="swingtypes[i].couple"
+                           class="form-check-input">
                   </div>
                   <div class="col-3">
                     <button (click)="typeedittoggle('swing', i)" class="btn btn-outline-dark">Cancel</button>
