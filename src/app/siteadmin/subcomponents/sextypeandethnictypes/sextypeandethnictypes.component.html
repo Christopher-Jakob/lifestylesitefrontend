@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row mb-5">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-12 mt-5">
+          <h4>Sex Types</h4>
+        </div>
+        <div class="col-12 mt-5">
+          <form (ngSubmit)="addsextype(sextypeform)" #sextypeform="ngForm">
+            <div class="row">
+              <div class="col-8">
+                <input type="text"
+                       id="sextypecreate"
+                       name="sextypecreate"
+                       ngModel
+                       placeholder="Enter Sex Type"
+                       class="form-control">
+
+              </div>
+              <div class="col-4">
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div *ngFor="let type of sextypes; let i =index" class="row mt-3">
+          <div class="col-10">
+            <p class="badge badge-pill badge-secondary">{{type.name}}</p>
+          </div>
+          <div class="col-2">
+            <button (click)="deletesextype(i)" class='badge badge-pill badge-danger'>Delete</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="row">
+        <div class="col-12 mt-5">
+          <h4>Ethnic Types</h4>
+        </div>
+        <div class="col-12 mt-5">
+          <form (ngSubmit)="addethnictype(ethnictypeform)" #ethnictypeform="ngForm">
+            <div class="row">
+              <div class="col-8">
+                <input type="text"
+                       id="ethnictypecreate"
+                       name="ethnictypecreate"
+                       ngModel
+                       placeholder="Enter Ethnic Type"
+                       class="form-control">
+
+              </div>
+              <div class="col-4">
+                <button type="submit" class="btn btn-outline-dark">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div *ngFor="let type of ethnictypes; let i =index" class="row mt-3">
+          <div class="col-10">
+            <p class="badge badge-pill badge-secondary">{{type.name}}</p>
+          </div>
+          <div class="col-2">
+            <button (click)="deleteethnictype(i)" class='badge badge-pill badge-danger'>Delete</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

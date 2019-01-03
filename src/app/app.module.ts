@@ -26,6 +26,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { SwingerandhosttypesComponent } from './siteadmin/subcomponents/swingerandhosttypes/swingerandhosttypes.component';
 import { SwingerhostsignupComponent } from './siteadmin/subcomponents/swingerhostsignup/swingerhostsignup.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { SextypeandethnictypesComponent } from './siteadmin/subcomponents/sextypeandethnictypes/sextypeandethnictypes.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
     SiteadminmainComponent,
     LocationsComponent,
     SwingerandhosttypesComponent,
-    SwingerhostsignupComponent
+    SwingerhostsignupComponent,
+    SextypeandethnictypesComponent
   ],
   imports: [
     BrowserModule,
