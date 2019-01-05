@@ -1,7 +1,7 @@
 import {settingsrooturl} from './settingsurlsroot/settingsurlroot';
 
 
-const swingerethnictyperooturl = settingsrooturl + 'ethnictypeurls/';
+const swingerethnictyperooturl = settingsrooturl + 'ethnictype/';
 
 
 export const ethnictypescreategetall = swingerethnictyperooturl + 'ethnictypeallorcreate';

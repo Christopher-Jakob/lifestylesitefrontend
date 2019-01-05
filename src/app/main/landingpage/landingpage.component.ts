@@ -54,7 +54,7 @@ export class LandingpageComponent implements OnInit {
   //get active states by country
   getactivestatesbycountry(form:NgForm){
     let country = null;
-    if(form.value.countryswinger != null){
+    if(form.value.countryswinger != null) {
       country = form.value.countryswinger;
     }
     if(form.value.countryhost != null){
@@ -146,7 +146,8 @@ export class LandingpageComponent implements OnInit {
       hostsignup: false,
       swingersignup: true,
       swingerpreference: form.value.swingerpreference,
-      email: form.value.swingeremail
+      email: form.value.swingeremail,
+      prelaunchsignup: true
     };
     this.http.post(url, payload)
       .subscribe(
@@ -176,7 +177,8 @@ export class LandingpageComponent implements OnInit {
       active: false,
       hosttype: null,
       hostsignup: false,
-      swingersignup: true
+      swingersignup: true,
+      prelaunchsignup: true
     };
     this.http.post(url, payload)
       .subscribe(
@@ -204,7 +206,8 @@ export class LandingpageComponent implements OnInit {
       hostsignup: true,
       swingersignup: false,
       swingerpreference: null,
-      email: form.value.hostemail
+      email: form.value.hostemail,
+      prelaunchsignup: true
     };
     this.http.post(url, payload)
       .subscribe(
@@ -232,7 +235,8 @@ export class LandingpageComponent implements OnInit {
       active: false,
       hosttype: form.value.hosttyperequest,
       hostsignup: true,
-      swingersignup: false
+      swingersignup: false,
+      prelaunchsignup: true
     };
     this.http.post(url, payload)
       .subscribe(

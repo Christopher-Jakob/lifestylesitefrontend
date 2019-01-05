@@ -22,16 +22,16 @@
               </div>
             </div>
           </form>
+          <div *ngFor="let type of sextypes; let i =index" class="row">
+            <div class="col-10">
+              <p class="badge badge-pill badge-secondary">{{type.name}}</p>
+            </div>
+            <div class="col-2">
+              <button (click)="deletesextype(i)" class='badge badge-pill badge-danger'>Delete</button>
+            </div>
+          </div>
         </div>
-        <div *ngFor="let type of sextypes; let i =index" class="row mt-3">
-          <div class="col-10">
-            <p class="badge badge-pill badge-secondary">{{type.name}}</p>
-          </div>
-          <div class="col-2">
-            <button (click)="deletesextype(i)" class='badge badge-pill badge-danger'>Delete</button>
-          </div>
 
-        </div>
       </div>
     </div>
 
@@ -57,16 +57,17 @@
               </div>
             </div>
           </form>
-        </div>
-        <div *ngFor="let type of ethnictypes; let i =index" class="row mt-3">
-          <div class="col-10">
-            <p class="badge badge-pill badge-secondary">{{type.name}}</p>
-          </div>
-          <div class="col-2">
-            <button (click)="deleteethnictype(i)" class='badge badge-pill badge-danger'>Delete</button>
-          </div>
+          <div *ngFor="let type of ethnictypes; let i =index" class="row">
+            <div class="col-10">
+              <p class="badge badge-pill badge-secondary">{{type.name}}</p>
+            </div>
+            <div class="col-2">
+              <button (click)="deleteethnictype(i)" class='badge badge-pill badge-danger'>Delete</button>
+            </div>
 
+          </div>
         </div>
+
       </div>
     </div>
   </div>

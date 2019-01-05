@@ -3,6 +3,7 @@ import {Httpservice} from '../../../services/httpservice/httpservice';
 import {NgForm} from '@angular/forms';
 import {swingtypeallorcreate, swingtypedetail} from '../../../urls/siteadminurls/settingsurls/swingtypeurls/swingtypeurls';
 import {hosttypeallorcreate, hosttypedetail} from '../../../urls/siteadminurls/settingsurls/hosttypeurls/hosttypeurls';
+import {sextypeallorcreate} from '../../../urls/siteadminurls/settingsurls/sextypeurls/sextypeurls';
 
 @Component({
   selector: 'app-swingerandhosttypes',
@@ -16,6 +17,7 @@ export class SwingerandhosttypesComponent implements OnInit {
 
   swingtypes = [];
   hosttypes = [];
+  sextypes = [];
   swingtypeedit = false;
   hosttypeedit = false;
   activeswingeditindex = null;
@@ -46,10 +48,20 @@ export class SwingerandhosttypesComponent implements OnInit {
   addswingtype(){
     console.log(this.addswingtypeform);
    const url = swingtypeallorcreate;
-   const payload = {
+   let payload = {
      name: this.addswingtypeform.form.value.addswing,
-     couple: this.addswingtypeform.form.value.couplecheckbox
+     couple: false,
+     sex1: this.addswingtypeform.form.value.sex1select,
+     sex2: null
    };
+   console.log('this is the couple checkbox');
+   console.log(this.addswingtypeform.form.value.couplecheckbox);
+   if(this.addswingtypeform.form.value.couplecheckbox === true){
+     payload.couple = true;
+   }
+   if(this.addswingtypeform.form.value.sex2select != ''){
+     payload.sex2 = this.addswingtypeform.form.value.sex2select;
+   }
    this.http.post(url, payload)
      .subscribe(
        (req: any)=>{
@@ -161,6 +173,7 @@ export class SwingerandhosttypesComponent implements OnInit {
       .subscribe(
         (req: any)=>{
           this.swingtypes = req.body;
+          console.log(this.swingtypes);
         }
       );
     const hosturl = hosttypeallorcreate;
@@ -168,6 +181,13 @@ export class SwingerandhosttypesComponent implements OnInit {
       .subscribe(
         (req: any)=>{
           this.hosttypes = req.body;
+        }
+      );
+    const sextypeurl = sextypeallorcreate;
+    this.http.get(sextypeurl)
+      .subscribe(
+        (req: any)=>{
+          this.sextypes = req.body;
         }
       );
 

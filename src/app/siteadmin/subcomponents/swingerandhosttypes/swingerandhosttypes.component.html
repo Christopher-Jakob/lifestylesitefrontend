@@ -26,6 +26,7 @@
                 <input type="checkbox"
                        id="couplecheckbox"
                        name="couplecheckbox"
+                       value="true"
                        ngModel
                        class="form-check">
               </div>
@@ -35,6 +36,7 @@
                         ngModel
                         class="form-control">
                   <option value="">Select Sex</option>
+                  <option *ngFor="let type of sextypes" [value]="type.id">{{type.name}}</option>
                 </select>
               </div>
               <div class="col-2 mt-2">
@@ -43,6 +45,7 @@
                         ngModel
                         class="form-control">
                   <option value="">Select Sex</option>
+                  <option *ngFor="let type of sextypes" [value]="type.id">{{type.name}}</option>
                 </select>
               </div>
               <div class="col-2 mt-2">
