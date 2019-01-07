@@ -9,6 +9,7 @@ import {
   stateandcitybystatus,
   statetypeotherparamsafter
 } from '../../urls/siteadminurls/settingsurls/stateandcityurls/stateandcityurls';
+import {s3presignedurl} from '../../urls/awsurls/awsurls';
 
 @Component({
   selector: 'app-swingersignup',
@@ -27,6 +28,9 @@ export class SwingersignupComponent implements OnInit {
   // boolean to show location expand request
   locationexpandshow = false;
 
+  //selected couple type for couple signups
+  selectedcoupletype = null;
+
 
   togglelocationexpandshow(){
     this.locationexpandshow = !this.locationexpandshow
@@ -36,7 +40,20 @@ export class SwingersignupComponent implements OnInit {
     this.verificationuploadshow = !this.verificationuploadshow;
   }
   coupleselected(){
-    //todo
+    const selected = this.signupform.value.swingtype;
+    for(let type of this.swingoptions){
+      if(type.id == selected) {
+        if (type.couple) {
+          this.couplesignup = true;
+          this.selectedcoupletype = type;
+          return;
+
+        }
+        this.couplesignup = false;
+
+      }
+
+    }
 
   }
 
@@ -51,10 +68,13 @@ export class SwingersignupComponent implements OnInit {
   swingoptions = [];
   ethnicgroups = [];
 
-  getstatesbycountry(form:NgForm, status){
+  getstatesbycountry(status){
     let url = null;
     if(status === 'active'){
-      const id = form.value.country;
+      console.log(this.signupform);
+      const id = this.signupform.value.country;
+      console.log('this is the form value');
+      console.log(this.signupform.value.country);
       url = stateandcitybystatus + statetypeotherparamsafter + String(id) + '/active';
       this.http.get(url)
         .subscribe(
@@ -65,7 +85,7 @@ export class SwingersignupComponent implements OnInit {
 
     }
     if(status === 'all'){
-      const id = form.value.expandtoareastate;
+      const id = this.signupform.value.expandtoareacountry;
       url = stateandcitybystatus + statetypeotherparamsafter + String(id) + '/all';
       this.http.get(url)
         .subscribe(
@@ -76,10 +96,10 @@ export class SwingersignupComponent implements OnInit {
     }
   }
 
-  getcitiesbystate(form:NgForm, status){
+  getcitiesbystate(status){
     let url = null;
     if(status === 'active'){
-      const id = form.value.state;
+      const id = this.signupform.value.state;
       url = stateandcitybystatus + citytypeotherparamsafter + String(id) + '/active';
       this.http.get(url)
         .subscribe(
@@ -89,7 +109,7 @@ export class SwingersignupComponent implements OnInit {
         );
     }
     if(status === 'all'){
-      const id = form.value.expandtoareacity;
+      const id = this.signupform.value.expandtoareastate;
       url = stateandcitybystatus + citytypeotherparamsafter + String(id) + '/all';
       this.http.get(url)
         .subscribe(
@@ -98,6 +118,41 @@ export class SwingersignupComponent implements OnInit {
           }
         );
     }
+  }
+
+  uploadverificationphoto(event){
+    let submittedimage = event.target.files[0];
+    let databasekey = null;
+    let uriroot = null;
+    const presignedimageurl = s3presignedurl + 'image';
+    this.http.get(presignedimageurl)
+      .subscribe(
+        (req: any)=>{
+          const body = req.body;
+          databasekey = body.fields.key;
+          uriroot = body.uriroot;
+          let fd = new FormData();
+          fd.append('acl', body.fields.acl);
+          fd.append('key', body.fields.key);
+          fd.append('content-type', body.fields['content-type']);
+          fd.append('Policy', body.fields.policy);
+          fd.append('x-amz-algorithm', body.fields['x-amz-algorithm']);
+          fd.append('x-amz-credential', body.fields['x-amz-credential']);
+          fd.append('x-amz-date', body.fields['x-amz-date']);
+          fd.append('x-amz-signature', body.fields['x-amz-signature']);
+          fd.append('file', submittedimage);
+          this.http.post(body.url, fd)
+            .subscribe(
+              (req:any)=>{
+                
+              }
+            );
+
+
+
+
+        }
+      );
   }
 
   ngOnInit() {
@@ -120,6 +175,7 @@ export class SwingersignupComponent implements OnInit {
       .subscribe(
         (req:any)=>{
           this.ethnicgroups = req.body;
+          console.log(this.ethnicgroups);
         }
       );
     const allcountriesurl = countriesbystatus + 'all';
