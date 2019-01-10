@@ -120,14 +120,40 @@ export class SwingersignupComponent implements OnInit {
     }
   }
 
-  uploadverificationphoto(event){
-    let submittedimage = event.target.files[0];
+  //sign up user
+
+  signup(form:NgForm , event){
+
+    let payload = {
+      country: form.value.country,
+      state: form.value.state,
+      city: form.value.city,
+      expandtoareaemail: form.value.expandtoareaemail,
+      expandtoareacountry: form.value.expandtoareacountry,
+      expandtoareastate: form.value.expandtoareastate,
+      expandtoareacity: form.value.expandtoareacity,
+      username: form.value.username,
+      email: form.value.email,
+      password: form.value.password,
+      swingtype: form.value.swingtype,
+      birthdayone: form.value.birthdayone,
+      birthdaytwo: form.value.birthdaytwo,
+      ethnicity1: form.value.ethnicity1,
+      ethnicity2: form.value.ethnicity2,
+      verificationphoto: null,
+      verificationphotokey: null,
+      prelaunchsignup: false
+
+    };
+
+    const emailconfrim = form.value.password2;
+    const photo = event.target.files[0];
     let databasekey = null;
     let uriroot = null;
     const presignedimageurl = s3presignedurl + 'image';
     this.http.get(presignedimageurl)
       .subscribe(
-        (req: any)=>{
+        (req: any)=> {
           const body = req.body;
           databasekey = body.fields.key;
           uriroot = body.uriroot;
@@ -140,20 +166,21 @@ export class SwingersignupComponent implements OnInit {
           fd.append('x-amz-credential', body.fields['x-amz-credential']);
           fd.append('x-amz-date', body.fields['x-amz-date']);
           fd.append('x-amz-signature', body.fields['x-amz-signature']);
-          fd.append('file', submittedimage);
+          fd.append('file', photo);
           this.http.post(body.url, fd)
             .subscribe(
-              (req:any)=>{
-                
-              }
-            );
+              (req: any) => {
+                payload.verificationphoto = uriroot + databasekey;
+                payload.verificationphotokey = databasekey;
 
 
+              });
+        });
 
-
-        }
-      );
   }
+
+
+
 
   ngOnInit() {
 
