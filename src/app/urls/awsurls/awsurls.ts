@@ -4,6 +4,6 @@ const awsrooturl = rooturl + 'aws/';
 
 
 // takes argument to determine content type: image
-export const s3presignedurl = rooturl + 's3presignedurl/';
+export const s3presignedurl = awsrooturl + 's3presignedurl/';
 
 

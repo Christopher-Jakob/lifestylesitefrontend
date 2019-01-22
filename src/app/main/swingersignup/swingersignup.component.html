@@ -6,7 +6,7 @@
           <h3>User Info</h3>
         </div>
         <div class="row mt-4">
-          <form (ngSubmit)="signup()" #signupform="ngForm">
+          <form (ngSubmit)="signup(signupform)" #signupform="ngForm">
 
             <div *ngIf="!locationexpandshow" class="col-12 mt-4 mb-1">
               <hr>
@@ -136,10 +136,16 @@
               <input type="email"
                      id="emailconfrim"
                      name="emailconfrim"
+                     (ngModelChange)="emailsmatch()"
                      ngModel
                      placeholder="Confrim Email"
                      required
                      class="form-control">
+            </div>
+            <div *ngIf="emailmismatch" class="col-12 mt-3 mb-3">
+              <div class="text-center">
+                <h4>Emails Do Not Match!</h4>
+              </div>
             </div>
             <div *ngIf="!locationexpandshow" class="col-12 mb-1">
               <input type="password"
@@ -156,9 +162,15 @@
                      ngModel
                      placeholder="confrim password"
                      id="password2"
+                     (ngModelChange)="passwordsmatch()"
                      name="password2"
                      required
                      class="form-control">
+            </div>
+            <div *ngIf="passwordsmismatch" class="col-12 mt-3 mb-3">
+              <div class="text-center">
+                <h4>Passwords Do Not Match!</h4>
+              </div>
             </div>
             <div *ngIf="!locationexpandshow" class="col-12 mb-1">
               <select id="swingtype"
@@ -212,6 +224,7 @@
                 <label class="form-check-label">{{e.name}}</label> &nbsp;
                 <input type="radio"
                        [id]="e.name + '1'"
+                       required
                        name="ethnicity1"
                        [value]="e.id"
                        ngModel>
@@ -266,6 +279,7 @@
                      id="verificationupload"
                      name="verificationupload"
                      ngModel
+                     required
                      class="form-control-file">
 
             </div>
@@ -275,10 +289,10 @@
               <h5>Verification Code</h5>
             </div>
             <div class="text-center">
-              <h5>645321</h5>
+              <h5>{{verificatonphotopobject.code}}</h5>
             </div>
           </div>
-          <div *ngIf="!locationexpandshow" class="col-12 mt-5 mb-5">
+          <div *ngIf="!locationexpandshow && signupform.valid && !emailmismatch && !passwordsmismatch" class="col-12 mt-5 mb-5">
             <div class="text-center">
               <button type="submit" class="btn btn-outline-primary">Sign Up For cool ass thing</button>
             </div>

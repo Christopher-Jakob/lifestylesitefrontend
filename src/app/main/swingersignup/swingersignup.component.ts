@@ -10,6 +10,8 @@ import {
   statetypeotherparamsafter
 } from '../../urls/siteadminurls/settingsurls/stateandcityurls/stateandcityurls';
 import {s3presignedurl} from '../../urls/awsurls/awsurls';
+import {createswingerurl} from '../../urls/userurls/userurl/userurl';
+import {getdeleteverificationphotocodeurl, postnewverificationphotocodeurl} from '../../urls/verificationphotourls/codeurls/codeurls';
 
 @Component({
   selector: 'app-swingersignup',
@@ -30,6 +32,16 @@ export class SwingersignupComponent implements OnInit {
 
   //selected couple type for couple signups
   selectedcoupletype = null;
+
+  //signup verification photo code object holder
+  verificatonphotopobject = null;
+
+  //boolean if emails match or not
+  emailmismatch  = false;
+
+  //boolean if passwords match or not
+  passwordsmismatch = false;
+
 
 
   togglelocationexpandshow(){
@@ -120,7 +132,32 @@ export class SwingersignupComponent implements OnInit {
     }
   }
 
-  //sign up user
+
+  // show unshow ui based on events code
+
+  // emails match
+
+  emailsmatch(){
+    if(this.signupform.value.email !== this.signupform.value.emailconfrim){
+      this.emailmismatch = true;
+      return;
+
+    }
+    this.emailmismatch = false;
+  }
+
+  // passwords match
+
+  passwordsmatch(){
+    if(this.signupform.value.password1 !== this.signupform.value.password2){
+      this.passwordsmismatch = true;
+      return;
+    }
+    this.passwordsmismatch = false;
+
+  }
+
+  //sign up swing user
 
   signup(form:NgForm , event){
 
@@ -134,6 +171,8 @@ export class SwingersignupComponent implements OnInit {
       expandtoareacity: form.value.expandtoareacity,
       username: form.value.username,
       email: form.value.email,
+      approved: false,
+      is_active: false,
       password: form.value.password,
       swingtype: form.value.swingtype,
       birthdayone: form.value.birthdayone,
@@ -142,12 +181,15 @@ export class SwingersignupComponent implements OnInit {
       ethnicity2: form.value.ethnicity2,
       verificationphoto: null,
       verificationphotokey: null,
+      verificationphotocode: null,
       prelaunchsignup: false
 
     };
+    console.log('this is the payload');
+    console.log(payload);
 
-    const emailconfrim = form.value.password2;
-    const photo = event.target.files[0];
+    const photo = form.value.verificationupload;
+    console.log(photo);
     let databasekey = null;
     let uriroot = null;
     const presignedimageurl = s3presignedurl + 'image';
@@ -170,9 +212,20 @@ export class SwingersignupComponent implements OnInit {
           this.http.post(body.url, fd)
             .subscribe(
               (req: any) => {
-                payload.verificationphoto = uriroot + databasekey;
-                payload.verificationphotokey = databasekey;
+                const url = getdeleteverificationphotocodeurl + String(this.verificatonphotopobject.id) + '/' + String(this.verificatonphotopobject.code);
+                this.http.get(url)
+                  .subscribe(
+                    (req: any)=>{
+                      payload.verificationphoto = uriroot + databasekey;
+                      payload.verificationphotokey = databasekey;
+                      payload.verificationphotocode = this.verificatonphotopobject.code;
+                      this.http.post(createswingerurl, payload)
+                        .subscribe(
+                          (req: any)=>{
+                            console.log('it went the full way dude');
+                          });
 
+                    });
 
               });
         });
@@ -189,6 +242,7 @@ export class SwingersignupComponent implements OnInit {
       .subscribe(
         (req:any)=>{
           this.activecountries = req.body;
+          console.log(this.activecountries);
         });
 
     const swingtypeurl = swingtypeallorcreate;
@@ -210,6 +264,14 @@ export class SwingersignupComponent implements OnInit {
       .subscribe(
         (req:any)=>{
           this.allcountries = req.body;
+        }
+      );
+    this.http.post(postnewverificationphotocodeurl, null)
+      .subscribe(
+        (req: any)=>{
+          this.verificatonphotopobject = req.body;
+          console.log(this.verificatonphotopobject);
+
         }
       );
 
