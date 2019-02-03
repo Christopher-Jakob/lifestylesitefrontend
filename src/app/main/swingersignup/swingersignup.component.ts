@@ -162,23 +162,24 @@ export class SwingersignupComponent implements OnInit {
   signup(form:NgForm , event){
 
     let payload = {
-      country: form.value.country,
-      state: form.value.state,
-      city: form.value.city,
-      expandtoareaemail: form.value.expandtoareaemail,
-      expandtoareacountry: form.value.expandtoareacountry,
-      expandtoareastate: form.value.expandtoareastate,
-      expandtoareacity: form.value.expandtoareacity,
-      username: form.value.username,
-      email: form.value.email,
+      country: null,
+      state: null,
+      city: null,
+      expandtoareaemail: null,
+      expandtoareacountry: null,
+      expandtoareastate: null,
+      expandtoareacity: null,
+      username: null,
+      email: null,
       approved: false,
       is_active: false,
-      password: form.value.password,
-      swingtype: form.value.swingtype,
-      birthdayone: form.value.birthdayone,
-      birthdaytwo: form.value.birthdaytwo,
-      ethnicity1: form.value.ethnicity1,
-      ethnicity2: form.value.ethnicity2,
+      password: null,
+      hosttype: null,
+      swingerpreference: null,
+      birthdayone: null,
+      birthdaytwo: null,
+      ethnicity1: null,
+      ethnicity2: null,
       verificationphoto: null,
       verificationphotokey: null,
       verificationphotocode: null,
@@ -187,6 +188,29 @@ export class SwingersignupComponent implements OnInit {
     };
     console.log('this is the payload');
     console.log(payload);
+    if(form.value.country != null){
+      payload.country = form.value.country;
+      payload.state = form.value.state;
+      payload.city = form.value.city;
+      payload.username = form.value.username;
+      payload.email = form.value.email;
+      payload.password = form.value.password1;
+      payload.swingerpreference = form.value.swingtype;
+      payload.birthdayone = form.value.birthdayone;
+      if(form.value.birthdaytwo != null){
+        payload.birthdaytwo = form.value.birthdaytwo;
+      }
+      payload.ethnicity1 = form.value.ethnicity1;
+      if(form.value.ethnicity2 != null){
+        payload.ethnicity2 = form.value.ethnicity2;
+      }
+    }
+    if(form.value.expandtoareaemail != null){
+      payload.expandtoareaemail = form.value.expandtoareaemail;
+      payload.expandtoareacountry = form.value.expandtoareacountry;
+      payload.expandtoareastate = form.value.expandtoareastate;
+      payload.expandtoareacity = form.value.expandtoareacity;
+    }
 
     const photo = form.value.verificationupload;
     console.log(photo);

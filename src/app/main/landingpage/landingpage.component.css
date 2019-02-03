@@ -4,7 +4,7 @@ https://elements.envato.com/young-couple-at-the-bar-PHV84U9 */
 .splashbackground{
   height: 100vh;
   background-size: cover;
-  background-image: linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.7)), url("https://envato-shoebox-0.imgix.net/43c0/bdb6-de43-4938-9089-47e5dcebde48/BB-studio+sesion+zambete+stock-11525-Edit.jpg?auto=compress%2Cformat&fit=max&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark2.png&markalign=center%2Cmiddle&markalpha=18&w=1600&s=2695b4ca9eeb80ff67a6759abb8dce09");
+  background-image: linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.7)), url("src/assets/landingpage/landingpage.jpg");
 
 }
 

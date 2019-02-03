@@ -27,7 +27,13 @@ import { SwingerandhosttypesComponent } from './siteadmin/subcomponents/swingera
 import { SwingerhostsignupComponent } from './siteadmin/subcomponents/swingerhostsignup/swingerhostsignup.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { SextypeandethnictypesComponent } from './siteadmin/subcomponents/sextypeandethnictypes/sextypeandethnictypes.component';
+import {RouterModule, Routes} from '@angular/router';
 
+
+const appRoutes: Routes = [
+  {path: '', component: LandingpageComponent },
+  {path: 'siteadmin', component: SiteadminmainComponent}
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,10 +62,12 @@ import { SextypeandethnictypesComponent } from './siteadmin/subcomponents/sextyp
     BrowserModule,
     NgbModule,
     FormsModule,
+    RouterModule.forRoot(appRoutes),
     ScrollToModule.forRoot(),
     AppRoutingModule,
     HttpClientModule
   ],
+  exports:[RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

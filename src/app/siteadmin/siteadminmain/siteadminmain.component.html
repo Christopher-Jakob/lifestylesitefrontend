@@ -1,5 +1,21 @@
 <div class="container">
-  <div class="row">
+  <div *ngIf="!verified" class="row">
+    <form (ngSubmit)="passwordsubmit(passwordform)" #passwordform="ngForm">
+      <div class="col-12">
+        <input type="password"
+               ngModel
+               id="password"
+               name="password"
+               class="form-control">
+      </div>
+      <div class="col-12">
+        <div class="text-center">
+          <button class="btn btn-outline-dark">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="verified" class="row">
     <div class="col-12 mt-5 mb-5">
       <h1>Site Admin</h1>
     </div>
