@@ -122,7 +122,11 @@ https://elements.envato.com/young-couple-at-the-bar-PHV84U9 */
   }
 }
 
-
+.smallbutton{
+  position: absolute;
+  top: -1200px;
+  z-index: 2;
+}
 
 .swingersection{
   height: 100vh;

@@ -20,8 +20,8 @@
 <div id="place1"></div>
 <div #place2></div>
 -->
-        <div class="col-md-6  ">
-          <div class="row d-xs-none">
+        <div class="col-md-6 d-xs-none d-md-block ">
+          <div class="row">
             <div class="col-md-4 col-xs-6 swingerbuttondiv">
               <button [ngx-scroll-to]="swinger" class="btn btn-outline-light swingbutton">For Swingers</button>
             </div>
@@ -30,19 +30,34 @@
             </div>
           </div>
         </div>
-        <div class="col-12 d-md-none">
+        <div class="col-12 d-xs-none d-sm-block d-md-none">
           <div class="row">
             <div class="col-6">
               <div class="text-center">
-                <button [ngx-scroll-to]="swinger" class="btn btn-outline-light">For Swingers</button>
+                <button [ngx-scroll-to]="swinger" class="btn btn-outline-light smallbutton">For Swingers</button>
               </div>
             </div>
             <div class="col-6">
               <div class="text-center">
-                <button [ngx-scroll-to]="eventhost" class="btn btn-outline-light">For Event Hosts </button>
+                <button [ngx-scroll-to]="eventhost" class="btn btn-outline-light smallbutton">For Event Hosts </button>
               </div>
             </div>
           </div>
+        </div>
+        <div class="col-12 d-xs-block d-sm-none">
+          <div class="row">
+            <div class="col-12">
+              <div class="text-center">
+                <button [ngx-scroll-to]="swinger" class="btn btn-outline-danger">For Swingers</button>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="text-center">
+                <button [ngx-scroll-to]="eventhost" class="btn btn-outline-danger">For Event Hosts </button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
