@@ -141,17 +141,45 @@ https://elements.envato.com/young-couple-at-the-bar-PHV84U9 */
 }
 
 .swingsellsection{
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 
 .swingersell{
-  font-size: 3.3vh;
+  font-size: 30px;
   margin-left: 1vw;
 }
+
+@media only screen and (max-width: 770px) {
+  .swingersell{
+    font-size: 25px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .swingersell{
+    font-size: 20px;
+  }
+}
+
 
 .swingersingup{
   position: relative;
   top: -12vh;
   height: 100vh;
+}
+
+/* for small shim of launching in 2019
+
+ */
+
+.smallshim{
+
+}
+
+@media only screen and (max-width: 1000px) {
+  .smallshim{
+    position: relative;
+    top: 100px;
+  }
 }
 

@@ -62,13 +62,14 @@
       </div>
     </div>
     <div #swinger class="col-12 swingersection">
-      <div class="col-6 mt-5">
+      <div class="row">
+      <div class=" col-xs-12 col-md-6  mt-5">
         <div class="text-left">
           <h1>For Swingers</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-7 mt-5 rightborder">
+        <div class="col-xs-12 col-lg-7 mt-3 rightborder">
           <div class="row swingsellsection">
             <div class="col-12 mb-2 swingersell">
               100% Verified Users
@@ -96,20 +97,20 @@
             </div>
           </div>
         </div>
-        <div *ngIf="!swingercityrequestshow && !swingersignupsucess" class="col-5 swingersingup">
+        <div *ngIf="!swingercityrequestshow && !swingersignupsucess" class=" col-xs-12 col-lg-5 swingersingup">
           <form (ngSubmit)="swingersignup(swingersignupform)" #swingersignupform="ngForm">
           <div class="row">
             <div class="col-12">
-              <div class="text-left mt-5">
+              <div class="text-left mt-5 smallshim">
                 <h1>Launching In 2019</h1>
               </div>
             </div>
-            <div class="col-12 mt-5">
+            <div class="col-12 mt-5 smallshim">
               <h5>Want to know when the site goes live? Enter your closest city, swing preference, and email below and we'll keep you updated.</h5>
             </div>
-            <div class="col-12">
+            <div class="col-12 smallshim">
               <div class="row">
-                <div class="col-4 mt-5">
+                <div class="col-md-4 col-xs-6 mt-2">
                   <select id="countryswinger"
                           name="countryswinger"
                           ngModel
@@ -119,7 +120,7 @@
                     <option *ngFor="let c of activecountries" [value]="c.id">{{c.name}}</option>
                   </select>
                 </div>
-                <div class="col-4 mt-5">
+                <div class="col-md-4 col-xs-6 mt-2">
                   <select id="stateswinger"
                           name="stateswinger"
                           ngModel
@@ -129,7 +130,7 @@
                     <option *ngFor="let s of activestates" [value]="s.id">{{s.name}}</option>
                   </select>
                 </div>
-                <div class="col-4 mt-5">
+                <div class="col-md-4 col-xs-6 mt-2">
                   <select id="cityswinger"
                           name="cityswinger"
                           ngModel
@@ -138,7 +139,7 @@
                     <option *ngFor="let c of activecities" [value]="c.id">{{c.name}}</option>
                   </select>
                 </div>
-                <div class="col-6 mt-2">
+                <div class="col-md-4 col-xs-6 mt-2">
                   <select id="swingerpreference"
                           name="swingerpreference"
                           ngModel
@@ -147,7 +148,7 @@
                     <option *ngFor="let t of swingertypes" [value]="t.id">{{t.name}}</option>
                   </select>
                 </div>
-                <div class="col-6 mt-2">
+                <div class="col-md-4 col-xs-6 mt-2">
                   <input type="email"
                          id="swingeremail"
                          name="swingeremail"
@@ -158,12 +159,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 mt-2">
+            <div class="col-12 mt-2 smallshim">
               <div class="text-center">
                 <button (click)="toggleswingercityrequest()" class="btn btn-link">Wheres My Location?</button>
               </div>
             </div>
-            <div class="col-12 mt-3">
+            <div class="col-12 mt-3 smallshim">
               <div class="text-center">
                 <button class="btn btn-outline-secondary">Keep Me In Touch</button>
               </div>
@@ -280,7 +281,7 @@
           </div>
         </div>
       </div>
-
+      </div>
     </div> <!--this one-->
 
     <!-- host section -->
