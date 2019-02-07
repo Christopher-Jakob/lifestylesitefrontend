@@ -139,7 +139,7 @@
                     <option *ngFor="let c of activecities" [value]="c.id">{{c.name}}</option>
                   </select>
                 </div>
-                <div class="col-md-4 col-xs-6 mt-2">
+                <div class="col-md-6 col-xs-12 mt-2">
                   <select id="swingerpreference"
                           name="swingerpreference"
                           ngModel
@@ -148,7 +148,7 @@
                     <option *ngFor="let t of swingertypes" [value]="t.id">{{t.name}}</option>
                   </select>
                 </div>
-                <div class="col-md-4 col-xs-6 mt-2">
+                <div class="col-md-4 col-xs-12 mt-2">
                   <input type="email"
                          id="swingeremail"
                          name="swingeremail"
@@ -286,14 +286,14 @@
 
     <!-- host section -->
 
-    <div #eventhost class="col-12 swingersection">
-      <div class="col-6 mt-5">
+    <div #eventhost class="col-12 swingersection eventshim">
+      <div class="col-md-6 col-xs-12 mt-5">
         <div class="text-left">
           <h1>For Event Hosts</h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-7 mt-5 rightborder">
+        <div class=" col-xs-12 col-lg-7 mt-5 rightborder">
           <div class="row swingsellsection">
             <div class="col-12 mb-2 swingersell">
               100% Verified Users
@@ -318,18 +318,18 @@
             </div>
           </div>
         </div>
-        <div *ngIf="!swingercityrequestshow && !hostsignupsucess" class="col-5 swingersingup">
+        <div *ngIf="!swingercityrequestshow && !hostsignupsucess" class="col-xs-12 col-lg-5 swingersingup">
           <form (ngSubmit)="hostsignup(hostsignupform)" #hostsignupform="ngForm">
           <div class="row">
-            <div class="col-12">
+            <div class="col-12 smallshim">
               <div class="text-left mt-5">
                 <h1>Launching In 2019</h1>
               </div>
             </div>
-            <div class="col-12 mt-5">
+            <div class="col-12 mt-5 smallshim">
               <h5>Want to know when the site goes live? Enter your closest city, your host type, and email below and we'll keep you updated.</h5>
             </div>
-            <div class="col-4 mt-5">
+            <div class="col-md-4 col-xs-6 mt-2 smallshim">
               <select id="countryhost"
                       name="countryhost"
                       ngModel
@@ -339,7 +339,7 @@
                 <option *ngFor="let hc of activecountries" [value]="hc.id">{{hc.name}}</option>
               </select>
             </div>
-            <div class="col-4 mt-5">
+            <div class="col-md-4 col-xs-6 mt-2 smallshim">
               <select id="statehost"
                       name="statehost"
                       ngModel
@@ -349,7 +349,7 @@
                 <option *ngFor="let sa of activestates" [value]="sa.id">{{sa.name}}</option>
               </select>
             </div>
-            <div class="col-4 mt-5">
+            <div class="col-md-4 col-xs-6 mt-2 smallshim">
               <select id="cityhost"
                       name="cityhost"
                       ngModel
@@ -358,7 +358,7 @@
                 <option *ngFor="let ac of activecities" [value]="ac.id">{{ac.name}}</option>
               </select>
             </div>
-            <div class="col-6 mt-2">
+            <div class="col-md-6 col-xs-6 mt-2 smallshim">
               <select id="hosttype"
                       name="hosttype"
                       ngModel
@@ -367,7 +367,7 @@
                 <option *ngFor="let type of hosttypes" [value]="type.id">{{type.name}}</option>
               </select>
             </div>
-            <div class="col-6 mt-2">
+            <div class="col-md-6 col-xs-6 mt-2 smallshim">
               <input type="email"
                      id="hostemail"
                      name="hostemail"
@@ -376,12 +376,12 @@
                      class="form-control"
                      placeholder="Enter your Email">
             </div>
-            <div class="col-12 mt-2">
+            <div class="col-12 mt-2 smallshim">
               <div class="text-center">
                 <button (click)="toggleswingercityrequest()" class="btn btn-link">Wheres My Location?</button>
               </div>
             </div>
-            <div class="col-12 mt-3">
+            <div class="col-12 mt-3 smallshim">
               <div class="text-center">
                 <button class="btn btn-outline-secondary">Keep Me In Touch</button>
               </div>

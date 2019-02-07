@@ -183,3 +183,31 @@ https://elements.envato.com/young-couple-at-the-bar-PHV84U9 */
   }
 }
 
+/* tbis is all for the event host section droping down as the */
+.eventshim{
+
+}
+
+@media only screen and (max-width: 1000px) {
+  .eventshim{
+    position: relative;
+    top: 400px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .eventshim{
+    position: relative;
+    top: 500px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .eventshim{
+    position: relative;
+    top: 600px;
+  }
+}
+
+
+
