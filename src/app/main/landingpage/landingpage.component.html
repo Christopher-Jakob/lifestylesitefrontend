@@ -114,6 +114,7 @@
                   <select id="countryswinger"
                           name="countryswinger"
                           ngModel
+                          required
                           (ngModelChange)="getactivestatesbycountry(swingersignupform)"
                           class="form-control">
                     <option value="">Select Your Country</option>
@@ -124,6 +125,7 @@
                   <select id="stateswinger"
                           name="stateswinger"
                           ngModel
+                          required
                           (ngModelChange)="getactivecitiesbystate(swingersignupform)"
                           class="form-control">
                     <option value="">Select Your State</option>
@@ -134,6 +136,7 @@
                   <select id="cityswinger"
                           name="cityswinger"
                           ngModel
+                          required
                           class="form-control">
                     <option value="">Select Your City</option>
                     <option *ngFor="let c of activecities" [value]="c.id">{{c.name}}</option>
@@ -143,6 +146,7 @@
                   <select id="swingerpreference"
                           name="swingerpreference"
                           ngModel
+                          required
                           class="form-control">
                     <option value="">Select Your Swing Preference</option>
                     <option *ngFor="let t of swingertypes" [value]="t.id">{{t.name}}</option>
@@ -165,8 +169,11 @@
               </div>
             </div>
             <div class="col-12 mt-3 smallshim">
+              <div *ngIf="!swingersignupform.valid" class="text-center">
+                Please fill out form completely
+              </div>
               <div class="text-center">
-                <button class="btn btn-outline-secondary">Keep Me In Touch</button>
+                <button *ngIf="swingersignupform.valid" class="btn btn-outline-secondary">Keep Me In Touch</button>
               </div>
             </div>
           </div>
@@ -208,6 +215,7 @@
                     <select id="countryswingerrequest"
                             name="countryswingerrequest"
                             ngModel
+                            required
                             (ngModelChange)="getallstatesbycountry(swingerrequestform)"
                             class="form-control">
                       <option value="">Select Your Country</option>
@@ -218,6 +226,7 @@
                     <select id="stateswingerrequest"
                             name="stateswingerrequest"
                             ngModel
+                            required
                             (ngModelChange)="getallcitiesbystate(swingerrequestform)"
                             class="form-control">
                       <option value="">Select Your State</option>
@@ -228,6 +237,7 @@
                     <select id="cityswingerrequest"
                             name="cityswingerrequest"
                             ngModel
+                            required
                             class="form-control">
                       <option value="">Select Your City</option>
                       <option *ngFor="let ca of allcities" [value]="ca.id">{{ca.name}}</option>
@@ -237,6 +247,7 @@
                     <select id="swingerpreferencerequest"
                             name="swingerpreferencerequest"
                             ngModel
+                            required
                             class="form-control">
                       <option value="">Select Your Swing Preference</option>
                       <option *ngFor="let st of swingertypes" [value]="st.id">{{st.name}}</option>
@@ -256,9 +267,12 @@
                       <button (click)="toggleswingercityrequest()" class="btn btn-outline-secondary">Back</button>
                     </div>
                   </div>
-                  <div class="col-6 mt-5 mb-5">
+                  <div *ngIf="swingerrequestform.valid" class="col-6 mt-5 mb-5">
                     <div class="text-right">
                       <button type="submit" class="btn btn-outline-secondary">Request My City</button>
+                    </div>
+                    <div *ngIf="!swingerrequestform.valid" class="text-right">
+                      Please fill out form completely
                     </div>
                   </div>
                   <div *ngIf="swingercityrequestsucess" class="col-12 mt-5 swingersingup">
@@ -333,6 +347,7 @@
               <select id="countryhost"
                       name="countryhost"
                       ngModel
+                      required
                       (ngModelChange)="getactivestatesbycountry(hostsignupform)"
                       class="form-control">
                 <option value="">Select Your Country</option>
@@ -343,6 +358,7 @@
               <select id="statehost"
                       name="statehost"
                       ngModel
+                      required
                       (ngModelChange)="getactivecitiesbystate(hostsignupform)"
                       class="form-control">
                 <option value="">Select Your State</option>
@@ -353,6 +369,7 @@
               <select id="cityhost"
                       name="cityhost"
                       ngModel
+                      required
                       class="form-control">
                 <option value="">Select Your City</option>
                 <option *ngFor="let ac of activecities" [value]="ac.id">{{ac.name}}</option>
@@ -362,6 +379,7 @@
               <select id="hosttype"
                       name="hosttype"
                       ngModel
+                      required
                       class="form-control">
                 <option value="">Select Your Host Type</option>
                 <option *ngFor="let type of hosttypes" [value]="type.id">{{type.name}}</option>
@@ -382,7 +400,10 @@
               </div>
             </div>
             <div class="col-12 mt-3 smallshim">
-              <div class="text-center">
+              <div *ngIf="!hostsignupform.valid" class="text-center">
+                Please fill out form completely
+              </div>
+              <div *ngIf="hostrequestform.valid" class="text-center">
                 <button class="btn btn-outline-secondary">Keep Me In Touch</button>
               </div>
             </div>
@@ -423,6 +444,7 @@
               <select id="countryhostrequest"
                       name="countryhostrequest"
                       ngModel
+                      required
                       (ngModelChange)="getallstatesbycountry(hostrequestform)"
                       class="form-control">
                 <option value="">Select Your Country</option>
@@ -433,6 +455,7 @@
               <select id="stateshostrequest"
                       name="statehostrequest"
                       ngModel
+                      required
                       (ngModelChange)="getallcitiesbystate(hostrequestform)"
                       class="form-control">
                 <option value="">Select Your State</option>
@@ -443,6 +466,7 @@
               <select id="cityhostrequest"
                       name="cityhostrequest"
                       ngModel
+                      required
                       class="form-control">
                 <option value="">Select Your City</option>
                 <option *ngFor="let ac of allcities" [value]="ac.id">{{ac.name}}</option>
@@ -452,6 +476,7 @@
               <select id="hosttyperequest"
                       name="hosttyperequest"
                       ngModel
+                      required
                       class="form-control">
                 <option value="">Select Your Host Type</option>
                 <option *ngFor="let type of hosttypes" [value]="type.id">{{type.name}}</option>
@@ -472,7 +497,10 @@
               </div>
             </div>
             <div class="col-6 mt-5">
-              <div class="text-right">
+              <div *ngIf="!hostrequestform.valid" class="text-right">
+                Please fill out form compeletely
+              </div>
+              <div *ngIf="hostrequestform.valid" class="text-right">
                 <button class="btn btn-outline-secondary">Request My City</button>
               </div>
             </div>
