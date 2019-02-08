@@ -100,16 +100,11 @@
         <div *ngIf="!swingercityrequestshow && !swingersignupsucess" class=" col-xs-12 col-lg-5 swingersingup">
           <form (ngSubmit)="swingersignup(swingersignupform)" #swingersignupform="ngForm">
           <div class="row">
-            <div class="col-12">
-              <div class="text-left mt-5 smallshim">
-                <h1>Launching In 2019</h1>
-              </div>
-            </div>
             <div class="col-12 mt-5 smallshim">
-              <h5>Want to know when the site goes live? Enter your closest city, swing preference, and email below and we'll keep you updated.</h5>
+              <h5>Come Join us!</h5>
             </div>
             <div class="col-12 smallshim">
-              <div class="row">
+              <div *ngIf="!swingersignupform.valid || !swingersignupform.touched" class="row">
                 <div class="col-md-4 col-xs-6 mt-2">
                   <select id="countryswinger"
                           name="countryswinger"
@@ -142,24 +137,12 @@
                     <option *ngFor="let c of activecities" [value]="c.id">{{c.name}}</option>
                   </select>
                 </div>
-                <div class="col-md-6 col-xs-12 mt-2">
-                  <select id="swingerpreference"
-                          name="swingerpreference"
-                          ngModel
-                          required
-                          class="form-control">
-                    <option value="">Select Your Swing Preference</option>
-                    <option *ngFor="let t of swingertypes" [value]="t.id">{{t.name}}</option>
-                  </select>
-                </div>
-                <div class="col-md-4 col-xs-12 mt-2">
-                  <input type="email"
-                         id="swingeremail"
-                         name="swingeremail"
-                         ngModel
-                         required
-                         class="form-control"
-                         placeholder="Enter your Email">
+              </div>
+              <div *ngIf="swingersignupform.valid && swingersignupform.touched" class="row mt-5">
+                <div class="col-12">
+                  <div class="text-center">
+                    <button (click)="navtoswingersignup()" class="btn btn-outline-dark">Sign Up As A Swinger</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -168,34 +151,8 @@
                 <button (click)="toggleswingercityrequest()" class="btn btn-link">Wheres My Location?</button>
               </div>
             </div>
-            <div class="col-12 mt-3 smallshim">
-              <div *ngIf="!swingersignupform.valid" class="text-center">
-                Please fill out form completely
-              </div>
-              <div class="text-center">
-                <button *ngIf="swingersignupform.valid" class="btn btn-outline-secondary">Keep Me In Touch</button>
-              </div>
-            </div>
           </div>
           </form>
-          <div *ngIf="showfailtext" class="row mt-5">
-            <div class="col-12">
-              <div class="text-center">
-                <h4>{{failuretext}}</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div *ngIf="swingersignupsucess" class="col-5 mt-5 swingersingup">
-          <div class="row">
-            <div class="col-12">
-              <div class="text-center">
-                <h4>Your request to know when Libidinous Lounge launches has been received. You will receive an email
-                when we launch! </h4>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div *ngIf="swingercityrequestshow" class="col-lg-5 col-xs-12 mt-5 swingersingup">
@@ -335,15 +292,10 @@
         <div *ngIf="!swingercityrequestshow && !hostsignupsucess" class="col-xs-12 col-lg-5 swingersingup">
           <form (ngSubmit)="hostsignup(hostsignupform)" #hostsignupform="ngForm">
           <div class="row">
-            <div class="col-12 smallshim">
-              <div class="text-left mt-5">
-                <h1>Launching In 2019</h1>
-              </div>
-            </div>
             <div class="col-12 mt-5 smallshim">
-              <h5>Want to know when the site goes live? Enter your closest city, your host type, and email below and we'll keep you updated.</h5>
+              <h5>Come Join Us!</h5>
             </div>
-            <div class="col-md-4 col-xs-6 mt-2 smallshim">
+            <div *ngIf="!hostsignupform.valid || !hostsignupform.touched" class="col-md-4 col-xs-6 mt-2 smallshim">
               <select id="countryhost"
                       name="countryhost"
                       ngModel
@@ -354,7 +306,7 @@
                 <option *ngFor="let hc of activecountries" [value]="hc.id">{{hc.name}}</option>
               </select>
             </div>
-            <div class="col-md-4 col-xs-6 mt-2 smallshim">
+            <div *ngIf="!hostsignupform.vaild || !hostsignupform.touched" class="col-md-4 col-xs-6 mt-2 smallshim">
               <select id="statehost"
                       name="statehost"
                       ngModel
@@ -365,7 +317,7 @@
                 <option *ngFor="let sa of activestates" [value]="sa.id">{{sa.name}}</option>
               </select>
             </div>
-            <div class="col-md-4 col-xs-6 mt-2 smallshim">
+            <div *ngIf="!hostsignupform.vaild || !hostsignupform.touched" class="col-md-4 col-xs-6 mt-2 smallshim">
               <select id="cityhost"
                       name="cityhost"
                       ngModel
@@ -375,60 +327,21 @@
                 <option *ngFor="let ac of activecities" [value]="ac.id">{{ac.name}}</option>
               </select>
             </div>
-            <div class="col-md-6 col-xs-6 mt-2 smallshim">
-              <select id="hosttype"
-                      name="hosttype"
-                      ngModel
-                      required
-                      class="form-control">
-                <option value="">Select Your Host Type</option>
-                <option *ngFor="let type of hosttypes" [value]="type.id">{{type.name}}</option>
-              </select>
-            </div>
-            <div class="col-md-6 col-xs-6 mt-2 smallshim">
-              <input type="email"
-                     id="hostemail"
-                     name="hostemail"
-                     ngModel
-                     required
-                     class="form-control"
-                     placeholder="Enter your Email">
-            </div>
             <div class="col-12 mt-2 smallshim">
               <div class="text-center">
                 <button (click)="toggleswingercityrequest()" class="btn btn-link">Wheres My Location?</button>
               </div>
             </div>
-            <div class="col-12 mt-3 smallshim">
-              <div *ngIf="!hostsignupform.valid" class="text-center">
-                Please fill out form completely
-              </div>
-              <div *ngIf="hostrequestform.valid" class="text-center">
-                <button class="btn btn-outline-secondary">Keep Me In Touch</button>
+          </div>
+            <div *ngIf="hostsignupform.valid && hostsignupform.touched" class="row">
+              <div class="col-12">
+                <div class="text-center">
+                  <button class="btn btn-outline-dark">Join As A Event Host</button>
+                </div>
               </div>
             </div>
-          </div>
           </form>
-          <div *ngIf="showfailtext" class="row mt-5">
-            <div class="col-12">
-              <div class="text-center">
-                <h4>{{failuretext}}</h4>
-              </div>
-            </div>
-          </div>
         </div>
-
-        <div *ngIf="hostsignupsucess" class="col-5 mt-5 swingersingup">
-          <div class="row">
-            <div class="col-12">
-              <div class="text-center">
-                <h4>Your request to know when Libidinous Lounge launches has been received. You will receive an email
-                  when we launch! </h4>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div *ngIf="swingercityrequestshow" class="col-lg-5 col-xs-12 mt-5 swingersingup">
           <form (ngSubmit)="hostcityrequest(hostrequestform)" #hostrequestform="ngForm">
           <div class="row">

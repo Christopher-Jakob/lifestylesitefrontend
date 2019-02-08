@@ -3,4 +3,4 @@ import {rootuserurl} from '../userrooturl/userrooturl';
 
 export const userurl = rootuserurl + 'user';
 
-export const createswingerurl = rootuserurl + userurl + '/swinger';
+export const createswingerurl = userurl + '/swinger';

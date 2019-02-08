@@ -32,6 +32,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
   {path: '', component: LandingpageComponent },
+  {path: 'swingersignup', component: SwingersignupComponent},
   {path: 'siteadmin', component: SiteadminmainComponent}
 ];
 @NgModule({

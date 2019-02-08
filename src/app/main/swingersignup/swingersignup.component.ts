@@ -175,7 +175,7 @@ export class SwingersignupComponent implements OnInit {
       is_active: false,
       password: null,
       hosttype: null,
-      swingerpreference: null,
+      swingertype: null,
       birthdayone: null,
       birthdaytwo: null,
       ethnicity1: null,
@@ -189,13 +189,14 @@ export class SwingersignupComponent implements OnInit {
     console.log('this is the payload');
     console.log(payload);
     if(form.value.country != null){
+      console.log('it went past the null nigga');
       payload.country = form.value.country;
       payload.state = form.value.state;
       payload.city = form.value.city;
       payload.username = form.value.username;
       payload.email = form.value.email;
       payload.password = form.value.password1;
-      payload.swingerpreference = form.value.swingtype;
+      payload.swingertype = form.value.swingtype;
       payload.birthdayone = form.value.birthdayone;
       if(form.value.birthdaytwo != null){
         payload.birthdaytwo = form.value.birthdaytwo;
@@ -260,7 +261,7 @@ export class SwingersignupComponent implements OnInit {
 
 
   ngOnInit() {
-
+    window.scrollTo(0,0);
     const activecountriesurl = countriesbystatus + 'active';
     this.http.get(activecountriesurl)
       .subscribe(
