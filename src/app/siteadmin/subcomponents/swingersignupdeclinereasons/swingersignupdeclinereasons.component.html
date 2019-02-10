@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h4>Swinger Sign Up Decline Reasons</h4>
+    </div>
+  </div>
+  <form (ngSubmit)="adddeclinereason(declinereasonform)" #declinereasonform="ngForm">
+    <div class="row mt-3 mb-5">
+      <div class="col-9">
+        <input type="text"
+               id="declinereasonadd"
+               name="declinereasonadd"
+               ngModel
+               class="form-control"
+               placeholder="add a decline reason">
+      </div>
+      <div class="col-3">
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+      </div>
+    </div>
+    <div *ngFor="let reason of declinereasons; let i = index" class="row">
+      <div class="col-9">
+        <span class="badge badge-pill badge-secondary">{{reason.name}}</span>
+      </div>
+      <div class="col-3">
+        <button (click)="deletereason(i)" class="badge badge-pill badge-danger">Delete</button>
+      </div>
+    </div>
+  </form>
+</div>
