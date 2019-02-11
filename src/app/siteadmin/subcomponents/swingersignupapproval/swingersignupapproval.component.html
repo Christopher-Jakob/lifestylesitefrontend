@@ -1,41 +1,58 @@
 <div class="container">
-  <div class="col-12 mb-5">
-    <h3>Swinger Sign Up Requests</h3>
-  </div>
   <div class="row">
-    <div class="col-6">
+    <div class="col-9 mb-5">
+      <h3>Swinger Sign Up Requests</h3>
+    </div>
+    <div class="col-3 mb-5">
+      <div class="text-right">
+        <h3>{{swingerapplicationhold.length + swingerapplicationlistpool.length}}</h3>
+      </div>
+    </div>
+  </div>
+  <div  class="row">
+    <div *ngFor="let swinger of swingerapplicationhold; let i =index" class="col-6">
       <div class="row">
         <div class="col-12 mb-4">
-          <img class=img-fluid src="https://dq1eylutsoz4u.cloudfront.net/2018/01/25162144/relationship-tips-happy-couples.jpg">
+          <img class=img-fluid [src]="swinger.verificationphoto">
         </div>
         <div class="col-12">
           <div class="text-center">
-            <h4>Validation Code: 12345</h4>
+            <h4>Validation Code: {{swinger.verificationphotocode}}</h4>
           </div>
         </div>
         <div class="col-3">
           <div class="text-left">
-            <h5>sex 1</h5>
+            <h5>{{swinger.swingertype.sex1.name}}</h5>
           </div>
         </div>
         <div class="col-3">
           <div class="text-left">
-            <h5>age 1</h5>
+            <h5>{{swinger.birthday1}}</h5>
           </div>
         </div>
-        <div class="col-3">
+        <div *ngIf="swinger.swingertype.sex2 != null" class="col-3">
           <div class="text-left">
-            <h5>sex 2</h5>
+            <h5>{{swinger.swingertype.sex2.name}}</h5>
           </div>
         </div>
-        <div class="col-3">
+        <div *ngIf="swinger.birthday2 != null" class="col-3">
           <div class="text-left">
-            <h5>age 2</h5>
+            <h5>{{swinger.birthday2}}</h5>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="text-center">
+            <h5>{{swinger.ethnicity1.name}}</h5>
+          </div>
+        </div>
+        <div *ngIf="swinger.ethnicity2 != null" class="col-6">
+          <div class="text-center">
+            <h5>{{swinger.ethnicity2.name}}</h5>
           </div>
         </div>
         <div class="col-12">
           <div class="text-center">
-            <h5>Swinger Type: Couple Man & Woman</h5>
+            <h5>Swinger Type: {{swinger.swingertype.name}}</h5>
           </div>
         </div>
         <div *ngIf="!activatedecline" class="col-6">
@@ -48,7 +65,7 @@
           <h5>Decline Reason</h5>
         </div>
         <div *ngIf="activatedecline" class="col-12">
-          <form (ngSubmit)="submitdeclinereason()" #declinereasonform="ngForm">
+          <form (ngSubmit)="submitdeclinereason(i, declinereasonform)" #declinereasonform="ngForm">
             <div class="row">
               <div class="col-3">
                 <button (click)="toggledeclinereason()" class="btn btn-outline-dark">Cancel</button>
