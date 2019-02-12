@@ -1,0 +1,33 @@
+<div class="container">
+  <form (ngSubmit)="updatepreferedswingtypes()" #preferedswingtypesform="ngForm">
+    <div class="row">
+      <div class="col-12 mt-5 mb-5">
+        <h5>Preferred Swinger Types</h5>
+      </div>
+    </div>
+    <div  class="row">
+      <div *ngFor="let pref of swingtypes" class="col-3 mb-3">
+        <div class="row">
+          <div class="col-auto">
+            <label class="form-check-label">{{pref.name}}</label>
+          </div>
+          <div class="col-auto">
+            <input type="checkbox"
+                   [id]="pref.pk"
+                   [name]="pref.name"
+                   ngModel
+                   [value]="pref.pk"
+                   class="form-check">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="text-center">
+          <button type="submit" class="btn btn-outline-dark">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
