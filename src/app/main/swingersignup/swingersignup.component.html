@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div *ngIf="!showsignupsucess" class="row">
     <div class="col-7">
       <div class="row">
         <div class="col-12 mb-3 mt-3">
@@ -251,12 +251,13 @@
             <h3>Verification</h3>
           </div>
           <div *ngIf="!verificationuploadshow && !locationexpandshow" class="col-12 mb-5">
-            <p>Please upload a untouched picture that we can clearly see <span *ngIf="!couplesignup">your</span> <span *ngIf="couplesignup">both of yours</span> face.
+            <p>Please upload a untouched, unehanced picture that we can clearly see <span *ngIf="!couplesignup">your</span> <span *ngIf="couplesignup">both of yours</span> face.
               You must be holding a sign that has the verification code below. This code is unique to this sign up attempt.
-              This process allows us to verify everyone who signs up for our community is who they say they are.
-              After we have verified that your photo matches what you are signing up as, we will approve your profile!
-              The uploaded image is automatically deleted after our verification team views it.
-              Having a safe and secure community is very important to us at Lifestyle Tribe.
+              This process allows us to verify that those who sign up for our community are who they say they are. Pictures are encrypted and viewable by only one
+              person on a specific computer on a specific network throughout the world.
+              After your photo is verified, your profile will be approved!
+              The uploaded image is automatically deleted after our verification process.
+              Having a safe and secure community is very important to us at Libidious Lounge.
             </p>
             <div class="text-center mt-1">
               <p>Below is an example of an acceptable image.</p>
@@ -278,6 +279,7 @@
               <input type="file"
                      id="verificationupload"
                      name="verificationupload"
+                     (change)="setphoto($event)"
                      ngModel
                      required
                      class="form-control-file">
@@ -294,7 +296,7 @@
           </div>
           <div *ngIf="!locationexpandshow && signupform.valid && !emailmismatch && !passwordsmismatch" class="col-12 mt-5 mb-5">
             <div class="text-center">
-              <button type="submit" class="btn btn-outline-primary">Sign Up For cool ass thing</button>
+              <button type="submit" class="btn btn-outline-primary">Sign Up For Libidinous Lounge </button>
             </div>
           </div>
           </form>
@@ -308,7 +310,7 @@
     </div>
   </div>
 
-<div class="container mt-5 mb-5">
+<div *ngIf="showsignupsucess" class="container mt-5 mb-5">
   <div class="row">
     <div class="col-12 mt-5">
       <div class="text-center mt-5 mb-5">
@@ -319,7 +321,7 @@
         your verification photo and send you an email with our decision!</h5>
       </div>
       <div class="text-center mt-5 mb-5">
-        <h5>Thank you for signing up for Lifestyle Tribe!</h5>
+        <h5>Thank you for signing up for Libidinous Lounge!</h5>
       </div>
     </div>
   </div>

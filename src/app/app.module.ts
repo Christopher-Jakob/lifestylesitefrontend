@@ -28,6 +28,9 @@ import { SwingerhostsignupComponent } from './siteadmin/subcomponents/swingerhos
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { SextypeandethnictypesComponent } from './siteadmin/subcomponents/sextypeandethnictypes/sextypeandethnictypes.component';
 import {RouterModule, Routes} from '@angular/router';
+import { SwingersignupapprovalComponent } from './siteadmin/subcomponents/swingersignupapproval/swingersignupapproval.component';
+import { SwingersignupdeclinereasonsComponent } from './siteadmin/subcomponents/swingersignupdeclinereasons/swingersignupdeclinereasons.component';
+import { PreferedswingertypesComponent } from './swinger/preferencesandsettings/subcomponents/preferedswingertypes/preferedswingertypes.component';
 
 
 const appRoutes: Routes = [
@@ -57,7 +60,10 @@ const appRoutes: Routes = [
     LocationsComponent,
     SwingerandhosttypesComponent,
     SwingerhostsignupComponent,
-    SextypeandethnictypesComponent
+    SextypeandethnictypesComponent,
+    SwingersignupapprovalComponent,
+    SwingersignupdeclinereasonsComponent,
+    PreferedswingertypesComponent
   ],
   imports: [
     BrowserModule,

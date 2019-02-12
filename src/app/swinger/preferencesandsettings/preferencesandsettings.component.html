@@ -4,25 +4,10 @@
       <h3>Preferences</h3>
       <hr>
     </div>
-    <div class="col-12 mb-5">
-      <h5>Preferred Swing Types</h5>
+    <div class="col-12">
+      <app-preferedswingertypes></app-preferedswingertypes>
     </div>
-    <div *ngFor="let pref of swingoptions" class="col-3 mb-3">
-      <div class="row">
-        <div class="col-auto">
-          <label class="form-check-label">{{pref.name}}</label>
-        </div>
-        <div class="col-auto">
-          <input type="checkbox"
-                 [id]="pref.value"
-                 [name]="pref.value"
-                 ngModel
-                 class="form-check">
 
-        </div>
-      </div>
-      <hr>
-    </div>
     <div class="col-12 mb-5">
       <h5>Preferred Ethnicities</h5>
     </div>
@@ -104,7 +89,8 @@
           Please upload a photo of <span *ngIf="!couplesignup">you</span> <span *ngIf="couplesignup">both of you</span>
           showing as much skin as you are comfortable with. You do not have to be nude. In this picture please include
           a sign with the verification code clearly visible below. This verification code is unique to this body type verification
-          attempt. Your body type will be set by our verification team after review. You may re verify at any time.
+          attempt. Your body type will be set by our verification team after review. You may re verify at any time. You will be required to
+          reverify every three months.
         </div>
         <div *ngIf="!verificationphotosent" class="col-12 mb-3">
           <div class="text-center">

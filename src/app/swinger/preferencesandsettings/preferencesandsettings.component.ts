@@ -109,7 +109,7 @@ export class PreferencesandsettingsComponent implements OnInit {
       value: 'ave'
     },
     {
-      name: 'Husky',
+      name: 'Plump',
       value: 'h'
     },
     {

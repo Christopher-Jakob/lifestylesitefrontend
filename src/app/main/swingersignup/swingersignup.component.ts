@@ -13,6 +13,7 @@ import {s3presignedurl} from '../../urls/awsurls/awsurls';
 import {createswingerurl} from '../../urls/userurls/userurl/userurl';
 import {getdeleteverificationphotocodeurl, postnewverificationphotocodeurl} from '../../urls/verificationphotourls/codeurls/codeurls';
 
+
 @Component({
   selector: 'app-swingersignup',
   templateUrl: './swingersignup.component.html',
@@ -42,10 +43,23 @@ export class SwingersignupComponent implements OnInit {
   //boolean if passwords match or not
   passwordsmismatch = false;
 
+  //show sign up sucess content
+  showsignupsucess = false;
+
+  //image holder
+  verificationimage;
+
+
+  //sets photo from browser upload event
+  setphoto(event){
+    this.verificationimage = event.target.files[0];
+
+  }
+
 
 
   togglelocationexpandshow(){
-    this.locationexpandshow = !this.locationexpandshow
+    this.locationexpandshow = !this.locationexpandshow;
   }
 
   toggleverificationshow(){
@@ -205,15 +219,19 @@ export class SwingersignupComponent implements OnInit {
       if(form.value.ethnicity2 != null){
         payload.ethnicity2 = form.value.ethnicity2;
       }
+      payload.verificationphotocode = this.verificatonphotopobject.code;
     }
     if(form.value.expandtoareaemail != null){
       payload.expandtoareaemail = form.value.expandtoareaemail;
       payload.expandtoareacountry = form.value.expandtoareacountry;
       payload.expandtoareastate = form.value.expandtoareastate;
       payload.expandtoareacity = form.value.expandtoareacity;
-    }
 
-    const photo = form.value.verificationupload;
+    }
+    console.log('this is the payload');
+    console.log(payload);
+
+    const photo = this.verificationimage;
     console.log(photo);
     let databasekey = null;
     let uriroot = null;
@@ -243,11 +261,10 @@ export class SwingersignupComponent implements OnInit {
                     (req: any)=>{
                       payload.verificationphoto = uriroot + databasekey;
                       payload.verificationphotokey = databasekey;
-                      payload.verificationphotocode = this.verificatonphotopobject.code;
                       this.http.post(createswingerurl, payload)
                         .subscribe(
                           (req: any)=>{
-                            console.log('it went the full way dude');
+                            this.showsignupsucess = true;
                           });
 
                     });

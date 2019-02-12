@@ -56,19 +56,19 @@
           </div>
         </div>
         <div *ngIf="!activatedecline" class="col-6">
-          <button (click)="toggledeclinereason()" class="btn btn-outline-danger form-control">Decline</button>
+          <button (click)="toggledeclinereason(i)" class="btn btn-outline-danger form-control">Decline</button>
         </div>
         <div *ngIf="!activatedecline" class="col-6">
-          <button class="btn btn-outline-success form-control">Accept</button>
+          <button (click)="approvaldecision(i, null, false)" class="btn btn-outline-success form-control">Accept</button>
         </div>
-        <div *ngIf="activatedecline" class="col-12 mt-4">
+        <div *ngIf="activatedecline && selectedindex === i" class="col-12 mt-4">
           <h5>Decline Reason</h5>
         </div>
-        <div *ngIf="activatedecline" class="col-12">
-          <form (ngSubmit)="submitdeclinereason(i, declinereasonform)" #declinereasonform="ngForm">
+        <div *ngIf="activatedecline && selectedindex === i" class="col-12">
+          <form  #declinereasonform="ngForm">
             <div class="row">
               <div class="col-3">
-                <button (click)="toggledeclinereason()" class="btn btn-outline-dark">Cancel</button>
+                <button (click)="toggledeclinereason(null)" class="btn btn-outline-dark">Cancel</button>
               </div>
               <div class="col-9">
                 <select id="declinereason"
@@ -82,7 +82,7 @@
               </div>
               <div class="col-12 mt-3">
                 <div class="text-center">
-                  <button [disabled]="!declinereasonform.valid" type="submit" class="btn btn-outline-dark">Submit</button>
+                  <button (click)="approvaldecision(i, declinereasonform, true)" [disabled]="!declinereasonform.valid"  class="btn btn-outline-dark">Submit</button>
                 </div>
               </div>
             </div>

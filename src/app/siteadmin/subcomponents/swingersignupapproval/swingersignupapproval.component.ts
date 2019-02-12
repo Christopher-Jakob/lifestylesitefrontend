@@ -3,6 +3,7 @@ import {Httpservice} from '../../../services/httpservice/httpservice';
 import {getpostallswingersignupdeclinereasons} from '../../../urls/siteadminurls/settingsurls/swingerdeclinereasonurls/swingerdeclinereasonsurls';
 import {getswingerapplicationlist} from '../../../urls/userurls/swingerurls/swingerurls/swingerurls';
 import {TimeAndDateTools} from '../../../tools/timeanddatetools/timeanddatetools';
+import {swingerdeclineaccept} from '../../../urls/userurls/userurl/userurl';
 
 @Component({
   selector: 'app-swingersignupapproval',
@@ -12,7 +13,7 @@ import {TimeAndDateTools} from '../../../tools/timeanddatetools/timeanddatetools
 })
 export class SwingersignupapprovalComponent implements OnInit {
 
-  constructor(private http: Httpservice, private datetools:TimeAndDateTools) { }
+  constructor(private http: Httpservice, private datetools: TimeAndDateTools) { }
 
   // pool of swinger requests coming from the database
   swingerapplicationlistpool = [];
@@ -26,9 +27,13 @@ export class SwingersignupapprovalComponent implements OnInit {
   // show unshow decline reason form
   activatedecline = false;
 
+  // selects the swinger request on which to show the decline form
+  selectedindex;
+
   //toggle show decline reason form
-  toggledeclinereason(){
+  toggledeclinereason(index){
     this.activatedecline = !this.activatedecline;
+    this.selectedindex = index;
   }
 
   // populates the swinger hold from the swinger list max populate is 2
@@ -51,15 +56,33 @@ export class SwingersignupapprovalComponent implements OnInit {
     }
   }
 
-  submitdeclinereason(index, form){
-    const pk  = this.swingerapplicationhold[index].user.pk;
-    const payload = {
-      declinereason: form.value.declinereason,
-      
-    };
+  approvaldecision(index, form, decline){
+    const pk  = this.swingerapplicationhold[index].user.id;
+    let payload = null;
+    if(decline){
+      payload = {
+        declinereason: form.value.declinereason,
+        decline: true,
+        pk: pk
+      };
+    }
+    if(!decline) {
+      payload = {
+        declinereason: null,
+        decline: false,
+        pk: pk
+      };
+    }
+      this.http.put(swingerdeclineaccept, payload)
+        .subscribe(
+          (req: any)=>{
+            this.swingerapplicationhold.splice(index, 1);
+            this.populateswingerapplicationhold();
 
+          });
 
-  }
+    }
+
 
   ngOnInit() {
 
