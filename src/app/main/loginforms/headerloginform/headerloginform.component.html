@@ -1,0 +1,62 @@
+<div class="container-fluid mt-3 mb-3">
+  <div class="row">
+    <div class="col-3 mt-2 mr-1">
+      <input type="email"
+             id="loginemail"
+             name="loginemail"
+             ngModel
+             placeholder="Email"
+             class="form-control">
+    </div>
+    <div class="col-3 mt-2 mr-1">
+      <input type="password"
+             id="password"
+             name="password"
+             ngModel
+             placeholder="Password"
+             class="form-control">
+    </div>
+    <div class="col-5 mt-2">
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6">
+              <div class="text-center">
+                <a>Forgot Password</a>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <div class="col-auto">
+                  <input type="checkbox"
+                         id="remembercheckbox"
+                         name="remembercheckbox"
+                         ngModel
+                         class="form-check">
+                </div>
+                <div class="col-auto">
+                  <label class="form-check-label">Remember Me</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-6 mt-1">
+              <div class="text-center">
+                <button type="submit"
+                        class="btn btn-outline-dark">Log In</button>
+              </div>
+            </div>
+            <div class="col-6 mt-1">
+              <div class="text-center">
+                <button (click)="sendshowhidecommand()" class=" btn btn-outline-dark">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
