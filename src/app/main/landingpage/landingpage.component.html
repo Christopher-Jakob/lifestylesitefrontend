@@ -1,13 +1,21 @@
+<app-headerloginform *ngIf="showloginform"></app-headerloginform>
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 splashbackground">
       <div class="row">
+        <div class="col-3 offset-9 mt-3">
+          <div class="text-center">
+            <a *ngIf="!showloginform" (click)="sendshowhidecommand()"><h5 class="memberlink">Members</h5></a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-sm-6 col-xs-12">
           <div class="text-left sitename">
-            Libidinous Lounge
+            Libertine Connect
           </div>
           <div class="text-left sitesell1">
-            100% Verified Users
+            100% Verified Swingers and Fetishists
           </div>
           <div class="text-left sitesell2">
             100% Free To Connect
@@ -23,7 +31,7 @@
         <div class="col-md-6 d-xs-none d-md-block ">
           <div class="row">
             <div class="col-md-4 col-xs-6 swingerbuttondiv">
-              <button [ngx-scroll-to]="swinger" class="btn btn-outline-light swingbutton">For Swingers</button>
+              <button [ngx-scroll-to]="swinger" class="btn btn-outline-light swingbutton">For Play</button>
             </div>
             <div class="col-md-4 col-xs-6 hostbuttondiv">
               <button [ngx-scroll-to]="eventhost" class="btn btn-outline-light swingbutton">For Event Hosts </button>
@@ -65,7 +73,7 @@
       <div class="row">
       <div class=" col-xs-12 col-md-6  mt-5">
         <div class="text-left">
-          <h1>For Swingers</h1>
+          <h1>For Swingers And Fetishists</h1>
         </div>
       </div>
       <div class="row">
@@ -90,7 +98,7 @@
               Optionally Filter By Verified Body Types
             </div>
             <div class="col-12 mb-2 swingersell">
-              Host And Attend Parties, Buy Tickets To Lifestyle Clubs
+              Host And Attend Parties, Buy Tickets To Lifestyle And Fetish Clubs
             </div>
             <div class="col-12 mb-2 swingersell">
               Join And Create Interest Groups

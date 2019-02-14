@@ -7,6 +7,7 @@ import {swingtypeallorcreate} from '../../urls/siteadminurls/settingsurls/swingt
 import {hosttypeallorcreate} from '../../urls/siteadminurls/settingsurls/hosttypeurls/hosttypeurls';
 import {userurl} from '../../urls/userurls/userurl/userurl';
 import {Router} from '@angular/router';
+import {ShowHideService} from '../../services/controlservices/showhideservice/showhideservice';
 
 
 @Component({
@@ -18,7 +19,7 @@ import {Router} from '@angular/router';
 export class LandingpageComponent implements OnInit {
 
 
-  constructor(private http: Httpservice, private router: Router) { }
+  constructor(private http: Httpservice, private router: Router, private showhideservice: ShowHideService) { }
   // swinger sign up show request city boolean
   swingercityrequestshow = false;
 
@@ -40,6 +41,21 @@ export class LandingpageComponent implements OnInit {
 
   toggleswingercityrequest(){
     this.swingercityrequestshow = !this.swingercityrequestshow;
+  }
+
+  //show login form
+  showloginform = false;
+
+  toggleshowloginform(){
+    this.showloginform = !this.showloginform;
+  }
+
+  // landing page login subscription holder var
+  showhidelandingpagesubject;
+
+  // landing page login send show hide command
+  sendshowhidecommand(){
+    this.showhideservice.sendchangelandingpageloginshowhide();
   }
 
   // swinger sign up code
@@ -201,6 +217,16 @@ export class LandingpageComponent implements OnInit {
 
 
   ngOnInit() {
+
+    // subscribe to the landing page login show hide service
+    this.showhidelandingpagesubject = this.showhideservice.receivechangelandingpageloginshowhide()
+      .subscribe(
+        (req: any)=>{
+          if(req != null){
+            this.toggleshowloginform();
+          }
+        }
+      );
     // get all active countries;
     const url = countriesbystatus + 'active';
     this.http.get(url)

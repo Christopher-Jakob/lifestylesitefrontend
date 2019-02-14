@@ -6,17 +6,128 @@
       </div>
     </div>
     <div  class="row">
-      <div *ngFor="let pref of swingtypes" class="col-3 mb-3">
+      <div class="col-3 mb-3">
         <div class="row">
           <div class="col-auto">
-            <label class="form-check-label">{{pref.name}}</label>
+            <label class="form-check-label">Single Woman</label>
           </div>
           <div class="col-auto">
             <input type="checkbox"
-                   [id]="pref.pk"
-                   [name]="pref.name"
+                   id="singlewoman"
+                   name="singlewoman"
                    ngModel
-                   [value]="pref.pk"
+                   class="form-check">
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mb-3">
+        <div class="row">
+          <div class="col-auto">
+            <label class="form-check-label">Single Man</label>
+          </div>
+          <div class="col-auto">
+            <input type="checkbox"
+                   id="singleman"
+                   name="singleman"
+                   ngModel
+                   class="form-check">
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mb-3">
+        <div class="row">
+          <div class="col-auto">
+            <label class="form-check-label">Single TS</label>
+          </div>
+          <div class="col-auto">
+            <input type="checkbox"
+                   id="singlets"
+                   name="singlets"
+                   ngModel
+                   class="form-check">
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mb-3">
+        <div class="row">
+          <div class="col-auto">
+            <label class="form-check-label">Couple Man & Woman</label>
+          </div>
+          <div class="col-auto">
+            <input type="checkbox"
+                   id="couplemanwoman"
+                   name="couplemanwoman"
+                   ngModel
+                   class="form-check">
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mb-3">
+        <div class="row">
+          <div class="col-auto">
+            <label class="form-check-label">Couple Woman & Woman</label>
+          </div>
+          <div class="col-auto">
+            <input type="checkbox"
+                   id="couplewomanwoman"
+                   name="couplewomanwoman"
+                   ngModel
+                   class="form-check">
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mb-3">
+        <div class="row">
+          <div class="col-auto">
+            <label class="form-check-label">Couple Man & Man</label>
+          </div>
+          <div class="col-auto">
+            <input type="checkbox"
+                   id="couplemanman"
+                   name="couplemanman"
+                   ngModel
+                   class="form-check">
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mb-3">
+        <div class="row">
+          <div class="col-auto">
+            <label class="form-check-label">Couple TS & TS</label>
+          </div>
+          <div class="col-auto">
+            <input type="checkbox"
+                   id="coupletsts"
+                   name="coupletsts"
+                   ngModel
+                   class="form-check">
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mb-3">
+        <div class="row">
+          <div class="col-auto">
+            <label class="form-check-label">Couple Man & TS</label>
+          </div>
+          <div class="col-auto">
+            <input type="checkbox"
+                   id="couplemants"
+                   name="couplemants"
+                   ngModel
+                   class="form-check">
+          </div>
+        </div>
+      </div>
+      <div class="col-3 mb-3">
+        <div class="row">
+          <div class="col-auto">
+            <label class="form-check-label">Couple Woman & TS</label>
+          </div>
+          <div class="col-auto">
+            <input type="checkbox"
+                   id="couplewomants"
+                   name="couplewomants"
+                   ngModel
                    class="form-check">
           </div>
         </div>

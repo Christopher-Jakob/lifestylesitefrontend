@@ -31,6 +31,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { SwingersignupapprovalComponent } from './siteadmin/subcomponents/swingersignupapproval/swingersignupapproval.component';
 import { SwingersignupdeclinereasonsComponent } from './siteadmin/subcomponents/swingersignupdeclinereasons/swingersignupdeclinereasons.component';
 import { PreferedswingertypesComponent } from './swinger/preferencesandsettings/subcomponents/preferedswingertypes/preferedswingertypes.component';
+import { HeaderloginformComponent } from './main/loginforms/headerloginform/headerloginform.component';
 
 
 const appRoutes: Routes = [
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     SextypeandethnictypesComponent,
     SwingersignupapprovalComponent,
     SwingersignupdeclinereasonsComponent,
-    PreferedswingertypesComponent
+    PreferedswingertypesComponent,
+    HeaderloginformComponent
   ],
   imports: [
     BrowserModule,
