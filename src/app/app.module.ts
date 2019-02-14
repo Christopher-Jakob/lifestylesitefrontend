@@ -32,6 +32,7 @@ import { SwingersignupapprovalComponent } from './siteadmin/subcomponents/swinge
 import { SwingersignupdeclinereasonsComponent } from './siteadmin/subcomponents/swingersignupdeclinereasons/swingersignupdeclinereasons.component';
 import { PreferedswingertypesComponent } from './swinger/preferencesandsettings/subcomponents/preferedswingertypes/preferedswingertypes.component';
 import { HeaderloginformComponent } from './main/loginforms/headerloginform/headerloginform.component';
+import {Httpservice} from './services/httpservice/httpservice';
 
 
 const appRoutes: Routes = [
@@ -77,7 +78,7 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   exports:[RouterModule],
-  providers: [],
+  providers: [Httpservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Httpservice} from '../../services/httpservice/httpservice';
 import {countriesbystatus} from '../../urls/siteadminurls/settingsurls/countryurls/countryurls';
 import {NgForm} from '@angular/forms';
@@ -16,7 +16,7 @@ import {ShowHideService} from '../../services/controlservices/showhideservice/sh
   styleUrls: ['./landingpage.component.css'],
   providers: [Httpservice]
 })
-export class LandingpageComponent implements OnInit {
+export class LandingpageComponent implements OnInit, OnDestroy {
 
 
   constructor(private http: Httpservice, private router: Router, private showhideservice: ShowHideService) { }
@@ -259,6 +259,10 @@ export class LandingpageComponent implements OnInit {
           this.hosttypes = req.body;
         }
       );
+  }
+
+  ngOnDestroy(){
+    this.showhidelandingpagesubject.unsubscribe();
   }
 
 }

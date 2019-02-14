@@ -66,14 +66,14 @@ https://elements.envato.com/young-couple-at-the-bar-PHV84U9 */
 }
 
 .sitesell1{
-  font-size: 45px;
+  font-size: 35px;
   padding-top: 25vh;
   color: white;
   padding-left: 10vw;
 }
 
 .sitesell2{
-  font-size: 45px;
+  font-size: 35px;
   padding-top: 2vh;
   color: white;
   padding-left: 10vw;
@@ -82,10 +82,10 @@ https://elements.envato.com/young-couple-at-the-bar-PHV84U9 */
 
 @media only screen and (max-width: 1350px) {
   .sitesell1{
-    font-size: 35px;
+    font-size: 28px;
   }
   .sitesell2{
-    font-size: 35px;
+    font-size: 28px;
 
   }
 
