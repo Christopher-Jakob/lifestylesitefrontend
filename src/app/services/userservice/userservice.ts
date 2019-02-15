@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Httpservice} from '../httpservice/httpservice';
+import {authorizeuseer} from '../../urls/JWTtokenurls/JWTtokenurls';
 
 
 @Injectable()
@@ -44,13 +45,13 @@ export class Userservice{
 
 
   // attempts to authorize user
-  attemptuserlogin(payload){
-    const rememberme = payload.remember;
+  attemptuserlogin(data){
+    const rememberme = data.remember;
     const payload = {
-      email : payload.email,
-      password: payload.password
+      email : data.email,
+      password: data.password
     };
-    this.http.post(url, payload)
+    this.http.post(authorizeuseer, payload)
       .subscribe(
         (req: any)=>{
           if(rememberme){
