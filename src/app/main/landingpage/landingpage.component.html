@@ -106,7 +106,7 @@
               </div>
             </div>
             <div class="col-12 mt-5 smallshim">
-              <h5>Want to know when the site goes live? Enter your closest city, swing preference, and email below and we'll keep you updated.</h5>
+              <h5>Want to know when the site goes live? Enter your closest city, user type, and email below and we'll keep you updated.</h5>
             </div>
             <div class="col-12 smallshim">
               <div class="row">
@@ -148,7 +148,7 @@
                           ngModel
                           required
                           class="form-control">
-                    <option value="">Select Your Swing Preference</option>
+                    <option value="">Select Your User Type</option>
                     <option *ngFor="let t of swingertypes" [value]="t.id">{{t.name}}</option>
                   </select>
                 </div>
@@ -249,7 +249,7 @@
                             ngModel
                             required
                             class="form-control">
-                      <option value="">Select Your Swing Preference</option>
+                      <option value="">Select Your User Type</option>
                       <option *ngFor="let st of swingertypes" [value]="st.id">{{st.name}}</option>
                     </select>
                   </div>
