@@ -16,8 +16,29 @@ export class Userservice{
 
   // stores token to session storeage persisting it for session only
   savesessionstoragetoken(token){
-    localStorage.setItem('token', token)
+    localStorage.setItem('token', token);
 
+  }
+
+  // check local storage for token
+  checklocalfortoken(){
+    if(localStorage.length > 0){
+      const token = localStorage.getItem('token');
+      return token;
+    } else{
+      return null;
+    }
+
+  }
+
+  // check session storage for token
+  checksessionfortoken(){
+    if(sessionStorage.length > 0){
+      const token = sessionStorage.getItem('token');
+      return token;
+    } else{
+      return null;
+    }
   }
 
 

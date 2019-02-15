@@ -22,7 +22,7 @@ import { SwingerhomepagemenuComponent } from './swinger/swingerhomepage/subcompo
 import { LandingpageComponent } from './main/landingpage/landingpage.component';
 import { SiteadminmainComponent } from './siteadmin/siteadminmain/siteadminmain.component';
 import { LocationsComponent } from './siteadmin/subcomponents/locations/locations.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { SwingerandhosttypesComponent } from './siteadmin/subcomponents/swingerandhosttypes/swingerandhosttypes.component';
 import { SwingerhostsignupComponent } from './siteadmin/subcomponents/swingerhostsignup/swingerhostsignup.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
@@ -33,6 +33,7 @@ import { SwingersignupdeclinereasonsComponent } from './siteadmin/subcomponents/
 import { PreferedswingertypesComponent } from './swinger/preferencesandsettings/subcomponents/preferedswingertypes/preferedswingertypes.component';
 import { HeaderloginformComponent } from './main/loginforms/headerloginform/headerloginform.component';
 import {Httpservice} from './services/httpservice/httpservice';
+import {TokenInterceptor} from './services/interceptors/httpauthinterceptor';
 
 
 const appRoutes: Routes = [
@@ -78,7 +79,13 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   exports:[RouterModule],
-  providers: [Httpservice],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+
+  },
+    Httpservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
