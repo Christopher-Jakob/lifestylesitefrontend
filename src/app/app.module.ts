@@ -34,6 +34,7 @@ import { PreferedswingertypesComponent } from './swinger/preferencesandsettings/
 import { HeaderloginformComponent } from './main/loginforms/headerloginform/headerloginform.component';
 import {Httpservice} from './services/httpservice/httpservice';
 import {TokenInterceptor} from './services/interceptors/httpauthinterceptor';
+import {Userservice} from './services/userservice/userservice';
 
 
 const appRoutes: Routes = [
@@ -85,7 +86,8 @@ const appRoutes: Routes = [
     multi: true
 
   },
-    Httpservice],
+    Httpservice,
+  Userservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

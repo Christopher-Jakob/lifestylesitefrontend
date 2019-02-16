@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ShowHideService} from '../../../services/controlservices/showhideservice/showhideservice';
 import {NgForm} from '@angular/forms';
+import {Userservice} from '../../../services/userservice/userservice';
 
 @Component({
   selector: 'app-headerloginform',
@@ -9,7 +10,7 @@ import {NgForm} from '@angular/forms';
 })
 export class HeaderloginformComponent implements OnInit {
 
-  constructor(private showhideservice: ShowHideService) { }
+  constructor(private showhideservice: ShowHideService, private userservice: Userservice) { }
 
   // send landing page login form show hide command
   sendshowhidecommand(){
@@ -32,7 +33,7 @@ export class HeaderloginformComponent implements OnInit {
       password: form.value.password,
       remember: form.value.remembercheckbox
     };
-
+    this.userservice.attemptuserlogin(payload);
   }
 
   // executes forgot password

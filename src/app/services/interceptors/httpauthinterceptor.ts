@@ -13,6 +13,8 @@ export class TokenInterceptor implements  HttpInterceptor{
     if(token == null){
      token = this.tokenservice.checksessionfortoken();
     }
+    console.log('this is the token');
+    console.log(token);
     if(token != null){
       if(request.url != 'https://libidnouslonge.s3.amazonaws.com/'){
         request = request.clone({
