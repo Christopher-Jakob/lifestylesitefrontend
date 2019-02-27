@@ -35,6 +35,7 @@ import { HeaderloginformComponent } from './main/loginforms/headerloginform/head
 import {Httpservice} from './services/httpservice/httpservice';
 import {TokenInterceptor} from './services/interceptors/httpauthinterceptor';
 import {Userservice} from './services/userservice/userservice';
+import { SwingersexualorientationComponent } from './siteadmin/subcomponents/swingersexualorientation/swingersexualorientation.component';
 
 
 const appRoutes: Routes = [
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
     SwingersignupapprovalComponent,
     SwingersignupdeclinereasonsComponent,
     PreferedswingertypesComponent,
-    HeaderloginformComponent
+    HeaderloginformComponent,
+    SwingersexualorientationComponent
   ],
   imports: [
     BrowserModule,

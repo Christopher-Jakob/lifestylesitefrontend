@@ -7,7 +7,6 @@
         </div>
         <div class="row mt-4">
           <form (ngSubmit)="signup(signupform, null)" #signupform="ngForm">
-
             <div *ngIf="!locationexpandshow" class="col-12 mt-4 mb-1">
               <hr>
               <div class="text-center mt-2 mb-2">
@@ -51,7 +50,6 @@
                 <a (click)="togglelocationexpandshow()" class="locationlink">I don't see my location</a>
               </div>
             </div>
-
             <div *ngIf="locationexpandshow" class="col-12 mt-5">
               <div class="mb-3">In order to bring the most value to our members we are only allowing sign ups within certain areas.
                 As those areas gain significant membership, we will open membership to more areas.</div>
@@ -89,7 +87,6 @@
                     <option value="">Select Your State</option>
                     <option *ngFor="let s of allstates" [value]="s.id">{{s.name}}</option>
                   </select>
-
                 </div>
                 <div class="col-12 mb-2">
                   <select id="expandtoareacity"
@@ -99,7 +96,6 @@
                     <option value="">Select Your City</option>
                     <option *ngFor="let c of allcities" [value]="c.id">{{c.name}}</option>
                   </select>
-
                 </div>
                 <div class="col-6 mt-2">
                   <div class="text-center">
@@ -113,152 +109,182 @@
                 </div>
               </div>
             </div>
-          <div class="col-12">
-            <div *ngIf="!locationexpandshow" class="col-12 mb-1">
-              <input type="text"
-                     id="username"
-                     name="username"
-                     ngModel
-                     placeholder="user name"
-                     required
-                     class="form-control">
-            </div>
-            <div *ngIf="!locationexpandshow" class="col-12 mb-1">
-              <input type="email"
-                     id="email"
-                     name="email"
-                     ngModel
-                     placeholder="Email"
-                     required
-                     class="form-control">
-            </div>
-            <div *ngIf="!locationexpandshow" class="col-12 mb-1">
-              <input type="email"
-                     id="emailconfrim"
-                     name="emailconfrim"
-                     (ngModelChange)="emailsmatch()"
-                     ngModel
-                     placeholder="Confrim Email"
-                     required
-                     class="form-control">
-            </div>
-            <div *ngIf="emailmismatch" class="col-12 mt-3 mb-3">
-              <div class="text-center">
-                <h4>Emails Do Not Match!</h4>
-              </div>
-            </div>
-            <div *ngIf="!locationexpandshow" class="col-12 mb-1">
-              <input type="password"
-                     id="password1"
-                     name="password1"
-                     ngModel
-                     placeholder="password"
-                     required
-                     class="form-control">
-
-            </div>
-            <div *ngIf="!locationexpandshow" class="col-12 mb-1">
-              <input type="password"
-                     ngModel
-                     placeholder="confrim password"
-                     id="password2"
-                     (ngModelChange)="passwordsmatch()"
-                     name="password2"
-                     required
-                     class="form-control">
-            </div>
-            <div *ngIf="passwordsmismatch" class="col-12 mt-3 mb-3">
-              <div class="text-center">
-                <h4>Passwords Do Not Match!</h4>
-              </div>
-            </div>
-            <div *ngIf="!locationexpandshow" class="col-12 mb-1">
-              <select id="swingtype"
-                      name="swingtype"
-                      ngModel
-                      class="form-control"
-                      (ngModelChange)="coupleselected()"
-                      required>
-                <option value="">Select Your Swing Type</option>
-                <option *ngFor="let type of swingoptions" [value]="type.id">{{type.name}}</option>
-              </select>
-            </div>
-            <div *ngIf="!locationexpandshow" class="row">
-              <div  class="col-12 mb-1 mt-4">
-                <hr>
-                <div *ngIf="!couplesignup" class="text-center mt-2">
-                  <h5>When is your birthday?</h5>
-                </div>
-                <div *ngIf="couplesignup" class="text-center">
-                  <h5>What is the {{selectedcoupletype.sex1.name}}'s birthday?</h5>
-                </div>
-                <input type="date"
-                       id="birthdayone"
-                       name="birthdayone"
-                       class="form-control"
+            <div class="col-12">
+              <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+                <input type="text"
+                       id="username"
+                       name="username"
                        ngModel
-                       required>
-
-              </div>
-              <div *ngIf="couplesignup" class="col-12 mt-3 mb-1">
-                <hr>
-                <div class="text-center mt-2">
-                  <h5>What Is The {{selectedcoupletype.sex2.name}}'s Birthday?</h5>
-                </div>
-                <input type="date"
-                       id="birthdaytwo"
-                       name="birthdaytwo"
-                       class="form-control"
-                       ngModel>
-              </div>
-              <div class="col-12 mt-3">
-                <hr>
-                <div *ngIf="!couplesignup" class="text-center mt-2">
-                  <h5>Select Your Ethnicity</h5>
-                </div>
-                <div *ngIf="couplesignup" class="text-center">
-                  <h5>Select The {{selectedcoupletype.sex1.name}}'s Ethnicity</h5>
-                </div>
-              </div>
-              <div *ngFor="let e of ethnicgroups" class="col-4 mb-1">
-                <label class="form-check-label">{{e.name}}</label> &nbsp;
-                <input type="radio"
-                       [id]="e.name + '1'"
+                       placeholder="user name"
                        required
-                       name="ethnicity1"
-                       [value]="e.id"
-                       ngModel>
-
+                       class="form-control">
               </div>
-              <div *ngIf="couplesignup" class="col-12 mt-3 mb-1">
-                <hr>
-                <div class="text-center mt-2">
-                  <h5>What Is The {{selectedcoupletype.sex2.name}}'s Ethnicity?</h5>
+              <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+                <input type="email"
+                       id="email"
+                       name="email"
+                       ngModel
+                       placeholder="Email"
+                       required
+                       class="form-control">
+              </div>
+              <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+                <input type="email"
+                       id="emailconfrim"
+                       name="emailconfrim"
+                       (ngModelChange)="emailsmatch()"
+                       ngModel
+                       placeholder="Confrim Email"
+                       required
+                       class="form-control">
+              </div>
+              <div *ngIf="emailmismatch" class="col-12 mt-3 mb-3">
+                <div class="text-center">
+                  <h4>Emails Do Not Match!</h4>
                 </div>
               </div>
-              <div *ngFor="let e of ethnicgroups" class="col-4 mb-1">
-                <label *ngIf="couplesignup" class="form-check-label">{{e.name}}</label> &nbsp;
-                <input *ngIf="couplesignup" type="radio"
+              <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+                <input type="password"
+                       id="password1"
+                       name="password1"
+                       ngModel
+                       placeholder="password"
+                       required
+                       class="form-control">
+
+              </div>
+              <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+                <input type="password"
+                       ngModel
+                       placeholder="confrim password"
+                       id="password2"
+                       (ngModelChange)="passwordsmatch()"
+                       name="password2"
+                       required
+                       class="form-control">
+              </div>
+              <div *ngIf="passwordsmismatch" class="col-12 mt-3 mb-3">
+                <div class="text-center">
+                  <h4>Passwords Do Not Match!</h4>
+                </div>
+              </div>
+              <div *ngIf="!locationexpandshow" class="col-12 mb-1">
+                <select id="swingtype"
+                        name="swingtype"
+                        ngModel
+                        class="form-control"
+                        (ngModelChange)="coupleselected()"
+                        required>
+                  <option value="">Select Your Swing Type</option>
+                  <option *ngFor="let type of swingoptions" [value]="type.id">{{type.name}}</option>
+                </select>
+              </div>
+              <div *ngIf="!locationexpandshow" class="row">
+                <div  class="col-12 mb-1 mt-4">
+                  <hr>
+                  <div *ngIf="!couplesignup" class="text-center mt-2">
+                    <h5>When is your birthday?</h5>
+                  </div>
+                 <div *ngIf="couplesignup" class="text-center">
+                    <h5>What is the {{selectedcoupletype.sex1.name}}'s birthday?</h5>
+                  </div>
+                  <input type="date"
+                         id="birthdayone"
+                         name="birthdayone"
+                         class="form-control"
+                        ngModel
+                        required>
+
+                </div>
+                <div *ngIf="couplesignup" class="col-12 mt-3 mb-1">
+                  <hr>
+                  <div class="text-center mt-2">
+                    <h5>What Is The {{selectedcoupletype.sex2.name}}'s Birthday?</h5>
+                  </div>
+                  <input type="date"
+                        id="birthdaytwo"
+                        name="birthdaytwo"
+                        class="form-control"
+                        ngModel>
+                </div>
+                <div class="col-12 mt-3">
+                  <hr>
+                  <div *ngIf="!couplesignup" class="text-center mt-2">
+                    <h5>Select Your Ethnicity</h5>
+                  </div>
+                  <div *ngIf="couplesignup" class="text-center">
+                    <h5>Select The {{selectedcoupletype.sex1.name}}'s Ethnicity</h5>
+                  </div>
+                </div>
+                <div *ngFor="let e of ethnicgroups" class="col-4 mb-1">
+                 <label class="form-check-label">{{e.name}}</label> &nbsp;
+                  <input type="radio"
+                        [id]="e.name + '1'"
+                        required
+                        name="ethnicity1"
+                        [value]="e.id"
+                        ngModel>
+
+                </div>
+                <div *ngIf="couplesignup" class="col-12 mt-3 mb-1">
+                  <hr>
+                  <div class="text-center mt-2">
+                   <h5>What Is The {{selectedcoupletype.sex2.name}}'s Ethnicity?</h5>
+                  </div>
+                </div>
+                <div *ngFor="let e of ethnicgroups" class="col-4 mb-1">
+                  <label *ngIf="couplesignup" class="form-check-label">{{e.name}}</label> &nbsp;
+                  <input *ngIf="couplesignup" type="radio"
                        [id]="e.name + '2'"
                        name="ethnicity2"
                        [value]="e.id"
                        ngModel>
-              </div>
+                </div>
+                <div class="col-12 mt-3 mb-1">
+                  <div *ngIf="!couplesignup" class="text-center">
+                    <h5>What is your sexual orientation</h5>
+                  </div>
+                  <div *ngIf="couplesignup" class="text-center">
+                    <h5>What is The {{selectedcoupletype.sex1.name}}'s sexual orientation</h5>
+                  </div>
+                </div>
+                <div class="col-12 mt-2 mb-5">
+                  <select id="sexualorientation1"
+                          name="sexualorientation1"
+                          required
+                          ngModel
+                          class="form-control">
+                    <option value="">Select a orientation</option>
+                    <option *ngFor="let o of sexualorientations" [value]="o.id">{{o.name}}</option>
+                  </select>
+                </div>
+                <div *ngIf="couplesignup" class="col-12 mt-3 mb-1">
+                  <div class="text-center">
+                    <h5>What is The {{selectedcoupletype.sex2.name}}'s sexual orientation</h5>
+                  </div>
+                </div>
+                <div *ngIf="couplesignup" class="col-12 mt-2 mb-5">
+                  <select id="sexualorientation2"
+                          name="sexualorientation2"
+                          ngModel
+                          class="form-control">
+                    <option value="">Select a orientation</option>
+                    <option *ngFor="let o of sexualorientations" [value]="o.id">{{o.name}}</option>
+                  </select>
+                </div>
+              <hr>
+            <div *ngIf="!locationexpandshow" class="col-12 mb-4">
+              <h3>Verification</h3>
             </div>
-          </div>
-          <hr>
-          <div *ngIf="!locationexpandshow" class="col-12 mb-4">
-            <h3>Verification</h3>
-          </div>
-          <div *ngIf="!verificationuploadshow && !locationexpandshow" class="col-12 mb-5">
-            <p>Please upload a untouched, unehanced picture that we can clearly see <span *ngIf="!couplesignup">your</span> <span *ngIf="couplesignup">both of yours</span> face.
+            <div *ngIf="!verificationuploadshow && !locationexpandshow" class="col-12 mb-5">
+              <p>Please upload a untouched, unehanced picture that we can clearly see <span *ngIf="!couplesignup">your</span> <span *ngIf="couplesignup">both of yours</span> face.
               You must be holding a sign that has the verification code below. This code is unique to this sign up attempt.
               This process allows us to verify that those who sign up for our community are who they say they are. Pictures are encrypted and viewable by only one
               person on a specific computer on a specific network throughout the world.
               After your photo is verified, your profile will be approved!
               The uploaded image is automatically deleted after our verification process.
               Having a safe and secure community is very important to us at Libidious Lounge.
-            </p>
+              </p>
             <div class="text-center mt-1">
               <p>Below is an example of an acceptable image.</p>
             </div>
@@ -273,7 +299,6 @@
               <button (click)="toggleverificationshow()" class="btn btn-outline-dark">Ok Lets Upload An Image</button>
             </div>
           </div>
-
           <div *ngIf="verificationuploadshow" class="col-12 mb-4">
             <div class="text-center">
               <input type="file"
@@ -299,16 +324,17 @@
               <button type="submit" class="btn btn-outline-primary">Sign Up For Libidinous Lounge </button>
             </div>
           </div>
-          </form>
-        </div>
+              </div>
+            </div>
+        </form>
       </div>
-      <div class="col-5">
-        <div class="text-center">
-          The selling points of the site will go here
-        </div>
-      </div>
+  <div class="col-5">
+    <div class="text-center">
+      The selling points of the site will go here
     </div>
   </div>
+</div>
+
 
 <div *ngIf="showsignupsucess" class="container mt-5 mb-5">
   <div class="row">

@@ -12,6 +12,7 @@ import {
 import {s3presignedurl} from '../../urls/awsurls/awsurls';
 import {createswingerurl} from '../../urls/userurls/userurl/userurl';
 import {getdeleteverificationphotocodeurl, postnewverificationphotocodeurl} from '../../urls/verificationphotourls/codeurls/codeurls';
+import {postgetallsexualorientation} from '../../urls/siteadminurls/settingsurls/sexualorientationurls/sexualorientationurl';
 
 
 @Component({
@@ -93,6 +94,7 @@ export class SwingersignupComponent implements OnInit {
   allcities = [];
   swingoptions = [];
   ethnicgroups = [];
+  sexualorientations = [];
 
   getstatesbycountry(status){
     let url = null;
@@ -121,6 +123,8 @@ export class SwingersignupComponent implements OnInit {
         );
     }
   }
+
+  // info.us@swiss.com
 
   getcitiesbystate(status){
     let url = null;
@@ -299,6 +303,13 @@ export class SwingersignupComponent implements OnInit {
         (req:any)=>{
           this.ethnicgroups = req.body;
           console.log(this.ethnicgroups);
+        }
+      );
+    const sexualorientationurl = postgetallsexualorientation;
+    this.http.get(sexualorientationurl)
+      .subscribe(
+        (req: any)=>{
+          this.sexualorientations = req.body;
         }
       );
     const allcountriesurl = countriesbystatus + 'all';

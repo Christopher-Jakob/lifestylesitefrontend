@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mb-5 mt-3">
+      <h3>Swinger Sexual Orientation</h3>
+    </div>
+    <form (ngSubmit)="addorientation(sexorientationform)" #sexorientationform="ngForm">
+      <div class="row">
+        <div class="col-8 mt-2">
+          <input type="text"
+                 id="orientationadd"
+                 name="orientationadd"
+                 ngModel
+                 placeholder="Add an Orientation"
+                 class="form-control">
+
+        </div>
+        <div class="col-4 mt-2">
+          <div class="text-center">
+            <button class="btn btn-outline-dark" type="submit">Add Orientation</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngFor="let type of orientationtypes; let i = index" class="row">
+    <div class="col-8">
+      <div class="text-left">
+        <p class="badge badge-pill badge-secondary">{{type.name}}</p>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="text-right">
+        <button style="cursor: pointer" (click)="deleteorientation(i)" class="badge badge-pill badge-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
