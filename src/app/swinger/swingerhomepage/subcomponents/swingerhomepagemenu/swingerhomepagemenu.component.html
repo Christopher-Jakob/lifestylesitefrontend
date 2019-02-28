@@ -1,7 +1,7 @@
-<div class="container-fluid">
+<div *ngIf="swingerobject != null" class="container-fluid">
   <div class="row mb-5">
     <div class="col-12 mt-4 mb-2">
-      <h5>User Name User Name</h5>
+      <h5 (click)="navigatetoprofile()" class="globalshowaslink">{{swingerobject.swinger_set[0].username}}</h5>
     </div>
     <div class="col-12 mt-1">
       News Feed
@@ -19,7 +19,7 @@
       Groups
     </div>
     <div class="col-12 mb-1">
-      Preferrences & Settings
+      <p (click)="navigatetoprefsettings()" class="globalshowaslink">Preferrences & Settings</p>
     </div>
     <div class="col-12 mt-4 mb-2">
       <strong>Events</strong>

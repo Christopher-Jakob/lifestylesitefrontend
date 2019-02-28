@@ -69,7 +69,7 @@ export class Userservice{
     }
   }
 
-  // gets the base lifestyle user from the database
+  // gets the lifestyle user from the database
 
   getlifestyleuser(){
     let token = this.checklocalfortoken();
@@ -82,6 +82,12 @@ export class Userservice{
           (req: any)=>{
             this.lifestyleuserobject = req.body;
             this.sendlifestyleuserobject();
+            if(this.lifestyleuserobject.isswinger){
+              if(this.lifestyleuserobject.isswingerapproved){
+                this.router.navigate(['home']);
+
+              }
+            }
             });
           }
     }

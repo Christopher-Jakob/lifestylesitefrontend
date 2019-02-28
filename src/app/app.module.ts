@@ -38,11 +38,7 @@ import {Userservice} from './services/userservice/userservice';
 import { SwingersexualorientationComponent } from './siteadmin/subcomponents/swingersexualorientation/swingersexualorientation.component';
 
 
-const appRoutes: Routes = [
-  {path: '', component: LandingpageComponent },
-  {path: 'swingersignup', component: SwingersignupComponent},
-  {path: 'siteadmin', component: SiteadminmainComponent}
-];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +72,6 @@ const appRoutes: Routes = [
     BrowserModule,
     NgbModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes),
     ScrollToModule.forRoot(),
     AppRoutingModule,
     HttpClientModule

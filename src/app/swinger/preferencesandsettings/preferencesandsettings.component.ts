@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Userservice} from '../../services/userservice/userservice';
 
 @Component({
   selector: 'app-preferencesandsettings',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreferencesandsettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userservice: Userservice) { }
   // boolean to see if this is a couple or not
   couplesignup = false;
   // boolean if a user opts into body types
@@ -16,6 +17,9 @@ export class PreferencesandsettingsComponent implements OnInit {
   verificationphotosent = false;
   // boolean to say wether the user has been verified or not
   verified = false;
+
+  userservicesubject;
+  swingerobject;
 
   bodytypeoptintoggle(){
     this.bodytypeoptin = !this.bodytypeoptin;
@@ -121,6 +125,15 @@ export class PreferencesandsettingsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.userservicesubject = this.userservice.recieivelifestyleuserobject()
+      .subscribe(
+        (req: any)=>{
+          if(req != null){
+            this.swingerobject = req;
+            console.log(this.swingerobject);
+          }
+        }
+      );
   }
 
 }

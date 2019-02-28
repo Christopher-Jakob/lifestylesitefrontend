@@ -57,7 +57,7 @@ export class SwingersignupapprovalComponent implements OnInit {
   }
 
   approvaldecision(index, form, decline){
-    const pk  = this.swingerapplicationhold[index].user.id;
+    const pk  = this.swingerapplicationhold[index].user;
     let payload = null;
     if(decline){
       payload = {

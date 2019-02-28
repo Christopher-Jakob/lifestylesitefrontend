@@ -198,6 +198,8 @@ export class SwingersignupComponent implements OnInit {
       birthdaytwo: null,
       ethnicity1: null,
       ethnicity2: null,
+      orientation1: null,
+      orientation2: null,
       verificationphoto: null,
       verificationphotokey: null,
       verificationphotocode: null,
@@ -222,6 +224,10 @@ export class SwingersignupComponent implements OnInit {
       payload.ethnicity1 = form.value.ethnicity1;
       if(form.value.ethnicity2 != null){
         payload.ethnicity2 = form.value.ethnicity2;
+      }
+      payload.orientation1 = form.value.sexualorientation1;
+      if(form.value.sexualorientation2 != null){
+        payload.orientation2 = form.value.sexualorientation2;
       }
       payload.verificationphotocode = this.verificatonphotopobject.code;
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-swingerprofile',
   templateUrl: './swingerprofile.component.html',
@@ -9,7 +10,7 @@ export class SwingerprofileComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+
+  ngOnInit() {}
 
 }
