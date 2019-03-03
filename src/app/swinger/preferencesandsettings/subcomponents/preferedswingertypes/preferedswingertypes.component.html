@@ -1,5 +1,5 @@
 <div class="container">
-  <form (ngSubmit)="updatepreferedswingtypes()" #preferedswingtypesform="ngForm">
+  <form  #preferedswingtypesform="ngForm">
     <div class="row">
       <div class="col-12 mt-5 mb-5">
         <h5>Preferred Swinger Types</h5>
@@ -14,8 +14,9 @@
           <div class="col-auto">
             <input type="checkbox"
                    id="singlewoman"
+                   (ngModelChange)="updatepreferedswingtypes(preferedswingtypesform)"
                    name="singlewoman"
-                   ngModel
+                   [ngModel]="swinger.swinger_set[0].wantsinglewoman"
                    class="form-check">
           </div>
         </div>
@@ -27,9 +28,10 @@
           </div>
           <div class="col-auto">
             <input type="checkbox"
+                   (ngModelChange)="updatepreferedswingtypes(preferedswingtypesform)"
                    id="singleman"
                    name="singleman"
-                   ngModel
+                   [ngModel]="swinger.swinger_set[0].wantsingleman"
                    class="form-check">
           </div>
         </div>
@@ -41,9 +43,10 @@
           </div>
           <div class="col-auto">
             <input type="checkbox"
+                   (ngModelChange)="updatepreferedswingtypes(preferedswingtypesform)"
                    id="singlets"
                    name="singlets"
-                   ngModel
+                   [ngModel]="swinger.swinger_set[0].wantsinglets"
                    class="form-check">
           </div>
         </div>
@@ -56,8 +59,9 @@
           <div class="col-auto">
             <input type="checkbox"
                    id="couplemanwoman"
+                   (ngModelChange)="updatepreferedswingtypes(preferedswingtypesform)"
                    name="couplemanwoman"
-                   ngModel
+                   [ngModel]="swinger.swinger_set[0].wantcouplemanwoman"
                    class="form-check">
           </div>
         </div>
@@ -70,8 +74,9 @@
           <div class="col-auto">
             <input type="checkbox"
                    id="couplewomanwoman"
+                   (ngModelChange)="updatepreferedswingtypes(preferedswingtypesform)"
                    name="couplewomanwoman"
-                   ngModel
+                   [ngModel]="swinger.swinger_set[0].wantcouplewomanwoman"
                    class="form-check">
           </div>
         </div>
@@ -84,8 +89,9 @@
           <div class="col-auto">
             <input type="checkbox"
                    id="couplemanman"
+                   (ngModelChange)="updatepreferedswingtypes(preferedswingtypesform)"
                    name="couplemanman"
-                   ngModel
+                   [ngModel]="swinger.swinger_set[0].wantcouplemanman"
                    class="form-check">
           </div>
         </div>
@@ -98,8 +104,9 @@
           <div class="col-auto">
             <input type="checkbox"
                    id="coupletsts"
+                   (ngModelChange)="updatepreferedswingtypes(preferedswingtypesform)"
                    name="coupletsts"
-                   ngModel
+                   [ngModel]="swinger.swinger_set[0].wantcoupletsts"
                    class="form-check">
           </div>
         </div>
@@ -112,8 +119,9 @@
           <div class="col-auto">
             <input type="checkbox"
                    id="couplemants"
+                   (ngModelChange)="updatepreferedswingtypes(preferedswingtypesform)"
                    name="couplemants"
-                   ngModel
+                   [ngModel]="swinger.swinger_set[0].wantcouplemants"
                    class="form-check">
           </div>
         </div>
@@ -126,17 +134,11 @@
           <div class="col-auto">
             <input type="checkbox"
                    id="couplewomants"
+                   (ngModelChange)="updatepreferedswingtypes(preferedswingtypesform)"
                    name="couplewomants"
-                   ngModel
+                   [ngModel]="swinger.swinger_set[0].wantcouplewomants"
                    class="form-check">
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="text-center">
-          <button type="submit" class="btn btn-outline-dark">Submit</button>
         </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Httpservice} from '../../../../services/httpservice/httpservice';
 import {swingtypeallorcreate} from '../../../../urls/siteadminurls/settingsurls/swingtypeurls/swingtypeurls';
 import {NgForm} from '@angular/forms';
 import {modifyswinger} from '../../../../urls/userurls/swingerurls/swingerurls/swingerurls';
+import {Userservice} from '../../../../services/userservice/userservice';
 
 @Component({
   selector: 'app-preferedswingertypes',
@@ -10,20 +11,19 @@ import {modifyswinger} from '../../../../urls/userurls/swingerurls/swingerurls/s
   styleUrls: ['./preferedswingertypes.component.css'],
   providers:[Httpservice]
 })
-export class PreferedswingertypesComponent implements OnInit {
+export class PreferedswingertypesComponent implements OnInit, OnDestroy {
 
-  constructor(private http: Httpservice) { }
-  swingtypes = [];
+  constructor(private http: Httpservice, private userservice: Userservice) { }
+  swingersubscription;
   swinger;
 
   updatepreferedswingtypes(form: NgForm){
-    const url = modifyswinger + 'pkgoeshere';
-
-
+    const pk = this.swinger.swinger_set[0].pk;
+    const url = modifyswinger + pk;
     const payload = {
       wantsinglewoman: form.value.singlewoman,
       wantsingleman: form.value.singleman,
-      wantssinglets: form.value.singlets,
+      wantsinglets: form.value.singlets,
       wantcouplemanwoman: form.value.couplemanwoman,
       wantcouplewomanwoman: form.value.couplewomanwoman,
       wantcouplewomants: form.value.couplewomants,
@@ -35,7 +35,9 @@ export class PreferedswingertypesComponent implements OnInit {
     this.http.put(url, payload)
       .subscribe(
         (req: any)=>{
-          this.swinger = req.body;
+          console.log(req);
+          this.swinger.swinger_set[0] = req.body;
+          this.userservice.sendmodifiedlifestyleuserobject(this.swinger);
         }
       );
 
@@ -45,12 +47,21 @@ export class PreferedswingertypesComponent implements OnInit {
 
 
   ngOnInit() {
-    this.http.get(swingtypeallorcreate)
+   this.swingersubscription = this.userservice.recieivelifestyleuserobject()
       .subscribe(
         (req:any)=>{
-          this.swingtypes = req.body;
+          if(req != null){
+            this.swinger = req;
+            console.log('this is the swinger');
+            console.log(this.swinger);
+          }
         }
       );
+  }
+
+  ngOnDestroy(){
+    this.swingersubscription.unsubscribe();
+
   }
 
 }

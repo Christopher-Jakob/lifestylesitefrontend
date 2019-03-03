@@ -1,0 +1,123 @@
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col-12">
+      <h5>Preferred Ethnicities</h5>
+    </div>
+  </div>
+  <form #ethnicitiesform="ngForm">
+  <div class="row mt-3">
+    <div class="col-3 mb-3">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">Hispanic</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 (ngModelChange)="updatepreferedethnicities(ethnicitiesform)"
+                 input="hispanic"
+                 name="hispanic"
+                 [ngModel]="user.swinger_set[0].wanthispanic"
+                 class="form-check-input">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-3 mb-3">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">Latino</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 input="latino"
+                 (ngModelChange)="updatepreferedethnicities(ethnicitiesform)"
+                 name="latino"
+                 [ngModel]="user.swinger_set[0].wantlatino"
+                 class="form-check-input">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-3 mb-3">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">White</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 input="white"
+                 (ngModelChange)="updatepreferedethnicities(ethnicitiesform)"
+                 name="white"
+                 [ngModel]="user.swinger_set[0].wantwhite"
+                 class="form-check-input">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-3 mb-3">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">Black</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 input="black"
+                 (ngModelChange)="updatepreferedethnicities(ethnicitiesform)"
+                 name="black"
+                 [ngModel]="user.swinger_set[0].wantblack"
+                 class="form-check-input">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-3 mb-3">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">Asian</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 input="asian"
+                 (ngModelChange)="updatepreferedethnicities(ethnicitiesform)"
+                 name="asian"
+                 [ngModel]="user.swinger_set[0].wantasian"
+                 class="form-check-input">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-3 mb-3">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">Native American</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 input="nativeamerican"
+                 (ngModelChange)="updatepreferedethnicities(ethnicitiesform)"
+                 name="nativeamerican"
+                 [ngModel]="user.swinger_set[0].wantnativeamerican"
+                 class="form-check-input">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-3 mb-3">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">Pacific Islander</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 input="pacificislander"
+                 (ngModelChange)="updatepreferedethnicities(ethnicitiesform)"
+                 name="pacificislander"
+                 [ngModel]="user.swinger_set[0].wantpacificislander"
+                 class="form-check-input">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>

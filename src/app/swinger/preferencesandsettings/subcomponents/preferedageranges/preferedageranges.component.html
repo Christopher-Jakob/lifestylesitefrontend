@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row mt-5 mb-5">
+    <div class="col-12">
+      <h5>Preferred Age Ranges</h5>
+    </div>
+  </div>
+  <form #agepreferenceform="ngForm">
+    <div class="row mt-4 mb-4">
+
+      <div class="col-4">
+        <input type="text"
+               id="minage"
+               (change)="updateagepreference(agepreferenceform)"
+               name="minage"
+               [ngModel]="userobject.swinger_set[0].minpreferedage"
+               class="form-control"
+               placeholder="Min Age 18+">
+      </div>
+      <div *ngIf="under18error" class="col-4">
+        Minimum Age Must Be Greater Than 18
+      </div>
+      <div *ngIf="!under18error" class="col-4">
+        <input type="text"
+               id="maxage"
+               name="maxage"
+               (ngModelChange)="updateagepreference(agepreferenceform)"
+               [ngModel]="userobject.swinger_set[0].maxpreferedage"
+               class="form-control"
+               placeholder="Max Age">
+      </div>
+
+    </div>
+  </form>
+
+</div>

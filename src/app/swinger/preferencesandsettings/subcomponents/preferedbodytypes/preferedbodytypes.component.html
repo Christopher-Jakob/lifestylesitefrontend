@@ -1,0 +1,226 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <h5>Preferred Body Types</h5>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      Body Type Filtering is an optional filter that requires additional verification. In order to filter members
+      by their body types your body type must be verified. Body Type Verification ensures quality matches for those who have a body type preference.
+      You have the option to allow those who have not opted into body type filtering to still see and contact you based on other filters as well as you to see and contact them.
+      However those who have opted into body type filtering and do not meet your filter requirements will not be able to see or interact with you, or you them. Body type verification
+      must be re verified every three months, but can be re verified as many times as you like before then. Body type verification is taken in the same way your initial verification was taken,
+      a picture of you holding a sign with a six digit number covering your face. In body type verification it is requested that you show as much skin as you are comfortable. You do not
+      have to be nude but the more we see of your body, the easier it is to accurately determine your body type. Each member in a couple will have a body type classification.
+
+    </div>
+    <div class="col-12 mt-3">
+      <div class="text-center">
+        Body Type Classifications Below
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>Body Builder</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Member spends a great deal of time and effort into their fitness, making it a high priority in their life. Very low body fat percentage, with a high amount of muscle.
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>Athletic</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Member spends a significant amount of time on their fitness but not to the intense degree as the body builder. Member has a low but not very low body fat percentage with
+          a high to significant amount of muscle.
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>Average</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Member spends some to little time on their fitness. Members have some to low amount of muscle, with a greater than low, but not significant amount of body fat.
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>A Few Extra Pounds</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Member has a significant amount of body fat with very little to low muscle mass.
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>Heavy Set</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Majority amount of body mass is fat, with very little to low muscle mass.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!showuploadform" class="row">
+    <div class="col-12 mt-4">
+      <div class="text-center">
+        <button (click)="toggleshowuploadform()" class="btn btn-outline-dark">Opt In To Body Type Filtering</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showuploadform && !uploadsucess" class="row">
+    <div class="col-12 mt-5">
+      <div class="text-center">
+        Example Image
+      </div>
+      <div class="text-center">
+        example image goes here
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showuploadform && !uploadsucess" class="row">
+    <div class="col-12 mt-5">
+      <div class="text-center mb-2">
+        <strong>Verification Code:</strong>
+      </div>
+      <div class="text-center mt-2">
+        <h5>{{bodytypeverificationcode.code}}</h5>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showuploadform && !uploadsucess" class="row mt-4">
+    <div class="col-4 offset-5">
+      <div class="text-center">
+        <input type="file"
+               id="bodytypeverification"
+               name="bodytypeverification"
+               ngModel>
+      </div>
+    </div>
+    <div class="col-12 mt-5">
+      <div class="text-center">
+        <button (click)="toggleshowuploadform()" class="btn btn-outline-dark">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="uploadsucess" class="row mt-4">
+    <div class="col-12">
+      <div class="text-center">
+        <h5>Your body type image has been uploaded. While you are waiting for classification, please choose your body type preferences</h5>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="uploadsucess" class="row mt-4">
+    <div class="col-4 mt-2 mb-2">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">Body Builder</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 id="bodybuilder"
+                 name="bodybuilder"
+                 ngModel
+                 class="form-check-input">
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-2 mb-2">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">Athletic</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 id="athletic"
+                 name="athletic"
+                 ngModel
+                 class="form-check-input">
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-2 mb-2">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">Average</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 id="average"
+                 name="average"
+                 ngModel
+                 class="form-check-input">
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-2 mb-2">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">A Few Extra Pounds</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 id="afewextrapounds"
+                 name="afewextrapounds"
+                 ngModel
+                 class="form-check-input">
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-2 mb-2">
+      <div class="row">
+        <div class="col-auto">
+          <label class="form-check-label">Heavy Set</label>
+        </div>
+        <div class="col-auto">
+          <input type="checkbox"
+                 id="heavyset"
+                 name="heavyset"
+                 ngModel
+                 class="form-check-input">
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-2">
+      <div class="row">
+        <div class="col-auto">
+          <input type="checkbox"
+                 id="allownonverified"
+                 name="allownonverified"
+                 ngModel
+                 class="form-check-input">
+
+        </div>
+        <div class="col-auto">
+          <label class="form-check-label">Allow those who have not verified their body types to see and connect with you based on other filters</label>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-3">
+      <div class="text-center">
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
