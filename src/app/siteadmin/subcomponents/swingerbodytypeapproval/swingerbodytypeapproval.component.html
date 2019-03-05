@@ -1,0 +1,209 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-10 mt-3 mb-3">
+      <h3>Body Type Applications</h3>
+    </div>
+    <div class="col-2 mt-3 mb-3">
+      <div class="text-right">
+        <h3>{{bodytypeapplications.length + activeapplications.length}}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div *ngFor="let app of activeapplications; let i = index " class="col-6">
+      <div class="row">
+        <div class="col-4 mb-3">
+          <div class="row">
+            <div class="col-12">
+              Verification photo
+            </div>
+            <div class="col-12">
+              <img class="img-fluid" [src]="app.verificationphoto">
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          <img class="img-fluid" [src]="app.bodytypeverificationphoto">
+        </div>
+        <div class="col-12 mt-2 mb-2">
+          <div class="text-center">
+            <h5>verification code: <strong>{{app.bodytypeverificationphotocode}}</strong></h5>
+          </div>
+
+        </div>
+        <div *ngIf="!showacceptform && !showdeclineform" class="col-6">
+          <button (click)="toggleshowacceptform()" class="btn btn-outline-success">Accept</button>
+        </div>
+        <div *ngIf="!showacceptform && !showdeclineform" class="col-6">
+          <button (click)="toggleshowdeclineform()" class="btn btn-outline-danger">Reject</button>
+        </div>
+        <div class="row">
+          <div *ngIf="showacceptform" class="col-12 mt-2">
+            <div class="row">
+              <div *ngIf="app.swingertype.couple" class="col-12">
+                Select the {{app.swingertype.sex1.name}}'s body type
+              </div>
+              <div class="col-12">
+                <select id="choosebodytype1"
+                        name="choosebodytype1"
+                        ngModel
+                        class="form-control">
+                  <option value="">Select Body Type</option>
+                  <option value="bodybuilder">Body Builder</option>
+                  <option value="athletic">Athletic</option>
+                  <option value="average">Average</option>
+                  <option value="thin">Thin</option>
+                  <option value="curvy">Curvy</option>
+                  <option value="afewextrapounds">A Few Extra Pounds</option>
+                  <option value="heavyset">Heavy Set</option>
+                </select>
+              </div>
+              <div *ngIf="showacceptform" class="col-12 mt-2">
+                <div class="row">
+                  <div class="col-12">
+                    Select the {{app.swingertype.sex2.name}}'s body type
+                  </div>
+                  <div class="col-12">
+                    <select id="choosebodytype2"
+                            name="choosebodytype2"
+                            ngModel
+                            class="form-control">
+                      <option value="">Select Body Type</option>
+                      <option value="bodybuilder">Body Builder</option>
+                      <option value="athletic">Athletic</option>
+                      <option value="average">Average</option>
+                      <option value="thin">Thin</option>
+                      <option value="curvy">Curvy</option>
+                      <option value="afewextrapounds">A Few Extra Pounds</option>
+                      <option value="heavyset">Heavy Set</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="text-center">
+                  <button (click)="toggleshowacceptform()" class="btn btn-outline-secondary">Cancel</button>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="text-center">
+                  <button type="submit" class="btn btn-outline-success">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="showdeclineform" class="col-12">
+          <form (ngSubmit)="declineapplication(i)" #declineapplicationform="ngForm">
+            <div class="row mb-2">
+              <div class="col-12">
+                <select id="declinereason"
+                        name="declinereason"
+                        ngModel
+                        class="form-control">
+                  <option value="">Select decline reason</option>
+                  <option value="Picture Not Clear">Picture Not Clear</option>
+                  <option value="Incorrect Code">Incorrect Code</option>
+                  <option value="Not Acceptable">Not Acceptable</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <button (click)="toggleshowdeclineform()" class=" btn btn-outline-dark">Cancel</button>
+              </div>
+              <div class="col-6">
+                <button type=submit class="btn btn-outline-success">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>Body Builder</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Member has a very low body fat percentage, with a high percentage of body mass being muscle.
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>Athletic</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Member has a low but not very low body fat percentage with
+          a high to significant percentage of body mass being muscle.
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>Average</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Member has some body mass being muscle, with a greater than low, but not significant amount of body fat.
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>Thin</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Member has a low amount of muscle mass , with with a greater than low, but not significant amount of body fat.
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>Curvy</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          A woman with a large butt, thin waist, and small to large breasts.
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>A Few Extra Pounds</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Member has a significant amount of body fat with very little to low percentage of body mass being muscle.
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12 mt-3 mb-3">
+          <div class="text-center">
+            <strong>Heavy Set</strong>
+          </div>
+        </div>
+        <div class="col-12 mb-2">
+          Majority amount of body mass is fat, with very little to low percentage of body mass being muscle.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
