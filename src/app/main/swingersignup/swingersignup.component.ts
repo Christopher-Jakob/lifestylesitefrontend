@@ -196,6 +196,15 @@ export class SwingersignupComponent implements OnInit {
       swingertype: null,
       birthdayone: null,
       birthdaytwo: null,
+      istranny: false,
+      isstraightman: false,
+      isbisexualman: false,
+      ishetroflexibleman: false,
+      isgayman: false,
+      isstraightwoman: false,
+      isbisexualwoman: false,
+      ishetroflexiblewoman: false,
+      islesbianwoman: false,
       ethnicity1: null,
       ethnicity2: null,
       orientation1: null,
@@ -206,10 +215,7 @@ export class SwingersignupComponent implements OnInit {
       prelaunchsignup: false
 
     };
-    console.log('this is the payload');
-    console.log(payload);
     if(form.value.country != null){
-      console.log('it went past the null nigga');
       payload.country = form.value.country;
       payload.state = form.value.state;
       payload.city = form.value.city;
@@ -225,9 +231,114 @@ export class SwingersignupComponent implements OnInit {
       if(form.value.ethnicity2 != null){
         payload.ethnicity2 = form.value.ethnicity2;
       }
+      const straight = 'Straight';
+      const bisexual = 'Bisexual';
+      const gay = 'Gay';
+      const lesbian = 'Lesbian';
+      const heteroflexible = 'Heteroflexible';
+
+
       payload.orientation1 = form.value.sexualorientation1;
+      for(let t of this.swingoptions){
+        if(payload.swingertype == t.id){
+          if(t.sex1.name === 'Female'){
+            for(let o of this.sexualorientations){
+              if(payload.orientation1 == o.id){
+                if(o.name === straight){
+                  payload.isstraightwoman = true;
+                }
+                if(o.name === bisexual){
+                  payload.isbisexualwoman = true;
+                }
+                if(o.name === gay){
+                  payload.islesbianwoman = true;
+
+                }
+                if(o.name === lesbian){
+                  payload.islesbianwoman = true;
+                }
+                if(o.name === heteroflexible){
+                  payload.ishetroflexiblewoman = true;
+                }
+              }
+            }
+          }
+          if(t.sex1.name === 'Male'){
+            for(let o of this.sexualorientations){
+              if(payload.orientation1 == o.id){
+                if(o.name === straight){
+                  payload.isstraightman = true;
+                }
+                if(o.name === bisexual){
+                  payload.isbisexualman = true;
+                }
+                if(o.name === gay){
+                  payload.isgayman = true;
+
+                }
+                if(o.name === lesbian){
+                  payload.isgayman = true;
+                }
+                if(o.name === heteroflexible){
+                  payload.ishetroflexibleman = true;
+                }
+              }
+            }
+          }
+        }
+      }
+
       if(form.value.sexualorientation2 != null){
         payload.orientation2 = form.value.sexualorientation2;
+        for(let t of this.swingoptions){
+          if(payload.swingertype == t.id){
+            if(t.sex2.name === 'Female'){
+              for(let o of this.sexualorientations){
+                if(payload.orientation2 == o.id){
+                  if(o.name === straight){
+                    payload.isstraightwoman = true;
+                  }
+                  if(o.name === bisexual){
+                    payload.isbisexualwoman = true;
+                  }
+                  if(o.name === gay){
+                    payload.islesbianwoman = true;
+
+                  }
+                  if(o.name === lesbian){
+                    payload.islesbianwoman = true;
+                  }
+                  if(o.name === heteroflexible){
+                    payload.ishetroflexiblewoman = true;
+                  }
+                }
+              }
+            }
+            if(t.sex2.name === 'Male'){
+              for(let o of this.sexualorientations){
+                if(payload.orientation2 == o.id){
+                  if(o.name === straight){
+                    payload.isstraightman = true;
+                  }
+                  if(o.name === bisexual){
+                    payload.isbisexualman = true;
+                  }
+                  if(o.name === gay){
+                    payload.isgayman = true;
+
+                  }
+                  if(o.name === lesbian){
+                    payload.isgayman = true;
+                  }
+                  if(o.name === heteroflexible){
+                    payload.ishetroflexibleman = true;
+                  }
+                }
+              }
+            }
+          }
+        }
+
       }
       payload.verificationphotocode = this.verificatonphotopobject.code;
     }
@@ -238,11 +349,8 @@ export class SwingersignupComponent implements OnInit {
       payload.expandtoareacity = form.value.expandtoareacity;
 
     }
-    console.log('this is the payload');
-    console.log(payload);
 
     const photo = this.verificationimage;
-    console.log(photo);
     let databasekey = null;
     let uriroot = null;
     const presignedimageurl = s3presignedurl + 'image';
@@ -302,6 +410,8 @@ export class SwingersignupComponent implements OnInit {
       .subscribe(
         (req:any)=>{
           this.swingoptions = req.body;
+          console.log('this is the swingtypes');
+          console.log(this.swingoptions);
         });
     const ethnictypeurl = ethnictypescreategetall;
     this.http.get(ethnictypeurl)
